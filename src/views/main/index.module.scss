@@ -1,0 +1,17 @@
+.sales {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1360px;
+    margin: 40px 40px 80px 40px;
+}
+
+.saleText{
+font-size: 64px;
+font-weight: 700;
+line-height: 70.4px;
+text-align: left;
+margin: 108px 0px 0px 40px;
+}

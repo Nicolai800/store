@@ -1,0 +1,80 @@
+.backgroundImage {
+  width: 1440px;
+  height: 600px;
+  max-width: 100%;
+  background-position: bottom;
+  // background-position-y: -230px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: brightness(60%);
+ 
+  
+
+  @media screen and (max-width: 1000px) {
+    padding: 60px 20px 40px 20px;
+    height: 476px;
+  }
+  @media screen and (max-width: 768px) {
+    height: 634px;
+  }
+  @media screen and (max-width: 480px) {
+    height: 600px;
+  }
+}
+
+.headerText {
+  width: 1360px;
+  max-width: 100%;
+  color: #ffffff;
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 105.6px;
+  position: absolute;
+  top: 0;
+  margin: 80px 40px 40px 40px;
+
+  @media screen and (max-width: 1000px) {
+    line-height: 99px;
+    font-size: 90;
+  }
+
+  @media screen and (max-width: 768px) {
+    line-height: 74.8px;
+    font-size: 68px;
+  }
+
+  @media screen and (max-width: 768px) {
+    line-height: 60px;
+    font-size: 66px;
+  }
+
+  @media screen and (max-width: 768px) {
+    line-height: 57.5px;
+    font-size: 52px;
+  }
+}
+
+.buttonHeader {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+  background-color: #92a134;
+  width: 218px;
+  height: 58px;
+  border-radius: 6px;
+  border: none;
+  left: 40px;
+
+  @media screen and (max-width: 480px) {
+    margin-top: 24px;
+  }
+}
+
+.headerWrapper{
+  width: 1440px;
+  height: 600px;
+  max-width: 100%;
+  position: relative; 
+}

@@ -1,0 +1,95 @@
+.wrapper {
+  height: 422px;
+  max-width: 316px;
+  gap: 20px;
+  border-radius: 10px;
+  border: 1px solid #DDDDDD;
+  opacity: 0px;
+}
+
+.header {
+  position: relative;
+}
+
+.discount {
+  background-color: #92a134;
+  color: #fff;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  border-radius: 6px;
+  padding: 4px 8px 4px 8px;
+  opacity: 0px;
+}
+
+%icon {
+  position: absolute;
+  right: 16px;
+  width: 48px;
+  height: 48px;
+   path{
+    stroke: #fff;
+    fill: #fff;
+   }
+  
+}
+
+.heart {
+  @extend %icon;
+  top: 16px;
+}
+
+.cart {
+  @extend %icon;
+  top: 74px;
+}
+
+.cardImage {
+  height: 284px;
+  max-width: 316px;
+  border-radius: 10px;
+  // object-fit: inherit;
+  width: 100%;
+}
+
+.info {
+  padding: 0px 32px 0px 32px ;
+  border-top: 1px solid #DDDDDD;
+}
+
+.description {
+  color: #424436;
+  width: 500px;
+  font-size: 20px;
+  line-height: 26px;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.newPrice {
+  color: #424436;
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 600;
+}
+
+.oldPrice {
+  color: #8b8b8b;
+  font-weight: 500px;
+  font-size: 20px;
+  line-height: 26px;
+  text-decoration: line-through;
+  margin-left: 16px;
+}
+
+.prices {
+  margin-top: 16px;
+}

@@ -1,0 +1,78 @@
+.discountFormWrapper {
+  background-color: #fffff1;
+  max-width: 1440px;
+  height: 674px;
+  width: 100%;
+  padding: 80px 40px 108px 40px;
+}
+
+.discountForm {
+  max-width: 1360px;
+  height: 486px;
+  width: 100%;
+  border-radius: 10px;
+  background: linear-gradient(80.46deg, #87933d -0.68%, #55610b 66.66%);
+}
+
+.discountFormText {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 70.4px;
+  text-align: center;
+  color: #ffffff;
+  padding: 32px 32px 24px 32px;
+}
+
+.discountFormBackImg {
+  max-width: 748px;
+  height: 360px;
+  width: 100%;
+  background-position: bottom;
+  background-size: cover;
+}
+
+.discountFormInfoWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.discountFormInform {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.discountFormInputs {
+  max-width: 516pxpx;
+  width: 100%;
+  height: 58pxpx;
+  padding: 16px 32px 16px 32px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  border: 1px solid #fffff1;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 500;
+  color: #ffffff;
+  background: transparent;
+}
+
+input::placeholder {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.discountFormButton {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: center;
+  width: 516px;
+  height: 58px;
+  padding: 16px 32px 16px 32px;
+  margin-top: 16px;
+  border-radius: 6px;
+  opacity: 0px;
+  border: none;
+}
