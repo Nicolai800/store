@@ -1,0 +1,9 @@
+.categories {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 1360px;
+    height: 500px;
+    border: 1px solid red;
+}
