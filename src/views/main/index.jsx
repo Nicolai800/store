@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../header/header";
-import {Categories} from "../categories"
+import { Categories } from "../categories";
 import { DiscountForm } from "../discount-form";
 import { BASE_URL } from "../../constants";
 import { CardItem } from "../../components/card-item";
@@ -32,7 +32,7 @@ export const Main = () => {
   return (
     <>
       <Header />
-      <Categories/>
+      <Categories />
       <DiscountForm />
       <h2 className={styles.saleText}>Sale</h2>
       <div className={styles.sales}>

@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./index.module.scss";
-import {InstagrammIcon, WhatsappIcon} from "../../assets/icons.jsx"
-import { Map } from "../../components/map/map.jsx"
-
+import { InstagrammIcon, WhatsappIcon } from "../../assets/icons.jsx";
+import { Map } from "../../components/map/map.jsx";
 
 export const Footer = () => {
   return (
@@ -16,8 +15,10 @@ export const Footer = () => {
 
         <div className={styles.contactsDivBackground}>
           <div className={styles.contactsFontHeader}>Social</div>
-          <InstagrammIcon id={styles.instagramm}/>
-          <WhatsappIcon id={styles.whatsapp}/>
+          <div className={styles.instWhatWrapper}>
+            <InstagrammIcon className={styles.instagramm} />
+            <WhatsappIcon className={styles.whatsapp} />
+          </div>
         </div>
         <div className={styles.contactsDivBackground}>
           <div className={styles.contactsFontHeader}>Adress</div>
@@ -30,7 +31,7 @@ export const Footer = () => {
           <p className={styles.contactsFont}>24 hours a day</p>
         </div>
       </div>
-      <Map/>
+      <Map />
     </footer>
   );
 };
