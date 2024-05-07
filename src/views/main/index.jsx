@@ -32,20 +32,22 @@ export const Main = () => {
   return (
     <>
       <Header />
-      <Categories />
+      <Categories elementsCount={4}/>
       <DiscountForm />
-      <h2 className={styles.saleText}>Sale</h2>
-      <div className={styles.sales}>
-        {saleItems.map(({ price, discont_price, description, image, id }) => (
-          <CardItem
-            key={id}
-            price={price}
-            discont={discont_price}
-            discontPercent={getDiscountPercent(price, discont_price)}
-            description={description}
-            image={image}
-          />
-        ))}
+      <div className={styles.saleWrapper}>
+        <h2 className={styles.saleText}>Sale</h2>
+        <div className={styles.sales}>
+          {saleItems.map(({ price, discont_price, description, image, id }) => (
+            <CardItem
+              key={id}
+              price={price}
+              discont={discont_price}
+              discontPercent={getDiscountPercent(price, discont_price)}
+              description={description}
+              image={image}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

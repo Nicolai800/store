@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./indes.module.scss";
 import { BASE_URL } from "../../constants";
 
-export const CategoriesItem = (title, image) => {
+export const CategoriesItem = ({title, image}) => {
   return (
     <div className={styles.categoriesItemWrapper}>
       <img

@@ -5,12 +5,12 @@ import { themeContext } from "../../context/theme";
 import cn from "classnames";
 
 export const DiscountForm = () => {
-  // const { theme, switchTheme } = useContext(themeContext);
+  const { theme, switchTheme } = useContext(themeContext);
+
   return (
-    // <div className={cn(styles.discountFormWrapper, {
-    //   [styles.dark]: theme === "dark",
-    // })}>
-    <div className={styles.discountFormWrapper}>
+    <div className={cn(styles.discountFormWrapper, {
+      [styles.dark]: theme === "dark",
+    })}>
       <div className={styles.discountForm}>
         <div className={styles.discountFormText}>5% off on the first order</div>
         <div className={styles.discountFormInfoWrapper}>

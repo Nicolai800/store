@@ -5,7 +5,8 @@
     flex-wrap: wrap;
     width: 100%;
     max-width: 1360px;
-    margin: 40px 40px 80px 40px;
+    margin: 40px 40px 0px 40px;
+    background-color: #fffff1;
 }
 
 .saleText{
@@ -13,5 +14,12 @@ font-size: 64px;
 font-weight: 700;
 line-height: 70.4px;
 text-align: left;
-margin: 108px 0px 0px 40px;
+margin-left: 40px;
+}
+
+.saleWrapper{
+    background-color: #fffff1;
+    width: 100%;
+    max-width: 1440px;
+
 }
