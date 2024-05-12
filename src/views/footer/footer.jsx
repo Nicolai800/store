@@ -1,12 +1,19 @@
-import React from "react";
+import React, {useContext} from "react";
 import styles from "./index.module.scss";
 import { InstagrammIcon, WhatsappIcon } from "../../assets/icons.jsx";
 import { Map } from "../../components/map/map.jsx";
+import { themeContext } from "../../context/theme.jsx";
+import cn from 'classnames';
 
 export const Footer = () => {
+  const {theme, switchTheme} = useContext(themeContext);
   return (
-    <footer className={styles.footerWrapper}>
-      <h2>Contact</h2>
+    <footer className={cn(styles.footerWrapper, {
+      [styles.dark]: theme === 'dark'
+    })}>
+      <h2 className={cn(styles.footerHeader, {
+      [styles.dark]: theme === 'dark'
+    })}>Contact</h2>
       <div className={styles.contactWrapper}>
         <div className={styles.contactsDivBackground}>
           <div className={styles.contactsFontHeader}>Phone</div>

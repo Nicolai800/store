@@ -29,10 +29,18 @@
   padding: 40px 40px 80px 40px;
   background-color: #fffff1;
 
+
   @media screen and (max-width: 1000px) {
     padding: 0 20px 0 20px;
 }
 }
+
+.footerWrapper.dark {
+  background-color: #424436;
+  color: #fff;
+}
+
+
 .contactsDivBackground {
   background-color: #f2f6d3;
   border-radius: 10px;
@@ -77,12 +85,16 @@
 
 }
 
-h2{
+.footerHeader{
     font-family: Montserrat;
     font-weight: 700;
     font-size: 64px;
     line-height: 70.4px;
     color: #424436;
+}
+.footerHeader.dark{
+  background-color: #424436;
+  color: #fff;
 }
 
 .whatsapp{
