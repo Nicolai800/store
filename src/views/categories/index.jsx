@@ -26,7 +26,6 @@ export const Categories = ({ elementsCount = 4 }) => {
     }
   });
 
-  console.log(filterItem);
   return (
     <>
     <h2>Categories</h2>
