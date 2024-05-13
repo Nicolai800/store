@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Header } from "../header/header";
 import { Categories } from "../categories";
 import { DiscountForm } from "../discount-form";
@@ -6,9 +6,12 @@ import { BASE_URL } from "../../constants";
 import { CardItem } from "../../components/card-item";
 import styles from "./index.module.scss";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
+import { themeContext } from "../../context/theme";
+import cn from "classnames";
 
 export const Main = () => {
   const [saleItems, setSaleItems] = useState([]);
+  const { theme, switchTheme } = useContext(themeContext);
   useEffect(() => {
     fetch(`${BASE_URL}/products/all`)
       .then((res) => {
@@ -34,9 +37,15 @@ export const Main = () => {
       <Header />
       <Categories elementsCount={4}/>
       <DiscountForm />
-      <div className={styles.saleWrapper}>
-        <h2 className={styles.saleText}>Sale</h2>
-        <div className={styles.sales}>
+      <div className={cn(styles.saleWrapper, {
+        [styles.dark]: theme === "dark",
+      })}>
+        <h2 className={cn(styles.saleText, {
+        [styles.dark]: theme === "dark",
+      })}>Sale</h2>
+        <div className={cn(styles.sales, {
+        [styles.dark]: theme === "dark",
+      })}>
           {saleItems.map(({ price, discont_price, description, image, id }) => (
             <CardItem
               key={id}

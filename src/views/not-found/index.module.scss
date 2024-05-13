@@ -1,18 +1,60 @@
-.notFoundWrapper{
-    width: 100%;
-    max-width: 770px;
-    margin: 80px auto 80px auto;
+.notFoundWrapper {
+  background-color: #fffff1;
+  width: 100%;
+  max-width: 1440px;
+  padding-top: 80px;
 }
 
-.notFoundImg{
-    width: 100%;
-    max-width: 300px;
-    height: 270px;
+.notFoundWrapper.dark {
+  background-color: #424436;
 }
 
-.number4{
-    font-weight: 179.4px;
-    font-size: 245.88px;
-    color: #92A134;
+.notFound {
+  width: 100%;
+  max-width: 770px;
+  margin: 0 auto;
+}
 
+.notFoundImg {
+  width: 100%;
+  max-width: 300px;
+  height: 270px;
+}
+
+.number4 {
+  font-weight: 179.4px;
+  font-size: 245.88px;
+  color: #92a134;
+}
+
+.pageNotFoundText {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 70.4px;
+  text-align: center;
+  color: #424436;
+}
+
+.notFoundDescription {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+  color: #8b8b8b;
+}
+
+.btn {
+  width: 209px;
+  height: 58px;
+  gap: 10px;
+  border-radius: 6px;
+  opacity: 0px;
+  background-color: #92a134;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
 }

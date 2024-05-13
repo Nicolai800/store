@@ -1,27 +1,34 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import styles from "./index.module.scss";
 import notFoundImg from "../../assets/notFoundImg.png";
-import {NumberFourIcon}from "../../assets/icons"
+import { NumberFourIcon } from "../../assets/icons";
+import { themeContext } from "../../context/theme";
+import cn from "classnames";
 
 export const NotFound = () => {
+  const { theme, switchTheme } = useContext(themeContext);
   return (
-    <div className={styles.notFoundWrapper}>
-      <div>
-        <NumberFourIcon/>
-        <img
-          src={notFoundImg}
-          className={styles.notFoundImg}
-          alt="notFoundImg"
-        />
-        <NumberFourIcon/>
+    <div className={cn(styles.notFoundWrapper, {
+      [styles.dark]: theme === "dark",
+    })}>
+      <div className={styles.notFound}>
+        <div>
+          <NumberFourIcon />
+          <img
+            src={notFoundImg}
+            className={styles.notFoundImg}
+            alt="notFoundImg"
+          />
+          <NumberFourIcon />
+        </div>
+        <h2 className={styles.pageNotFoundText}>Page Not Found</h2>
+        <div className={styles.notFoundDescription}>
+          We’re sorry, the page you requested could not be found. Please go back
+          to the homepage.
+        </div>
+        <Link to="http://localhost:3000/" ><button className={styles.btn}>Go home!</button></Link>
       </div>
-      <h2>Page Not Found</h2>
-      <div>
-        We’re sorry, the page you requested could not be found. Please go back
-        to the homepage.
-      </div>
-      <Link to="/">Go home!</Link>
     </div>
   );
 };

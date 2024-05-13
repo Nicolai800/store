@@ -46,10 +46,14 @@ export const Navigation = () => {
       </nav>
       <div className={styles.heartCartWrapper}>
         <IconCounter count={23}>
-          <HeartIcon />
+          <HeartIcon className={cn(styles.heartIcon, {
+        [styles.dark]: theme === "dark",
+      })} />
         </IconCounter>
         <IconCounter count={4}>
-          <CartIcon />
+          <CartIcon  className={cn(styles.cartIcon, {
+        [styles.dark]: theme === "dark",
+      })}/>
         </IconCounter>
       </div>
     </div>
