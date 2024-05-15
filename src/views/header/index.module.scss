@@ -2,13 +2,11 @@
   width: 1440px;
   height: 600px;
   max-width: 100%;
-  background-position: bottom;
-  // background-position-y: -230px;
   background-size: cover;
-  background-repeat: no-repeat;
-  filter: brightness(60%);
- 
-  
+  // background-repeat: no-repeat;
+  // filter: brightness(60%);
+  // background-position: bottom;
+  // background-position-y: -230px;
 
   @media screen and (max-width: 1000px) {
     padding: 60px 20px 40px 20px;
@@ -72,9 +70,9 @@
   }
 }
 
-.headerWrapper{
+.headerWrapper {
   width: 1440px;
   height: 600px;
   max-width: 100%;
-  position: relative; 
+  position: relative;
 }

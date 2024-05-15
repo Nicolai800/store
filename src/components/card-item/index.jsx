@@ -12,7 +12,9 @@ export const CardItem = ({ price, description, image, discont, discontPercent })
       [styles.dark]: theme === "dark"
     })}>
       <div className={styles.header}>
-        <div className={styles.discount}>{"-"+discontPercent}%</div>
+        <div className={cn(styles.discount, {
+        [styles.none]: discontPercent === 0
+      })}>{"-"+discontPercent}%</div>
         <img src={BASE_URL + image} alt="card" className={styles.cardImage} />
         <HeartIcon className={styles.heart}/>
         <CartIcon className={styles.cart}/>
@@ -27,7 +29,9 @@ export const CardItem = ({ price, description, image, discont, discontPercent })
           <span className={cn(styles.newPrice, {
         [styles.dark]: theme === "dark"
       })}>{"$"+discont}</span>
-          <span className={styles.oldPrice}>{"$"+price}</span>
+          <span className={cn(styles.oldPrice, {
+        [styles.none]: discontPercent === 0
+      })}>{"$"+price}</span>
         </div>
       </div>
     </div>

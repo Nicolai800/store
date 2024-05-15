@@ -8,6 +8,8 @@ import styles from "./index.module.scss";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
+import {setItems} from "../../store/shop-slice";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Main = () => {
   const [saleItems, setSaleItems] = useState([]);
