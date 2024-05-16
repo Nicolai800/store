@@ -1,6 +1,74 @@
 .allSalesWrapper {
-    display: flex;
-    flex-wrap: wrap;
-    width: 1440px;
-    max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 1440px;
+  max-width: 100%;
+  background-color: #fffff1;
+  gap: 32px;
+  padding: 0px 40px;
+}
+
+.allSalesWrapper.dark {
+  background-color: #424436;
+}
+
+.allSalesTitle {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 70.4px;
+  color: #424436;
+}
+
+.allSalesTitle.dark {
+  background-color: #424436;
+  color: #fff;
+}
+
+.allSalesInputsWrapper {
+  background-color: #fffff1;
+  color: #000000;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  width: 1440px;
+  max-width: 100%;
+  padding: 40px;
+
+  ::placeholder {
+    color: #8b8b8b;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20.16px;
+    padding-left: 16px;
   }
+}
+
+.allSalesInputsWrapper.dark {
+  background-color: #424436;
+  color: #ffffff;
+}
+
+.priceInputs {
+  border: 1px solid #dddddd;
+  width: 112px;
+  height: 36px;
+  border-radius: 6px;
+  margin-left: 16px;
+}
+
+#sortedForm {
+  width: 200px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid #dddddd;
+  color: #8b8b8b;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20.16px;
+  padding-left: 16px;
+}
+
+.texts{
+  margin-left: 40px;
+  margin-right: 16px;
+}

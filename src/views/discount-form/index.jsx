@@ -1,11 +1,11 @@
-import React, {useState, useContext} from "react";
+import React, {useContext} from "react";
 import styles from "./index.module.scss";
 import discountFormBackImg from "../../assets/discountFormBackbround.png";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
 
 export const DiscountForm = () => {
-  const { theme, switchTheme } = useContext(themeContext);
+  const { theme } = useContext(themeContext);
 
   return (
     <div className={cn(styles.discountFormWrapper, {
