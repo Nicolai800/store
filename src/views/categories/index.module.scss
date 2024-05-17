@@ -1,4 +1,4 @@
-.categories {
+.categoriesLayout {
     display: flex;
     justify-content: space-between;
     gap: 30px;
@@ -10,10 +10,23 @@
     padding: 40px;
 }
 
-h2{
+.categoriesLayout.dark{
+    background-color: #424436;
+}
+
+.categoriesText{
     background-color: #fffff1;
     width: 1440px;
     max-width: 100%;
     padding-top: 80px;
     padding-left: 40px;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 70.4px;
+    color: #424436;
+}
+
+.categoriesText.dark{
+    background-color: #424436;
+    color: #fff;
 }

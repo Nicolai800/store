@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./index.module.scss";
 import headerBackImg from "../../assets/headerBackImgjpg.jpg";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -12,7 +13,8 @@ export const Header = () => {
       <div className={styles.headerText}>
         <div>Amazing Discounts</div>
         <div>on Garden Products!</div>
-        <button className={styles.buttonHeader}>Check out</button>
+        <Link to={"http://localhost:3000/all-sales"}><button className={styles.buttonHeader}>Check out</button> </Link>
+        
       </div>
     </div>
   );

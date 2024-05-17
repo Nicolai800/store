@@ -5,6 +5,9 @@ export const getIsLoading = (state) => state.shop.isLoading;
 
 export const getError = (state) => state.shop.error;
 
+export const getCategoruById = (state, categoryId) =>
+  state.shop.items.find((category) => String(category.id) === categoryId);
+
 export const getProductById = (state, itemId) =>
   state.shop.items.find((item) => String(item.id) === itemId);
 

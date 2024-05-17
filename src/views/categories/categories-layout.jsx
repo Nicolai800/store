@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { BASE_URL } from "../../constants";
 import { CategoriesItem } from "../../components/categories-item";
 import styles from "./index.module.scss";
-import { Link } from "react-router-dom";
+import cn from "classnames";
+import { themeContext } from "../../context/theme";
 
-export const Categories = ({ elementsCount = 4 }) => {
+export const CategoriesLayout = ({ elementsCount = 5 }) => {
   const [categoriesItems, setCategoriesItems] = useState([]);
+  const { theme } = useContext(themeContext);
 
   useEffect(() => {
     fetch(`${BASE_URL}/categories/all`)
@@ -27,10 +29,14 @@ export const Categories = ({ elementsCount = 4 }) => {
 
   return (
     <>
-    <h2>Categories</h2>
-      <div className={styles.categories}>
+    <h2 className={cn(styles.categoriesText, {
+            [styles.dark]: theme === "dark",
+          })}>Categories</h2>
+      <div  className={cn(styles.categoriesLayout, {
+          [styles.dark]: theme === "dark",
+        })}>
         {filterItem.map(({ image, id, title }) => (
-          <Link><CategoriesItem image={image} title={title} key={id} /></Link>
+          <CategoriesItem image={image} title={title} key={id} id={id}/>
         ))}
       </div>
     </>
