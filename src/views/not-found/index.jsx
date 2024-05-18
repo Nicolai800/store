@@ -7,7 +7,7 @@ import { themeContext } from "../../context/theme";
 import cn from "classnames";
 
 export const NotFound = () => {
-  const { theme, switchTheme } = useContext(themeContext);
+  const { theme } = useContext(themeContext);
   return (
     <div className={cn(styles.notFoundWrapper, {
       [styles.dark]: theme === "dark",
@@ -27,7 +27,7 @@ export const NotFound = () => {
           We’re sorry, the page you requested could not be found. Please go back
           to the homepage.
         </div>
-        <Link to="http://localhost:3000/" ><button className={styles.btn}>Go home!</button></Link>
+        <Link to="http://localhost:3000/"><button className={styles.btn}>Go home!</button></Link>
       </div>
     </div>
   );

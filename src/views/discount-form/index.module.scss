@@ -6,10 +6,8 @@
   padding: 80px 40px 108px 40px;
 }
 
-.discountFormWrapper.dark{
+.discountFormWrapper.dark {
   background-color: #424436;
-
-
 }
 
 .discountForm {
@@ -81,4 +79,11 @@ input::placeholder {
   border-radius: 6px;
   opacity: 0px;
   border: none;
+  cursor: pointer;
+}
+
+.discountFormButton:active {
+  background-color: #424436;
+  color: #ffffff;
+  transform: translateY(4px);
 }

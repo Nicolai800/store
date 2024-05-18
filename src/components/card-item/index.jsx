@@ -4,9 +4,11 @@ import styles from "./index.module.scss";
 import { BASE_URL } from "../../constants";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
+import { Link } from "react-router-dom";
+import {Product} from "../../views/product"
 
-export const CardItem = ({ price, description, image, discont, discontPercent }) => {
-  const { theme, switchTheme } = useContext(themeContext);
+export const CardItem = ({ price, description, image, discont, discontPercent, id }) => {
+  const { theme } = useContext(themeContext);
   return (
     <div className={cn(styles.wrapper, {
       [styles.dark]: theme === "dark"
@@ -24,7 +26,9 @@ export const CardItem = ({ price, description, image, discont, discontPercent })
       })}>
         <div className={cn(styles.description, {
         [styles.dark]: theme === "dark"
-      })}>{description}</div>
+      })}><Link  to={`/products/${id}`}className={cn(styles.link, {
+        [styles.dark]: theme === "dark"
+      })}>{description}</Link></div>
         <div className={styles.prices}>
           <span className={cn(styles.newPrice, {
         [styles.dark]: theme === "dark"

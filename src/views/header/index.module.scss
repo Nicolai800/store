@@ -71,6 +71,11 @@
   }
 }
 
+.buttonHeader:active {
+  background-color: #424436;
+  transform: translateY(4px);
+}
+
 .headerWrapper {
   width: 1440px;
   height: 600px;

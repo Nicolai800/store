@@ -6,6 +6,7 @@ import { Main } from "./views/main";
 import { Layout } from "./views/layout";
 import { NotFound } from "./views/not-found";
 import { AllProducts } from "./views/all-products";
+import { Product } from "./views/product";
 
 export const RootRoutes = () => {
   return (
@@ -15,6 +16,7 @@ export const RootRoutes = () => {
         <Route path="categories/*" element={<Categories elementsCount={5}/>} />
         <Route path="all-products" element={<AllProducts />} />
         <Route path="all-sales" element={<AllSales />} />
+        <Route path='products/:itemId' element={<Product/>} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

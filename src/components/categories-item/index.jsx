@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import styles from "./indes.module.scss";
 import { BASE_URL } from "../../constants";
 import { Link } from "react-router-dom";
@@ -6,18 +6,18 @@ import cn from "classnames";
 import { themeContext } from "../../context/theme";
 
 export const CategoriesItem = ({ title, image, id }) => {
-  // const { theme } = useContext(themeContext);
+   const { theme } = useContext(themeContext);
   return (
-    <Link to={`/categories/${id}`}>
-      {" "}
       <div className={styles.categoriesItemWrapper}>
         <img
           src={BASE_URL + image}
           alt="categories image"
           className={styles.categoriesImage}
         />
-        <div className={styles.categoriesTitle}>{title}</div>
-      </div>{" "}
-    </Link>
+        <div className={styles.categoriesTitle}><Link className={cn(styles.link, {
+          [styles.dark]: theme === "dark",
+        })} to={`/categories/${id}`}>{title}</Link></div>
+      </div>
+    
   );
 };

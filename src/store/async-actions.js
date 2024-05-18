@@ -1,17 +1,19 @@
-import {createAsyncThunk} from '@reduxjs/toolkit';
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import { BASE_URL } from "../constants";
+import { setItems } from "./shop-slice";
 
-export const getAllItems = createAsyncThunk('shop/getAllItems', async (_, thunkApi) => {
-
-    console.log(thunkApi);
+export const getAllItems = createAsyncThunk(
+  "shop/getAllItems",
+  async (_, thunkApi) => {
+    const { dispatch } = thunkApi;
 
     try {
-        const rawData = await fetch(`${BASE_URL}/products/all`);
-        const data = await rawData.json();
-    
-        return thunkApi.fulfillWithValue(data);
+      const rawData = await fetch(`${BASE_URL}/products/all`);
+      const data = await rawData.json();
+      thunkApi.dispatch(setItems(data));
+      return thunkApi.fulfillWithValue(data);
     } catch (err) {
-        return thunkApi.rejectWithValue(err);
-     }
-   
-});
+      return thunkApi.rejectWithValue(err);
+    }
+  }
+);

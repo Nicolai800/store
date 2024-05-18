@@ -62,6 +62,7 @@ export const AllSales = () => {
               discontPercent={getDiscountPercent(price, discont_price)}
               description={description}
               image={image}
+              id = {id}
             />
           ))}
       </div>

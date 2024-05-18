@@ -1,16 +1,19 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import styles from "./index.module.scss";
 import discountFormBackImg from "../../assets/discountFormBackbround.png";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
+import { Link } from "react-router-dom";
 
 export const DiscountForm = () => {
   const { theme } = useContext(themeContext);
 
   return (
-    <div className={cn(styles.discountFormWrapper, {
-      [styles.dark]: theme === "dark",
-    })}>
+    <div
+      className={cn(styles.discountFormWrapper, {
+        [styles.dark]: theme === "dark",
+      })}
+    >
       <div className={styles.discountForm}>
         <div className={styles.discountFormText}>5% off on the first order</div>
         <div className={styles.discountFormInfoWrapper}>
@@ -19,10 +22,27 @@ export const DiscountForm = () => {
             style={{ backgroundImage: `url(${discountFormBackImg})` }}
           ></div>
           <div className={styles.discountFormInform}>
-            <input type="text" placeholder="Name" className={styles.discountFormInputs}></input>
-            <input type="tel" pattern="\(\d\d\d\) ?\d\d\d-\d\d-\d\d" placeholder="Phone number"className={styles.discountFormInputs}></input>
-            <input type="email" placeholder="Email" className={styles.discountFormInputs}></input>
-            <button className={styles.discountFormButton}>Get a discount</button>
+            <input
+              type="text"
+              placeholder="Name"
+              className={styles.discountFormInputs}
+            ></input>
+            <input
+              type="tel"
+              pattern="\(\d\d\d\) ?\d\d\d-\d\d-\d\d"
+              placeholder="Phone number"
+              className={styles.discountFormInputs}
+            ></input>
+            <input
+              type="email"
+              placeholder="Email"
+              className={styles.discountFormInputs}
+            ></input>
+            <Link to={"http://localhost:3000/not-found"}>
+              <button className={styles.discountFormButton}>
+                Get a discount
+              </button>
+            </Link>
           </div>
         </div>
       </div>
