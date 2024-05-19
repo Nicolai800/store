@@ -13,15 +13,15 @@ export const AllSales = () => {
   const saleItems = useSelector((state) => state.shop.items);
   const { theme } = useContext(themeContext);
 
-  useEffect(() => {
-    fetch(`${BASE_URL}/products/all`)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        dispatch(setItems(data));
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${BASE_URL}/products/all`)
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       dispatch(setItems(data));
+  //     });
+  // }, []);
 
   return (
     <>

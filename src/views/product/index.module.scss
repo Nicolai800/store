@@ -1,33 +1,37 @@
 .product_card {
   border-radius: 10px;
-  padding: 20px;
-  background-color: #fffff1;
+  margin: 40px;
+  // background-color: #fffff1;
   display: flex;
   width: 100%;
   height: 100%;
 }
 
-.right_card{
+.right_card {
   margin-left: 32px;
+  max-width: 548px;
+  width: 100%;
+  height: 578px;
 }
+
 .product_image {
   width: 780px;
-  height: 100%;
+  height: 572px;
 }
 .product_image img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
 }
-.product_details {
-  padding: 20px 0;
-}
+// .product_details {
+//   padding: 20px 0;
+// }
 .product_title {
   color: #424436;
   font-size: 40px;
   font-weight: 700;
   line-height: 44px;
-  margin: 0;
+  top: 0;
 }
 .price {
   height: 70px;
@@ -38,30 +42,36 @@
   font-weight: 700;
   color: #424436;
   gap: 16px;
-  // margin: 10px 0;
-  // display: flex;
-  // align-items: center;
-  border: 1px solid black;
+  position: relative;
 }
-.price del {
+.oldPrice{
   font-size: 40px;
   font-weight: 500;
   line-height: 52px;
-  color: #8B8B8B;
+  color: #8b8b8b;
   margin-left: 10px;
   margin-bottom: none;
 }
+
+.oldPrice.none{
+  display: none;
+}
 .discount {
-  background-color: #F26D22;
+  background-color: #f26d22;
   width: 63px;
   height: 34px;
   color: #ffffff;
   border-radius: 4px;
-   //padding: 2px 8px;
-  font-size: 14px;
-  margin-left: 10px;
+  font-size: 20px;
+  line-height: 26px;
   text-align: center;
-  
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.discount.none{
+  display: none;
 }
 .quantity {
   display: flex;
@@ -97,15 +107,39 @@
 .description a:hover {
   text-decoration: underline;
 }
-.wrapper {
+.Productwrapper {
   display: flex;
-
-  // height: 100vh;
+  background-color: #fffff1;
+  max-width: 1440px;
   width: 100%;
-  height: 572px;
-
+  height: 680px;
 }
-button{
+button {
   border-radius: 6px;
   padding: 16px 8px 8px 16px;
+}
+
+.titleWrapper {
+  position: relative;
+  max-width: 548px;
+  width: 100%;
+  gap: 16px;
+}
+
+.heart {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  path {
+    stroke: #424436;
+    fill: #fff;
+  }
+}
+
+.heart:hover {
+  path {
+    fill: #424436;
+  }
+  cursor: pointer;
 }

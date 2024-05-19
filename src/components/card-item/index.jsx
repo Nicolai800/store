@@ -5,7 +5,6 @@ import { BASE_URL } from "../../constants";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
 import { Link } from "react-router-dom";
-import {Product} from "../../views/product"
 
 export const CardItem = ({ price, description, image, discont, discontPercent, id }) => {
   const { theme } = useContext(themeContext);
