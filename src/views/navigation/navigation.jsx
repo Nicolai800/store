@@ -5,16 +5,22 @@ import { IconToggle } from "../../components/icon-toggle";
 import { IconCounter } from "../../components/icon-counter";
 import { NavLink } from "react-router-dom";
 import { themeContext } from "../../context/theme";
+import { Hamburger } from "../../components/hambergerMenu/hamburger";
 import cn from "classnames";
 
 export const Navigation = () => {
   const [isToggleOn, setIsToggleOn] = useState(false);
   const { theme, switchTheme } = useContext(themeContext);
+  const [isHamburgerActive, setIsHamburgerActive] = useState(false);
 
   const onSwitchToggle = () => {
     setIsToggleOn((prev) => !prev);
     switchTheme();
   };
+  const onToggleHamburgersClass = () => {
+    setIsHamburgerActive((prev) => !prev);
+  };
+
   
 
   const getClassName = ({ isActive }) => isActive ? styles.active : "";
@@ -55,6 +61,7 @@ export const Navigation = () => {
         [styles.dark]: theme === "dark",
       })}/>
         </IconCounter>
+        <Hamburger isToggleOn= {isToggleOn} isHamburgerActive={isHamburgerActive} theme={theme} onToggleHamburgersClass={onToggleHamburgersClass}/>
       </div>
     </div>
   );

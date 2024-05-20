@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../constants";
 import { useSelector } from "react-redux";
@@ -6,9 +6,12 @@ import styles from "./index.module.scss";
 import cn from "classnames";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { HeartIcon } from "../../assets/icons";
+import { themeContext } from "../../context/theme";
 
 export const Product = () => {
   const { itemId } = useParams();
+  const { theme } = useContext(themeContext);
+
   const data = useSelector((state) => state.shop.items);
   let discoveredItem = data.find(({ id }) => +id === +itemId);
   console.log(discoveredItem, "discovered");
@@ -17,7 +20,9 @@ export const Product = () => {
   // ### /products/${itemId}     - ссылка на первый продукт
 
   return (
-    <div className={styles.Productwrapper}>
+    <div className={cn(styles.productWrapper, {
+      [styles.dark]: theme === "dark"
+    })}>
       <div className={styles.product_card}>
         <div className={styles.left_card}>
           <div className={styles.product_image}>
@@ -26,11 +31,17 @@ export const Product = () => {
         </div>
         <div className={styles.right_card}>
             <div className={styles.titleWrapper}>
-              <h2 className={styles.product_title}>{title}</h2>
-              <HeartIcon className={styles.heart} />
+              <h2 className={cn(styles.product_title, {
+      [styles.dark]: theme === "dark"
+    })}>{title}</h2>
+              <HeartIcon className={cn(styles.heart, {
+      [styles.dark]: theme === "dark"
+    })} />
             </div>
 
-            <div className={styles.price}>
+            <div className={cn(styles.price, {
+      [styles.dark]: theme === "dark"
+    })}>
               {discont_price === null ? "$" + price : "$" + discont_price}
               <del className={cn(styles.oldPrice, {
         [styles.none]: discontPercent === 0
@@ -47,7 +58,9 @@ export const Product = () => {
               <button /*onClick={addCounter}*/>+</button>
               <button className={styles.add_to_cart}>Add to cart</button>
             </div>
-          <div className={styles.description}>
+          <div className={cn(styles.description, {
+      [styles.dark]: theme === "dark"
+    })}>
             <p>Description</p>
             <p>{description}</p>
           </div>

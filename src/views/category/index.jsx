@@ -9,7 +9,7 @@ import { themeContext } from "../../context/theme";
 
 export const Category = () => {
   const { categoryId } = useParams();
-  const [params] = useSearchParams();
+ // const [params] = useSearchParams();
 
   const { theme } = useContext(themeContext);
 
