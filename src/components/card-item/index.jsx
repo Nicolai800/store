@@ -5,9 +5,18 @@ import { BASE_URL } from "../../constants";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
 import { Link } from "react-router-dom";
+import { toggleCartItem } from "../../store/cart-slice";
+import { useDispatch, useSelector } from "react-redux";
 
 export const CardItem = ({ price, description, image, discont, discontPercent, id }) => {
   const { theme } = useContext(themeContext);
+  const dispatch = useDispatch();
+  const selectedData = useSelector((state)=> state.cart.selectedData);
+  
+
+  const cartToggle = (articul, select) => {
+    dispatch(toggleCartItem({articul, select}))
+  }
   return (
     <div className={cn(styles.wrapper, {
       [styles.dark]: theme === "dark"
@@ -18,7 +27,10 @@ export const CardItem = ({ price, description, image, discont, discontPercent, i
       })}>{"-"+discontPercent}%</div>
         <img src={BASE_URL + image} alt="card" className={styles.cardImage} />
         <HeartIcon className={styles.heart}/>
-        <CartIcon className={styles.cart}/>
+        <CartIcon id={id} select = {id} cartToggle={cartToggle} className ={cn(styles.cart, {
+              [styles.dark]: theme === "light",
+              [styles.checked]: selectedData[id] === "selected",
+            })} />
       </div>
       <div className={cn(styles.info, {
         [styles.dark]: theme === "dark"

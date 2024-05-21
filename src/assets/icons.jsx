@@ -1,10 +1,11 @@
-export const CartIcon = ({className}) => (
+export const CartIcon = ({className, id, cartToggle}) => (
   <svg width="48"
       height="48"
       className={className}
-      
       fill="none"
-      viewBox="0 0 8.61 9.48">
+      viewBox="0 0 8.61 9.48"
+      onClick={()=>cartToggle(id,id)}
+      >
   <path class="fil0 str0" fill-rule="nonzero" stroke-width="0.38" stroke-miterlimit="22.9256" d="M0.99 2.56l-0.78 6.73 8.18 0 -0.02 -0.2 -0.76 -6.53c-2.2,0 -4.41,0 -6.62,0z" stroke="#424436" fill="none"></path>
   <path class="fil1" d="M6.25 3.12c0.11,0 0.2,0.09 0.2,0.2 0,0.11 -0.09,0.2 -0.2,0.2 -0.11,0 -0.2,-0.09 -0.2,-0.2 0,-0.11 0.09,-0.2 0.2,-0.2z" stroke="#424436"></path>
   <line class="fil0 str0" fill-rule="nonzero" stroke-width="0.38" stroke-miterlimit="22.9256" x1="2.36" y1="3.21" x2="2.35" y2="2.56" stroke="#424436"></line>

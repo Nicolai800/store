@@ -62,6 +62,14 @@
 .cart {
   @extend %icon;
   top: 74px;
+  &.checked{
+    fill:  #92A134;
+    
+    path {
+     stroke:none;
+     fill: #92A134;
+    }
+}
 }
 
 .cardImage {
