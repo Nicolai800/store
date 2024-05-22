@@ -24,6 +24,7 @@ export const Category = () => {
         return res.json();
       })
       .then(({ data }) => {
+        console.log(data);
         setSaleItems([...data]);
       });
   }, []);

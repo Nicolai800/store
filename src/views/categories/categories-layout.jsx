@@ -10,7 +10,7 @@ export const CategoriesLayout = ({ elementsCount = 5 }) => {
   const { theme } = useContext(themeContext);
 
   useEffect(() => {
-    fetch(`${BASE_URL}/categories/all`)
+    fetch(`${BASE_URL}/categories/`)
       .then((res) => {
         return res.json();
       })

@@ -5,7 +5,7 @@ const initialState = {
     category: null,
     items: [],
     isLoading: false,
-    cart: [],
+    likesData: {},
     error: null,
 };
 
@@ -21,7 +21,10 @@ const shopSlice = createSlice({
         },
         setIsLoading: (state, {payload}) => {
             state.isLoading = payload;
-        }
+        },
+        toggleToLikes: (state, { payload : articul }) => {
+            state.likesData[articul] = !state.likesData[articul];
+          },
     },
     extraReducers: (builder) => {
         builder.addCase(getAllItems.pending, (state) => {
@@ -39,7 +42,7 @@ const shopSlice = createSlice({
 });
 
 
-export const {setItems, setCategory, setIsLoading} = shopSlice.actions;
+export const {setItems, setCategory, setIsLoading, toggleToLikes} = shopSlice.actions;
 
 export default shopSlice.reducer;
 

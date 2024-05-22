@@ -7,6 +7,7 @@ import { Layout } from "./views/layout";
 import { NotFound } from "./views/not-found";
 import { AllProducts } from "./views/all-products";
 import { Product } from "./views/product";
+import { ShoppingCart } from "./views/shopping-cart";
 
 export const RootRoutes = () => {
   return (
@@ -18,6 +19,7 @@ export const RootRoutes = () => {
         <Route path="all-sales" element={<AllSales />} />
         <Route path='products/:itemId' element={<Product/>} />
         <Route path="*" element={<NotFound />} />
+        <Route path="shopping-cart" element={<ShoppingCart />} />
       </Route>
     </Routes>
   );

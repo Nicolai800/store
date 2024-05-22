@@ -12,7 +12,6 @@ const cardItems = createSlice({
   reducers: {
     toggleCartItem: (state, { payload }) => {
       const { articul, select } = payload;
-      console.log(state.selectedData[select], "payload ToggleCart");
       if (!state.selectedData[select]) {
         state.selectedData[select] = "selected";
         state.goodsData[articul] += 1;

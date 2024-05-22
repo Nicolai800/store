@@ -8,6 +8,10 @@ export const getError = (state) => state.shop.error;
 export const getCategoruById = (state, categoryId) =>
   state.shop.items.find((category) => String(category.id) === categoryId);
 
+export const getLikedCount = (state) => {
+  return Object.values(state.shop.likesData).filter((val)=>val).length;
+};
+
 export const getProductById = (state, itemId) =>
   state.shop.items.find((item) => String(item.id) === itemId);
 

@@ -57,12 +57,20 @@
 .heart {
   @extend %icon;
   top: 16px;
+  &.checked{
+    fill:  #92A134;
+    
+    path {
+     stroke:none;
+     fill: #92A134;
+    }
+}
 }
 
 .cart {
   @extend %icon;
   top: 74px;
-  &.checked{
+  &.liked{
     fill:  #92A134;
     
     path {
