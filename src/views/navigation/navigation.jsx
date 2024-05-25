@@ -1,13 +1,13 @@
 import React, { useState, useContext } from "react";
 import styles from "./index.module.scss";
-import { HeartIcon, CartIcon, LogoIcon } from "../../assets/icons";
+import { NavHeartIcon, NavCartIcon, LogoIcon } from "../../assets/icons";
 import { IconToggle } from "../../components/icon-toggle";
 import { IconCounter } from "../../components/icon-counter";
 import { NavLink, Link } from "react-router-dom";
 import { themeContext } from "../../context/theme";
 import { Hamburger } from "../../components/hambergerMenu/hamburger";
 import cn from "classnames";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { getLikedCount } from "../../store/selectors";
 import { ShoppingCart } from "../shopping-cart";
 
@@ -55,15 +55,16 @@ export const Navigation = () => {
       </nav>
       <div className={styles.heartCartWrapper}>
         <IconCounter count={likesCounter}>
-          <HeartIcon
+          <Link to ="liked-products"><NavHeartIcon
             className={cn(styles.heartIcon, {
               [styles.dark]: theme === "dark",
             })}
-          />
+          /></Link>
+          
         </IconCounter>
         <IconCounter count={cardCounter}>
           <Link to="shopping-cart">
-            <CartIcon
+            <NavCartIcon
               className={cn(styles.cartIcon, {
                 [styles.dark]: theme === "dark",
               })}

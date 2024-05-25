@@ -8,6 +8,7 @@ import { NotFound } from "./views/not-found";
 import { AllProducts } from "./views/all-products";
 import { Product } from "./views/product";
 import { ShoppingCart } from "./views/shopping-cart";
+import { LikedProducts } from "./views/liked-products";
 
 export const RootRoutes = () => {
   return (
@@ -20,6 +21,7 @@ export const RootRoutes = () => {
         <Route path='products/:itemId' element={<Product/>} />
         <Route path="*" element={<NotFound />} />
         <Route path="shopping-cart" element={<ShoppingCart />} />
+        <Route path="liked-products" element={<LikedProducts />} />
       </Route>
     </Routes>
   );

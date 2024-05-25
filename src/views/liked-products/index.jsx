@@ -1,42 +1,32 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
-import { BASE_URL } from "../../constants";
+import React, { useContext } from "react";
 import { CardItem } from "../../components/card-item";
 import styles from "./index.module.scss";
-import { getDiscountPercent } from "../../utils/getDiscountPercent";
-import cn from "classnames";
-import { themeContext } from "../../context/theme";
 import { useSelector } from "react-redux";
-import { getAllCategories } from "../../store/selectors";
+import { getDiscountPercent } from "../../utils/getDiscountPercent";
+import { themeContext } from "../../context/theme";
+import cn from "classnames";
 
-export const Category = () => {
-  const { categoryId } = useParams();
-  // const [params] = useSearchParams();
+export const LikedProducts = () => {
+  const allItems = useSelector((state) => state.shop.items);
   const { theme } = useContext(themeContext);
-  const categories = useSelector((state) => state.shop.category);
-  const [saleItems, setSaleItems] = useState([]);
+  const likeditems = useSelector((state) => state.shop.likesData);
 
-  useEffect(() => {
-    fetch(`${BASE_URL}/categories/${categoryId}`)
-      .then((res) => {
-        return res.json();
-      })
-      .then(({ data }) => {
-        setSaleItems([...data]);
-      });
-  }, []);
+  //console.log(likeditems);
+  //console.log(allItems);
+  const filteredArr = allItems.filter( item => likeditems[item.id])
+  //console.log(filteredArr);
 
   return (
     <>
       <h2
-        className={cn(styles.categoryTitle, {
+        className={cn(styles.allProductsTitle, {
           [styles.dark]: theme === "dark",
         })}
       >
-        {categories[categoryId - 1].title}
+        Liked Products
       </h2>
       <div
-        className={cn(styles.categoryInputsWrapper, {
+        className={cn(styles.allProductInputsWrapper, {
           [styles.dark]: theme === "dark",
         })}
       >
@@ -59,11 +49,11 @@ export const Category = () => {
       </div>
 
       <div
-        className={cn(styles.categoryWrapper, {
+        className={cn(styles.allProductsWrapper, {
           [styles.dark]: theme === "dark",
         })}
       >
-        {saleItems.map(({ price, discont_price, description, image, id }) => (
+        {allItems.filter( item => likeditems[item.id]).map(({ price, discont_price, description, image, id }) => (
           <CardItem
             key={id}
             price={price}
@@ -71,7 +61,7 @@ export const Category = () => {
             discontPercent={getDiscountPercent(price, discont_price)}
             description={description}
             image={image}
-            id={id}
+            id = {id}
           />
         ))}
       </div>

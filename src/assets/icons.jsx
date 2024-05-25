@@ -8,24 +8,24 @@ export const CartIcon = ({ className, id, cartToggle }) => (
     onClick={() => cartToggle(id, id)}
   >
     <path
-      class="fil0 str0"
-      fill-rule="nonzero"
-      stroke-width="0.38"
-      stroke-miterlimit="22.9256"
+      className="fil0 str0"
+      fillRule="nonzero"
+      strokeWidth="0.38"
+      strokeMiterlimit="22.9256"
       d="M0.99 2.56l-0.78 6.73 8.18 0 -0.02 -0.2 -0.76 -6.53c-2.2,0 -4.41,0 -6.62,0z"
       stroke="#424436"
       fill="none"
     ></path>
     <path
-      class="fil1"
+      className="fil1"
       d="M6.25 3.12c0.11,0 0.2,0.09 0.2,0.2 0,0.11 -0.09,0.2 -0.2,0.2 -0.11,0 -0.2,-0.09 -0.2,-0.2 0,-0.11 0.09,-0.2 0.2,-0.2z"
       stroke="#424436"
     ></path>
     <line
-      class="fil0 str0"
-      fill-rule="nonzero"
-      stroke-width="0.38"
-      stroke-miterlimit="22.9256"
+      className="fil0 str0"
+      fillRule="nonzero"
+      strokeWidth="0.38"
+      strokeMiterlimit="22.9256"
       x1="2.36"
       y1="3.21"
       x2="2.35"
@@ -33,24 +33,24 @@ export const CartIcon = ({ className, id, cartToggle }) => (
       stroke="#424436"
     ></line>
     <path
-      class="fil0 str0"
-      fill-rule="nonzero"
-      stroke-width="0.38"
-      stroke-miterlimit="22.9256"
+      className="fil0 str0"
+      fillRule="nonzero"
+      strokeWidth="0.38"
+      strokeMiterlimit="22.9256"
       d="M6.25 2.56l-3.9 0 0.01 -0.45c0,-1.07 0.86,-1.92 1.94,-1.92 1.08,0 1.95,0.85 1.95,1.92l0 0.45z"
       stroke="#424436"
       fill="transparent"
     ></path>
     <path
-      class="fil1"
+      className="fil1"
       d="M2.36 3.12c0.1,0 0.2,0.08 0.2,0.18 0,0.1 -0.08,0.18 -0.2,0.18 -0.12,0 -0.2,-0.08 -0.2,-0.18 0,-0.1 0.08,-0.18 0.2,-0.18z"
       stroke="#424436"
     ></path>
     <line
-      class="fil0 str0"
-      fill-rule="nonzero"
-      stroke-width="0.38"
-      stroke-miterlimit="22.9256"
+      className="fil0 str0"
+      fillRule="nonzero"
+      strokeWidth="0.38"
+      strokeMiterlimit="22.9256"
       x1="6.26"
       y1="3.21"
       x2="6.25"
@@ -70,13 +70,13 @@ export const HeartIcon = ({ className, id, likeToggle }) => (
     xmlns="http://www.w3.org/2000/svg"
     onClick={() => likeToggle(id)}
   >
-    <g clip-path="url(#clip0_5252_15571)">
+    <g clipPath="url(#clip0_5252_15571)">
       <path
         d="M39.4 32.2222C42.678 29.14 46 25.4456 46 20.6111C46 17.5317 44.7252 14.5783 42.456 12.4008C40.1868 10.2233 37.1091 9 33.9 9C30.028 9 27.3 10.0556 24 13.2222C20.7 10.0556 17.972 9 14.1 9C10.8909 9 7.8132 10.2233 5.54401 12.4008C3.27482 14.5783 2 17.5317 2 20.6111C2 25.4667 5.3 29.1611 8.6 32.2222L24 47L39.4 32.2222Z"
         stroke="#424436"
-        stroke-width="2.2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </g>
     <defs>
@@ -97,7 +97,7 @@ export const LogoIcon = ({ className }) => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <circle cx="35" cy="35" r="35" fill="#92A234" />
-    <g clip-path="url(#clip0_1_102)">
+    <g clipPath="url(#clip0_1_102)">
       <mask
         id="mask0_1_102"
         // style="mask-type:alpha"
@@ -108,8 +108,8 @@ export const LogoIcon = ({ className }) => (
         height="26"
       >
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M46.9316 60.2364C45.7202 57.6669 43.1065 55.8887 40.0775 55.8887C38.8874 55.8887 37.7614 56.1632 36.7594 56.6523C36.1946 56.1758 35.4648 55.8887 34.6679 55.8887C33.2498 55.8887 32.0441 56.7982 31.6022 58.0657C30.4977 58.1466 29.4955 58.596 28.7181 59.2915C28.3751 59.1893 28.0117 59.1344 27.6355 59.1344C26.1052 59.1344 24.7869 60.0422 24.1897 61.3486C21.5526 61.7098 19.521 63.9716 19.521 66.7079C19.521 69.6955 21.943 72.1175 24.9306 72.1175C25.3178 72.1175 25.6955 72.0768 26.0596 71.9995C26.5436 76.9248 30.6973 80.7729 35.7498 80.7729C40.4016 80.7729 44.2914 77.5111 45.257 73.1499C45.5095 73.1826 45.7669 73.1994 46.0282 73.1994C49.3147 73.1994 51.9788 70.5353 51.9788 67.2488C51.9788 65.3419 51.0818 63.6444 49.6867 62.5554C49.3269 61.3161 48.248 60.3826 46.9316 60.2364Z"
           fill="white"
         />
@@ -160,7 +160,7 @@ export const SunIcon = ({ className }) => (
     className={className}
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g clip-path="url(#clip0_5447_25609)">
+    <g clipPath="url(#clip0_5447_25609)">
       <path
         d="M9.99882 16.7622C9.64236 16.7622 9.35352 17.051 9.35352 17.4075V19.3557C9.35352 19.7122 9.64236 20.0011 9.99882 20.0011C10.3553 20.0011 10.6441 19.7122 10.6441 19.3557V17.4075C10.6441 17.051 10.3553 16.7622 9.99882 16.7622Z"
         fill="#8B8B8B"
@@ -251,5 +251,92 @@ export const NumberFourIcon = ({ className }) => (
       d="M99.4461 139.709V96.7939H152.21V139.709H179.999V187.196H152.21V245.94H99.4461V187.196H0.601562V145.337L88.1898 0.0599365H147.989L64.6218 139.709H99.4461Z"
       fill="#92A234"
     />
+  </svg>
+);
+
+export const NavCartIcon = ({ className }) => (
+  <svg
+    width="48"
+    height="48"
+    className={className}
+    fill="none"
+    viewBox="0 0 8.61 9.48"
+  >
+    <path
+      className="fil0 str0"
+      fillRule="nonzero"
+      strokeWidth="0.38"
+      strokeMiterlimit="22.9256"
+      d="M0.99 2.56l-0.78 6.73 8.18 0 -0.02 -0.2 -0.76 -6.53c-2.2,0 -4.41,0 -6.62,0z"
+      stroke="#424436"
+      fill="none"
+    ></path>
+    <path
+      className="fil1"
+      d="M6.25 3.12c0.11,0 0.2,0.09 0.2,0.2 0,0.11 -0.09,0.2 -0.2,0.2 -0.11,0 -0.2,-0.09 -0.2,-0.2 0,-0.11 0.09,-0.2 0.2,-0.2z"
+      stroke="#424436"
+    ></path>
+    <line
+      className="fil0 str0"
+      fillRule="nonzero"
+      strokeWidth="0.38"
+      strokeMiterlimit="22.9256"
+      x1="2.36"
+      y1="3.21"
+      x2="2.35"
+      y2="2.56"
+      stroke="#424436"
+    ></line>
+    <path
+      className="fil0 str0"
+      fillRule="nonzero"
+      strokeWidth="0.38"
+      strokeMiterlimit="22.9256"
+      d="M6.25 2.56l-3.9 0 0.01 -0.45c0,-1.07 0.86,-1.92 1.94,-1.92 1.08,0 1.95,0.85 1.95,1.92l0 0.45z"
+      stroke="#424436"
+      fill="transparent"
+    ></path>
+    <path
+      className="fil1"
+      d="M2.36 3.12c0.1,0 0.2,0.08 0.2,0.18 0,0.1 -0.08,0.18 -0.2,0.18 -0.12,0 -0.2,-0.08 -0.2,-0.18 0,-0.1 0.08,-0.18 0.2,-0.18z"
+      stroke="#424436"
+    ></path>
+    <line
+      className="fil0 str0"
+      fillRule="nonzero"
+      strokeWidth="0.38"
+      strokeMiterlimit="22.9256"
+      x1="6.26"
+      y1="3.21"
+      x2="6.25"
+      y2="2.56"
+      stroke="#424436"
+    ></line>
+  </svg>
+);
+
+export const NavHeartIcon = ({ className }) => (
+  <svg
+    width="48"
+    height="48"
+    viewBox="0 0 48 48"
+    fill="none"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g clipPath="url(#clip0_5252_15571)">
+      <path
+        d="M39.4 32.2222C42.678 29.14 46 25.4456 46 20.6111C46 17.5317 44.7252 14.5783 42.456 12.4008C40.1868 10.2233 37.1091 9 33.9 9C30.028 9 27.3 10.0556 24 13.2222C20.7 10.0556 17.972 9 14.1 9C10.8909 9 7.8132 10.2233 5.54401 12.4008C3.27482 14.5783 2 17.5317 2 20.6111C2 25.4667 5.3 29.1611 8.6 32.2222L24 47L39.4 32.2222Z"
+        stroke="#424436"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_5252_15571">
+        <rect width="48" height="48" fill="white" />
+      </clipPath>
+    </defs>
   </svg>
 );

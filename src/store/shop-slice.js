@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { getAllItems } from './async-actions';
+//import { getAllCategories } from './async-actions';
 
 const initialState = {
     category: null,

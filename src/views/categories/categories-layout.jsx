@@ -4,13 +4,17 @@ import { CategoriesItem } from "../../components/categories-item";
 import styles from "./index.module.scss";
 import cn from "classnames";
 import { themeContext } from "../../context/theme";
+import { useDispatch, useSelector } from "react-redux";
 
 export const CategoriesLayout = ({ elementsCount = 5 }) => {
+ const { theme } = useContext(themeContext);
+ //const categories = useSelector((state) => state.shop.category);
+
   const [categoriesItems, setCategoriesItems] = useState([]);
-  const { theme } = useContext(themeContext);
+ 
 
   useEffect(() => {
-    fetch(`${BASE_URL}/categories/`)
+    fetch(`${BASE_URL}/categories/all`)
       .then((res) => {
         return res.json();
       })

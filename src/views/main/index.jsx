@@ -8,7 +8,7 @@ import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllItems } from "../../store/async-actions";
+import { getAllItems, getAllCategories } from "../../store/async-actions";
 import {
   getDiscountItems,
   getIsLoading,
@@ -25,6 +25,10 @@ export const Main = () => {
 
   useEffect(() => {
     dispatch(getAllItems());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getAllCategories());
   }, [dispatch]);
 
   if (error) {
