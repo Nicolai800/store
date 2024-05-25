@@ -7,8 +7,9 @@ import { themeContext } from "../../context/theme";
 import cn from "classnames";
 
 export const AllSales = () => {
-  const saleItems = useSelector((state) => state.shop.items);
+  const allItems = useSelector((state) => state.shop.items);
   const { theme } = useContext(themeContext);
+  console.log(allItems);
 
   return (
     <>
@@ -44,15 +45,15 @@ export const AllSales = () => {
           [styles.dark]: theme === "dark",
         })}
       >
-        {saleItems
+        {allItems
           .filter(({ discont_price }) => discont_price !== null)
-          .map(({ price, discont_price, description, image, id }) => (
+          .map(({ price, discont_price, title, image, id }) => (
             <CardItem
               key={id}
               price={price}
               discont={discont_price}
               discontPercent={getDiscountPercent(price, discont_price)}
-              description={description}
+              title={title}
               image={image}
               id={id}
             />

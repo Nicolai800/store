@@ -9,7 +9,7 @@ import { toggleCartItem } from "../../store/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleToLikes } from "../../store/shop-slice";
 
-export const CardItem = ({ price, description, image, discont, discontPercent, id }) => {
+export const CardItem = ({ price, title, image, discont, discontPercent, id }) => {
   const { theme } = useContext(themeContext);
   const dispatch = useDispatch();
   const selectedData = useSelector((state)=> state.cart.selectedData);
@@ -44,7 +44,7 @@ export const CardItem = ({ price, description, image, discont, discontPercent, i
         [styles.dark]: theme === "dark"
       })}><Link  to={`/products/${id}`}className={cn(styles.link, {
         [styles.dark]: theme === "dark"
-      })}>{description}</Link></div>
+      })}>{title}</Link></div>
         <div className={styles.prices}>
           <span className={cn(styles.newPrice, {
         [styles.dark]: theme === "dark"

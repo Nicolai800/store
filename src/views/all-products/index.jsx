@@ -51,13 +51,13 @@ export const AllProducts = () => {
           [styles.dark]: theme === "dark",
         })}
       >
-        {saleItems.map(({ price, discont_price, description, image, id }) => (
+        {saleItems.map(({ price, discont_price, title, image, id }) => (
           <CardItem
             key={id}
             price={price}
             discont={discont_price === null ? price : discont_price}
             discontPercent={getDiscountPercent(price, discont_price)}
-            description={description}
+            title={title}
             image={image}
             id = {id}
           />

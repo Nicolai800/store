@@ -1,0 +1,43 @@
+.shopingItemWrapper{
+    height: 180px;
+    width: 100%;
+    max-width: 780px;
+    border: 1px solid #8B8B8B;
+    border-radius: 10px;
+    display: flex;
+    margin-bottom: 16px;
+}
+.imgWrapper{
+    width: 100%;
+    max-width: 200px;
+    height: 178px;
+    border-radius: 10px;
+}
+
+.newPrice {
+    color: #424436;
+    font-size: 40px;
+    line-height: 44px;
+    font-weight: 600;
+  }
+  
+  .newPrice.dark {
+    color: #ffffff;
+  }
+  
+  .oldPrice {
+    color: #8b8b8b;
+    font-weight: 500px;
+    font-size: 20px;
+    line-height: 26px;
+    text-decoration: line-through;
+    margin-left: 16px;
+  }
+  
+  .oldPrice.none {
+    display: none;
+  }
+  
+  .prices {
+    margin-top: 2px;
+  }
