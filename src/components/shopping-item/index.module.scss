@@ -1,17 +1,19 @@
 .shopingItemWrapper{
-    height: 180px;
-    width: 100%;
-    max-width: 780px;
-    border: 1px solid #8B8B8B;
+    // width: 100%;
+    // max-width: 780px;
+    border: 1px solid #DDDDDD;
+    background-color: #ffffff;
     border-radius: 10px;
     display: flex;
     margin-bottom: 16px;
+    position: relative;
 }
 .imgWrapper{
     width: 100%;
     max-width: 200px;
-    height: 178px;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: 1px solid #DDDDDD;
 }
 
 .newPrice {
@@ -40,4 +42,51 @@
   
   .prices {
     margin-top: 2px;
+  }
+
+  .itemTitle{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    color: #424436;
+    margin-bottom: 32px;
+  }
+  
+  .xButton{
+    width: 24px;
+    height: 24px;
+    border: none;
+    cursor: pointer;
+    color: #424436;
+    font-size: 20px;
+    font-weight: 600;
+    position: absolute;
+    top: 32px;
+    right: 32px;
+  }
+  .itemInfo{
+    padding: 32px;
+  }
+
+  .buttonsInput{
+    display: flex;
+    //margin: 12px 74px 12px 20px;
+    button{
+      color: #8B8B8B;
+      font-size: 25px;
+      width: 58px;
+      height: 58px;
+      border: 1px solid #DDDDDD;
+      cursor: pointer;
+    }
+    input{
+      width: 76px;
+      height: 58px;
+      border: 1px solid #DDDDDD;
+      color: #424436;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 26px;
+      text-align: center;
+    }
   }

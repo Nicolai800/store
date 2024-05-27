@@ -21,3 +21,57 @@
     width: 100%;
     max-width: 1440px;
   }
+
+  .orderForm{
+    padding: 20px 32px;
+    border-radius: 10px;
+    background-color:#F2F6D3;
+    margin-left: 20px;
+    h3{
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 44px;
+      color: #424436;
+      margin-bottom: 12px;
+    }
+  }
+
+  .orderInputs{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .orderPrais{
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 52px;
+    color:#8B8B8B;
+
+    span{
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 70.4px;
+      color: #424436;
+      margin-left: 81px;
+    }
+  }
+
+  .orderInputs{
+    gap: 16px;
+    input{
+      border: 1px solid #DDDDDD;
+      border-radius: 6px;
+      height: 58px;
+    }
+    button{
+      width: 100%;
+      background-color: #92A134;
+      border: none;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 26px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }

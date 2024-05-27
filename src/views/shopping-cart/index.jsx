@@ -14,8 +14,12 @@ export const ShoppingCart = () => {
   const { theme } = useContext(themeContext);
   const shopingCartItems = useSelector((state) => state.cart.selectedData);
   const cardCounter = useSelector((state) => state.cart.counter);
-  console.log(shopingCartItems);
-
+  const filteredItems = allItems.filter((item) => shopingCartItems[item.id]);
+  const totalSum = filteredItems.reduce((sum, item) => {
+    return (
+      sum + (item.discont_price === null ? item.price : item.discont_price)
+    );
+  }, 0);
   return (
     <>
       <h2
@@ -27,7 +31,7 @@ export const ShoppingCart = () => {
       </h2>
       <div className={styles.shoppingCartWrapper}>
         <div className={styles.shoppingList}>
-        {allItems.filter(item =>shopingCartItems[item.id]).map(({ price, discont_price, title, image, id }) => (
+          {filteredItems.map(({ price, discont_price, title, image, id }) => (
             <ShoppingItem
               key={id}
               price={price}
@@ -40,16 +44,19 @@ export const ShoppingCart = () => {
           ))}
         </div>
         <div className={styles.orderForm}>
-            <h3>Order Details</h3>
-            <div className={styles.orderPrais}>
-                <div>{cardCounter} items</div>
-                <div>total</div>
-                <div>HardCore $1</div>
-                <input type="text" />
-                <input type="text" />
-                <input type="text" />
-                <button>Order</button>
+          <h3>Order Details</h3>
+          <div className={styles.orderPrais}>
+            <div>{cardCounter} items</div>
+            <div>
+              Total<span>{totalSum.toFixed(2)}$</span>
             </div>
+            <div className={styles.orderInputs}>
+              <input type="text" />
+              <input type="phone" />
+              <input type="text" />
+              <button>Order</button>
+            </div>
+          </div>
         </div>
       </div>
     </>
