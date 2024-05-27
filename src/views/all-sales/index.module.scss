@@ -30,7 +30,7 @@
 
 .allSalesInputsWrapper {
   background-color: #fffff1;
-  color: #000000;
+  color: #282828;
   font-weight: 600;
   font-size: 20px;
   line-height: 26px;
@@ -58,6 +58,12 @@
   height: 36px;
   border-radius: 6px;
   margin-left: 16px;
+  outline: none;
+  color: #8b8b8b;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20.16px;
+  padding-left: 16px;
 }
 
 #sortedForm {
@@ -70,6 +76,7 @@
   font-size: 16px;
   line-height: 20.16px;
   padding-left: 16px;
+  outline: none;
 }
 
 .texts{
