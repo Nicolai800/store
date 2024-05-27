@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { CardItem } from "../../components/card-item";
 import styles from "./index.module.scss";
 import { setItems } from "../../store/shop-slice";
@@ -10,9 +10,13 @@ import cn from "classnames";
 
 export const AllProducts = () => {
   const dispatch = useDispatch();
-  const saleItems = useSelector((state) => state.shop.items);
+  const allItems = useSelector((state) => state.shop.items);
   const { theme } = useContext(themeContext);
-
+  const [isChecked, setIsChecked] = useState(false);
+  console.log(allItems);
+  const checkboxChange = (event) => {
+    setIsChecked(event.target.checked);
+  };
 
   return (
     <>
@@ -36,7 +40,12 @@ export const AllProducts = () => {
         />{" "}
         <input type="number" placeholder="to" className={styles.priceInputs} />
         <span className={styles.texts}>Discounted items </span>{" "}
-        <input type="checkbox" className={styles.checkboxDiscounted} />
+        <input
+          type="checkbox"
+          checked={isChecked}
+          onChange={checkboxChange}
+          className={styles.checkboxDiscounted}
+        />
         <span className={styles.texts}>Sorted</span>
         <select id={styles.sortedForm}>
           <option value="by default">by default</option>
@@ -51,7 +60,10 @@ export const AllProducts = () => {
           [styles.dark]: theme === "dark",
         })}
       >
-        {saleItems.map(({ price, discont_price, title, image, id }) => (
+        {(isChecked === true
+          ? allItems.filter(({ discont_price }) => discont_price !== null)
+          : allItems
+        ).map(({ price, discont_price, title, image, id }) => (
           <CardItem
             key={id}
             price={price}
@@ -59,7 +71,7 @@ export const AllProducts = () => {
             discontPercent={getDiscountPercent(price, discont_price)}
             title={title}
             image={image}
-            id = {id}
+            id={id}
           />
         ))}
       </div>

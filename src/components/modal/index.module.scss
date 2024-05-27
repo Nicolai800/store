@@ -1,0 +1,26 @@
+@media screen and (max-width: 480px) {
+  .modal {
+    right: 0;
+    top: 0;
+    width: 282px;
+    position: absolute;
+    z-index: 1;
+    background-color: #fffff1;
+    height: 200%;
+    padding-top: 100px;
+    padding-left: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    gap: 36px;
+  }
+
+  .links {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 31px;
+    color: #424436;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

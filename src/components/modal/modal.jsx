@@ -1,33 +1,25 @@
 import { createPortal } from "react-dom";
-import React, {useState} from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
+import styles from "./index.module.scss";
 
-export const Modal = ({ children, onClose }) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const getClassName = ({ isActive }) => isActive ? styles.active : "";
-    return createPortal(
-      <div className={styles.modal}>
-        <div className={styles.modalHeader} onClick={onClose}>
-          <div>X</div>
-          <nav className={styles.navbar}>
-        <NavLink to="/" className={getClassName}>
-          Main Page
-        </NavLink>
-        <NavLink to="/categories" className={getClassName}>
-          Categories
-        </NavLink>
-        <NavLink to="/all-products" className={getClassName}>
-          All Products
-        </NavLink>
-        <NavLink to="all-sales" className={getClassName}>
-          All Sales
-        </NavLink>
-      </nav>
-        </div>
-        <div className={styles.modalContent}>{children}</div>
-      </div>,
-  
-      document.body
-    );
-  };
-  
+export const Modal = () => {
+  return createPortal(
+    <div className={styles.modal}>
+      <NavLink to="/" className={styles.links}>
+        Main Page
+      </NavLink>
+      <NavLink to="/categories" className={styles.links}>
+        Categories
+      </NavLink>
+      <NavLink to="/all-products" className={styles.links}>
+        All Products
+      </NavLink>
+      <NavLink to="all-sales" className={styles.links}>
+        All Sales
+      </NavLink>
+    </div>,
+
+    document.body
+  );
+};

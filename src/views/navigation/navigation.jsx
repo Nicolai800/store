@@ -10,13 +10,16 @@ import cn from "classnames";
 import { useSelector } from "react-redux";
 import { getLikedCount } from "../../store/selectors";
 import { ShoppingCart } from "../shopping-cart";
+import { Modal } from "../../components/modal/modal";
 
 export const Navigation = () => {
   const [isToggleOn, setIsToggleOn] = useState(false);
   const { theme, switchTheme } = useContext(themeContext);
   const [isHamburgerActive, setIsHamburgerActive] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const cardCounter = useSelector((state) => state.cart.counter);
   const likesCounter = useSelector(getLikedCount);
+  console.log(isModalOpen);
 
   const onSwitchToggle = () => {
     setIsToggleOn((prev) => !prev);
@@ -24,6 +27,9 @@ export const Navigation = () => {
   };
   const onToggleHamburgersClass = () => {
     setIsHamburgerActive((prev) => !prev);
+  };
+  const onToggleModal = () => {
+    setIsModalOpen((prev) => !prev);
   };
 
   const getClassName = ({ isActive }) => (isActive ? styles.active : "");
@@ -76,7 +82,9 @@ export const Navigation = () => {
           isHamburgerActive={isHamburgerActive}
           theme={theme}
           onToggleHamburgersClass={onToggleHamburgersClass}
+          onToggleModal = {onToggleModal}
         />
+        {isModalOpen && <Modal onClose={onToggleModal} />}
       </div>
     </div>
   );
