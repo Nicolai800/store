@@ -4,6 +4,7 @@ import styles from "./index.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
+import { Link } from "react-router-dom";
 import cn from "classnames";
 
 export const AllSales = () => {
@@ -45,12 +46,21 @@ export const AllSales = () => {
 
   return (
     <>
+    <div className={cn(styles.breadCrumbs, {
+            [styles.dark]: theme === "dark",
+          })}>
+        <Link to={"/"}>
+          <div>Main Page</div>
+        </Link>
+        {/* <hr/> */}
+        <div>All sales</div>
+      </div>
       <h2
         className={cn(styles.allSalesTitle, {
           [styles.dark]: theme === "dark",
         })}
       >
-        All Sales
+        Discounted items
       </h2>
       <div
         className={cn(styles.allSalesInputsWrapper, {

@@ -4,6 +4,7 @@ import styles from "./index.module.scss";
 import { useSelector } from "react-redux";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
+import { Link } from "react-router-dom";
 import cn from "classnames";
 
 export const LikedProducts = () => {
@@ -52,6 +53,15 @@ export const LikedProducts = () => {
 
   return (
     <>
+    <div className={cn(styles.breadCrumbs, {
+            [styles.dark]: theme === "dark",
+          })}>
+        <Link to={"/"}>
+          <div>Main Page</div>
+        </Link>
+        {/* <hr/> */}
+        <div>Liked Products</div>
+      </div>
       <h2
         className={cn(styles.allProductsTitle, {
           [styles.dark]: theme === "dark",

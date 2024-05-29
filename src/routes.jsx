@@ -15,7 +15,7 @@ export const RootRoutes = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Main />} />
-        <Route path="categories/*" element={<Categories elementsCount={5}/>} />
+        <Route path="categories/*" element={<Categories elementsCount={5} breadCrumbs = {true}/>} />
         <Route path="all-products" element={<AllProducts />} />
         <Route path="all-sales" element={<AllSales />} />
         <Route path='products/:itemId' element={<Product/>} />

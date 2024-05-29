@@ -31,7 +31,7 @@ export const ShoppingCart = () => {
       </h2>
       <div className={styles.shoppingCartWrapper}>
         <div className={styles.shoppingList}>
-          {filteredItems.map(({ price, discont_price, title, image, id }) => (
+          {filteredItems.map(({ price, discont_price, title, image, id, }) => (
             <ShoppingItem
               key={id}
               price={price}

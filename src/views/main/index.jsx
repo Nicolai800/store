@@ -40,7 +40,7 @@ export const Main = () => {
   ) : (
     <>
       <Header />
-      <Categories elementsCount={4} />
+      <Categories elementsCount={4} breadCrumbs = {false} />
       <DiscountForm />
       <div
         className={cn(styles.saleWrapper, {

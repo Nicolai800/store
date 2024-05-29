@@ -5,8 +5,9 @@ import styles from "./index.module.scss";
 import cn from "classnames";
 import { themeContext } from "../../context/theme";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-export const CategoriesLayout = ({ elementsCount = 5 }) => {
+export const CategoriesLayout = ({ elementsCount = 5, breadCrumbs = true}) => {
  const { theme } = useContext(themeContext);
  //const categories = useSelector((state) => state.shop.category);
 
@@ -33,6 +34,16 @@ export const CategoriesLayout = ({ elementsCount = 5 }) => {
 
   return (
     <>
+    <div className={cn(styles.breadCrumbs, {
+            [styles.dark]: theme === "dark",
+            [styles.none]: breadCrumbs === false,
+          })}>
+        <Link to={"/"}>
+          <div>Main Page</div>
+        </Link>
+        {/* <hr/> */}
+        <div>Categories</div>
+      </div>
     <h2 className={cn(styles.categoriesText, {
             [styles.dark]: theme === "dark",
           })}>Categories</h2>

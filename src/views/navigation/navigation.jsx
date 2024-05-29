@@ -19,7 +19,7 @@ export const Navigation = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const cardCounter = useSelector((state) => state.cart.counter);
   const likesCounter = useSelector(getLikedCount);
-  console.log(isModalOpen);
+  //console.log(isModalOpen);
 
   const onSwitchToggle = () => {
     setIsToggleOn((prev) => !prev);

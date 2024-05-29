@@ -4,6 +4,7 @@ import styles from "./index.module.scss";
 import { setItems } from "../../store/shop-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../../constants";
+import { Link } from "react-router-dom";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
@@ -23,7 +24,7 @@ export const AllProducts = () => {
   const maxValueChange = (event) => {
     setMaxValue(event.target.value);
   };
-  
+
   const sortChange = (event) => {
     setSortOrder(event.target.value);
   };
@@ -43,14 +44,25 @@ export const AllProducts = () => {
   const checkboxChange = (event) => {
     setIsChecked(event.target.checked);
   };
-  
-  const filteredAndSortedItems = ( !minValue && !maxValue ? sortedItems : sortedItems
-    .filter(item => item.price >= minValue && item.price <= maxValue)
-    .sort((a, b) => a.price - b.price));
 
+  const filteredAndSortedItems =
+    !minValue && !maxValue
+      ? sortedItems
+      : sortedItems
+          .filter((item) => item.price >= minValue && item.price <= maxValue)
+          .sort((a, b) => a.price - b.price);
 
   return (
     <>
+      <div className={cn(styles.breadCrumbs, {
+            [styles.dark]: theme === "dark",
+          })}>
+        <Link to={"/"}>
+          <div>Main Page</div>
+        </Link>
+        {/* <hr/> */}
+        <div>All product</div>
+      </div>
       <h2
         className={cn(styles.allProductsTitle, {
           [styles.dark]: theme === "dark",
@@ -98,7 +110,9 @@ export const AllProducts = () => {
         })}
       >
         {(isChecked === true
-          ? filteredAndSortedItems.filter(({ discont_price }) => discont_price !== null)
+          ? filteredAndSortedItems.filter(
+              ({ discont_price }) => discont_price !== null
+            )
           : filteredAndSortedItems
         ).map(({ price, discont_price, title, image, id }) => (
           <CardItem

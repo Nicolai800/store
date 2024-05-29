@@ -8,6 +8,7 @@ import cn from "classnames";
 import { themeContext } from "../../context/theme";
 import { useSelector } from "react-redux";
 import { getAllCategories } from "../../store/selectors";
+import { Link } from "react-router-dom";
 
 export const Category = () => {
   const { categoryId } = useParams();
@@ -28,6 +29,16 @@ export const Category = () => {
 
   return (
     <>
+      <div className={styles.breadCrumbs}>
+        <Link to={"/"}>
+          <div>Main Page</div>
+        </Link>
+        {/* <hr/> */}
+        <Link to={"/categories"}>
+          <div>Categories</div>
+        </Link>
+        <div>{categories[categoryId - 1].title}</div>
+      </div>
       <h2
         className={cn(styles.categoryTitle, {
           [styles.dark]: theme === "dark",
