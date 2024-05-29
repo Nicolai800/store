@@ -12,14 +12,18 @@ import { toggleToLikes } from "../../store/shop-slice";
 export const CardItem = ({ price, title, image, discont, discontPercent, id }) => {
   const { theme } = useContext(themeContext);
   const dispatch = useDispatch();
-  const selectedData = useSelector((state)=> state.cart.selectedData);
+  // const selectedData = useSelector((state)=> state.cart.selectedData);
+  const selectedData = useSelector((state)=> state.cart.cardsData);
   const likesData = useSelector((state)=> state.shop.likesData);
   
   const likeToggle = (articul) => {
     dispatch(toggleToLikes(articul))
   }
-  const cartToggle = (articul, select) => {
-    dispatch(toggleCartItem({articul, select}))
+  // const cartToggle = (articul, select) => {
+  //   dispatch(toggleCartItem({articul, select}))
+  // }
+  const cartToggle = (articul) => {
+    dispatch(toggleCartItem(articul))
   }
   return (
     <div className={cn(styles.wrapper, {
@@ -34,7 +38,7 @@ export const CardItem = ({ price, title, image, discont, discontPercent, id }) =
               [styles.checked]: likesData[id]
             })}/>
         <CartIcon id={id} select = {id} cartToggle={cartToggle} className ={cn(styles.cart, {
-              [styles.liked]: selectedData[id] === "selected"
+              [styles.liked]: selectedData[id]
             })} />
       </div>
       <div className={cn(styles.info, {

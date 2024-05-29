@@ -6,20 +6,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../../constants";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
+import { getCardCount } from "../../store/selectors";
 import { ShoppingItem } from "../../components/shopping-item";
 import cn from "classnames";
 
 export const ShoppingCart = () => {
   const allItems = useSelector((state) => state.shop.items);
   const { theme } = useContext(themeContext);
-  const shopingCartItems = useSelector((state) => state.cart.selectedData);
-  const cardCounter = useSelector((state) => state.cart.counter);
+  const shopingCartItems = useSelector((state) => state.cart.cardsData);
+  const cardCounter = useSelector(getCardCount)
+  //const cardCounter = useSelector((state) => state.cart.counter);
   const filteredItems = allItems.filter((item) => shopingCartItems[item.id]);
   const totalSum = filteredItems.reduce((sum, item) => {
     return (
       sum + (item.discont_price === null ? item.price : item.discont_price)
     );
   }, 0);
+
+console.log(shopingCartItems);
   return (
     <>
       <h2

@@ -51,6 +51,8 @@ export const LikedProducts = () => {
           .filter((item) => item.price >= minValue && item.price <= maxValue)
           .sort((a, b) => a.price - b.price);
 
+      console.log(` likes - ${filteredLikesArr}`);
+
   return (
     <>
     <div className={cn(styles.breadCrumbs, {

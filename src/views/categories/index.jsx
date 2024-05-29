@@ -4,7 +4,7 @@ import { CategoriesLayout } from "./categories-layout";
 import {Category} from '../category';
 
 
-export const Categories = ({ elementsCount = 5, breadCrumbs = true}) => {
+export const Categories = () => {
 
 
     return (

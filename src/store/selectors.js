@@ -13,6 +13,9 @@ export const getAllCategories = (state) => state.shop.category;
 export const getLikedCount = (state) => {
   return Object.values(state.shop.likesData).filter((val)=>val).length;
 };
+export const getCardCount = (state) => {
+  return Object.values(state.cart.cardsData).filter((val)=>val).length;
+};
 
 export const getProductById = (state, itemId) =>
   state.shop.items.find((item) => String(item.id) === itemId);

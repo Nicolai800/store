@@ -6,6 +6,7 @@ import { themeContext } from "../../context/theme";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 import { toggleCartItem } from "../../store/cart-slice";
+import { deleteCard } from "../../store/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
 
 export const ShoppingItem = ({
@@ -18,50 +19,58 @@ export const ShoppingItem = ({
 }) => {
   const { theme } = useContext(themeContext);
   const dispatch = useDispatch();
-  const selectedData = useSelector((state) => state.cart.selectedData);
+  const selectedData = useSelector((state) => state.cart.cardsData);
+  // const goodsData = useSelector((state) => state.cart.goodsData);
   const allItems = useSelector((state) => state.shop.item);
   const [counter, setCounter] = useState(1);
+  const inputChange = (event) => {
+    setCounter(event.target.value);
+  };
   const addCounter = () => {
     setCounter(counter + 1);
   };
   const deleteCounter = () => {
-    if(counter > 1){
+    if (counter > 1) {
       setCounter(counter - 1);
     }
   };
+  const deleteCard = (articul) => {
+    dispatch(deleteCard(articul))
+  }
+
+  //console.log(selectedData);
 
   return (
     <div className={styles.shopingItemWrapper}>
       <img src={BASE_URL + image} alt="card" className={styles.imgWrapper} />
       <div className={styles.itemInfo}>
-        <button className={styles.xButton}>x</button>
+        <button className={styles.xButton} onClick={()=>deleteCard(id)}>x</button>
         <div className={styles.itemTitle}>
           <div>{title}</div>
         </div>
         <div className={styles.quantity}>
           <div className={styles.buttonsInput}>
             <button onClick={deleteCounter}>-</button>
-            <input type="number" value={counter} />
+            <input type="number" value={counter} onChange={inputChange} />
             <button onClick={addCounter}>+</button>
-            </div>
-            <div className={styles.prices}>
-              <span
-                className={cn(styles.newPrice, {
-                  [styles.dark]: theme === "dark",
-                })}
-              >
-                {"$" + (discont*counter).toFixed(2)}
-              </span>
-              <span
-                className={cn(styles.oldPrice, {
-                  [styles.none]: discontPercent === 0,
-                })}
-              >
-                {"$" + (price*counter).toFixed(2)}
-              </span>
-            </div>
           </div>
-        
+          <div className={styles.prices}>
+            <span
+              className={cn(styles.newPrice, {
+                [styles.dark]: theme === "dark",
+              })}
+            >
+              {"$" + (discont * counter).toFixed(2)}
+            </span>
+            <span
+              className={cn(styles.oldPrice, {
+                [styles.none]: discontPercent === 0,
+              })}
+            >
+              {"$" + (price * counter).toFixed(2)}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );

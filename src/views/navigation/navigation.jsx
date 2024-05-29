@@ -9,6 +9,7 @@ import { Hamburger } from "../../components/hambergerMenu/hamburger";
 import cn from "classnames";
 import { useSelector } from "react-redux";
 import { getLikedCount } from "../../store/selectors";
+import { getCardCount } from "../../store/selectors";
 import { ShoppingCart } from "../shopping-cart";
 import { Modal } from "../../components/modal/modal";
 
@@ -17,8 +18,9 @@ export const Navigation = () => {
   const { theme, switchTheme } = useContext(themeContext);
   const [isHamburgerActive, setIsHamburgerActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const cardCounter = useSelector((state) => state.cart.counter);
+  // const cardCounter = useSelector((state) => state.cart.counter);
   const likesCounter = useSelector(getLikedCount);
+  const cardsCounter = useSelector(getCardCount);
   //console.log(isModalOpen);
 
   const onSwitchToggle = () => {
@@ -68,7 +70,7 @@ export const Navigation = () => {
           /></Link>
           
         </IconCounter>
-        <IconCounter count={cardCounter}>
+        <IconCounter count={cardsCounter}>
           <Link to="shopping-cart">
             <NavCartIcon
               className={cn(styles.cartIcon, {
