@@ -4,49 +4,66 @@ const cardItems = createSlice({
   name: "card",
   initialState: {
     cardsData: {},
-    orderdata: []
   },
   reducers: {
-    toggleCartItem: (state, { payload: articul }) => {
-      state.cardsData[articul] = !state.cardsData[articul];
+    toggleCartItem: (state, { payload }) => {
+      //state.cardsData[payload] = !state.cardsData[payload];
+      state.cardsData[payload] = Number(!state.cardsData[payload]);
     },
-    deleteCard: (state, { payload: articul }) => {
-      state.cardsData[articul] = false;
+    deleteCardItem: (state, { payload }) => {
+      state.cardsData[payload] = 0;
     },
+    addToCart: (state, { payload }) => {
+      !state.cardsData[payload]
+        ? (state.cardsData[payload] = 1)
+        : (state.cardsData[payload] += 1);
+    },
+    deleteFromCart: (state, {payload}) => {
+            state.cardsData[payload]--;
+            if (state.cardsData[payload] === 0) return;
+          },
   },
 });
 
-export const { toggleCartItem, deleteCard } = cardItems.actions;
+export const { toggleCartItem, deleteCardItem, addToCart, deleteFromCart } = cardItems.actions;
 
 export default cardItems.reducer;
 
-// const cardItems = createSlice({
-//   name: "card",
-//   initialState: {
-//     selectedData: {},
+// const cartSlice = createSlice({
+//   name: "cart",
+//   initialstate: {
 //     goodsData: {},
-//     counter: 0,
-//     cardId: null,
 //   },
 
 //   reducers: {
+//     addToCart: (state, { payload }) => {
+//       const { articul } = payload;
+//       !state.goodsData[articul]
+//         ? (state.goodsData[articul] = 1)
+//         : (state.goodsData[articul] += 1);
+//     },
+
+//     deleteFromCart: (state, action) => {
+//       const { articul } = action.payload;
+//       state.goodsData[articul]--;
+//       if (state.goodsData[articul] === 0) return;
+//     },
+
+//     deleteAllCart: (state, action) => {
+//       const { articul } = action.payload;
+//       state.goodsData[articul] = 0;
+//     },
+//     setProductCart: (state, { payload }) => {
+//       const { productCounter, id } = payload;
+//       state.goodsData[id] = 0;
+//       state.goodsData[id] + productCounter;
+//     },
 //     toggleCartItem: (state, { payload }) => {
 //       const { articul, select } = payload;
-//       if (!state.selectedData[select]) {
-//         state.selectedData[select] = "selected";
-//         state.goodsData[articul] += 1;
-//         if (!state.goodsData[articul]) {
-//           state.goodsData[articul] = 1;
-//         }
-//         state.counter++;
-//       } else if ((state.selectedData[select] = "selected")) {
-//         delete state.selectedData[select];
-//         state.goodsData[articul] -= 1;
-//         state.counter--;
-//       }
+//       state.goodsData[select] = Number(!state.goodsData[select]);
 //     },
 //   },
 // });
 
-// export const {toggleCartItem} = cardItems.actions;
-// export default cardItems.reducer;
+// export const {addToCart,deleteFromCart,setProductCart, toggleCartItem,deleteAllCart,toggleCartItem} = cartSlice.actions;
+// export default cartSlice.reducer;

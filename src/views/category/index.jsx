@@ -14,7 +14,7 @@ export const Category = () => {
   const { categoryId } = useParams();
   // const [params] = useSearchParams();
   const { theme } = useContext(themeContext);
-  const categories = useSelector((state) => state.shop.category);
+  const categories = useSelector((state) => state.shop.categories);
   const [saleItems, setSaleItems] = useState([]);
 
   useEffect(() => {

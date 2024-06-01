@@ -17,7 +17,7 @@ export const Product = () => {
   let discoveredItem = data.find(({ id }) => +id === +itemId);
   //console.log(discoveredItem.categoryId, "discovered");
 
-  const categories = useSelector((state) => state.shop.category);
+  const categories = useSelector((state) => state.shop.categories);
   const { title, price, discont_price, image, description } = discoveredItem;
   const discontPercent = getDiscountPercent(price, discont_price);
   // ### /products/${itemId}     - ссылка на первый продукт

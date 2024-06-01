@@ -6,10 +6,11 @@ import cn from "classnames";
 import { themeContext } from "../../context/theme";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getAllCategories } from "../../store/selectors";
 
 export const CategoriesLayout = ({ elementsCount = 5, breadCrumbs = true}) => {
  const { theme } = useContext(themeContext);
- //const categories = useSelector((state) => state.shop.category);
+ const categoriesFromRedux = useSelector((state) => state.shop.categories);
 
   const [categoriesItems, setCategoriesItems] = useState([]);
  

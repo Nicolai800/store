@@ -21,7 +21,6 @@ export const Navigation = () => {
   // const cardCounter = useSelector((state) => state.cart.counter);
   const likesCounter = useSelector(getLikedCount);
   const cardsCounter = useSelector(getCardCount);
-  //console.log(isModalOpen);
 
   const onSwitchToggle = () => {
     setIsToggleOn((prev) => !prev);

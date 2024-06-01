@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { getAllItems } from './async-actions';
-//import { getAllCategories } from './async-actions';
+import { getAllItems, getAllCategories } from './async-actions';
 
 const initialState = {
     category: null,
@@ -8,6 +7,7 @@ const initialState = {
     isLoading: false,
     likesData: {},
     error: null,
+    categories: null,
 };
 
 const shopSlice = createSlice({
@@ -36,6 +36,17 @@ const shopSlice = createSlice({
             state.items = payload;
         })
         builder.addCase(getAllItems.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.error.message;
+        })
+        builder.addCase(getAllCategories.pending, (state) => {
+            state.isLoading = true;
+        })
+        builder.addCase(getAllCategories.fulfilled, (state, {payload}) => {
+            state.isLoading = false;
+            state.categories = payload;
+        })
+        builder.addCase(getAllCategories.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.error.message;
         })

@@ -6,7 +6,7 @@ import { themeContext } from "../../context/theme";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 import { toggleCartItem } from "../../store/cart-slice";
-import { deleteCard } from "../../store/cart-slice";
+import { deleteCardItem,addToCart, deleteFromCart} from "../../store/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
 
 export const ShoppingItem = ({
@@ -20,39 +20,47 @@ export const ShoppingItem = ({
   const { theme } = useContext(themeContext);
   const dispatch = useDispatch();
   const selectedData = useSelector((state) => state.cart.cardsData);
-  // const goodsData = useSelector((state) => state.cart.goodsData);
   const allItems = useSelector((state) => state.shop.item);
+  
   const [counter, setCounter] = useState(1);
   const inputChange = (event) => {
     setCounter(event.target.value);
   };
-  const addCounter = () => {
-    setCounter(counter + 1);
+  const addCounter = (item) => {
+    dispatch(addToCart(item));
   };
-  const deleteCounter = () => {
-    if (counter > 1) {
-      setCounter(counter - 1);
-    }
+  const deleteCounter = (item) => {
+    dispatch(deleteFromCart(item));
+  
   };
-  const deleteCard = (articul) => {
-    dispatch(deleteCard(articul))
+
+  const deleteTotal= (item) => {
+    dispatch(deleteCardItem(item))
   }
 
   //console.log(selectedData);
 
   return (
-    <div className={styles.shopingItemWrapper}>
+    <div className={cn(styles.shopingItemWrapper, {
+      [styles.dark]: theme === "dark",
+    })}>
       <img src={BASE_URL + image} alt="card" className={styles.imgWrapper} />
       <div className={styles.itemInfo}>
-        <button className={styles.xButton} onClick={()=>deleteCard(id)}>x</button>
-        <div className={styles.itemTitle}>
-          <div>{title}</div>
+        <button className={cn(styles.xButton, {
+      [styles.dark]: theme === "dark",
+    })} onClick={()=>deleteTotal(id)}>x</button>
+        <div className={cn(styles.itemTitle, {
+      [styles.dark]: theme === "dark",
+    })}>
+          <span>{title}</span>
         </div>
         <div className={styles.quantity}>
-          <div className={styles.buttonsInput}>
-            <button onClick={deleteCounter}>-</button>
-            <input type="number" value={counter} onChange={inputChange} />
-            <button onClick={addCounter}>+</button>
+          <div className={cn(styles.buttonsSpan, {
+      [styles.dark]: theme === "dark",
+    })}>
+            <button onClick={()=>deleteCounter(id)}>-</button>
+            <span>{selectedData[id]}</span>
+            <button onClick={()=>addCounter(id)}>+</button>
           </div>
           <div className={styles.prices}>
             <span
@@ -60,14 +68,14 @@ export const ShoppingItem = ({
                 [styles.dark]: theme === "dark",
               })}
             >
-              {"$" + (discont * counter).toFixed(2)}
+              {"$" + (discont * selectedData[id]).toFixed(2)}
             </span>
             <span
               className={cn(styles.oldPrice, {
                 [styles.none]: discontPercent === 0,
               })}
             >
-              {"$" + (price * counter).toFixed(2)}
+              {"$" + (price * selectedData[id]).toFixed(2)}
             </span>
           </div>
         </div>

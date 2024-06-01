@@ -60,6 +60,11 @@
   a {
     color: #ffffff;
   }
+
+  a.active {
+    color: #92A134;
+  
+ }
 }
 
 .iconWrapper {
@@ -72,10 +77,9 @@
   align-items: center;
 }
 
-.active {
-  // ПОМЕНЯТЬ
-  text-shadow: 1px 1px 2px #424436, 0 0 1em #fffff9, 0 0 0.2em #424420;
-  // color: #92A134;  ??????????????
+a.active {
+   color: #92A134;
+ 
 }
 
 .heartIcon.dark {

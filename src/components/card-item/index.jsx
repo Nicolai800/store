@@ -38,7 +38,7 @@ export const CardItem = ({ price, title, image, discont, discontPercent, id }) =
               [styles.checked]: likesData[id]
             })}/>
         <CartIcon id={id} select = {id} cartToggle={cartToggle} className ={cn(styles.cart, {
-              [styles.liked]: selectedData[id]
+              [styles.liked]: selectedData[id] > 0
             })} />
       </div>
       <div className={cn(styles.info, {

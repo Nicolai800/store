@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
 import { Link } from "react-router-dom";
+import { getLikedCount } from "../../store/selectors";
 import cn from "classnames";
 
 export const LikedProducts = () => {
@@ -16,6 +17,7 @@ export const LikedProducts = () => {
   const [sortOrder, setSortOrder] = useState("by default");
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(0);
+  const likedCounter = useSelector(getLikedCount)
 
   const minValueChange = (event) => {
     setMinValue(event.target.value);
@@ -51,7 +53,36 @@ export const LikedProducts = () => {
           .filter((item) => item.price >= minValue && item.price <= maxValue)
           .sort((a, b) => a.price - b.price);
 
-      console.log(` likes - ${filteredLikesArr}`);
+
+      if (likedCounter === 0) {
+        return (
+          <>
+            <div className={cn(styles.breadCrumbs, {
+            [styles.dark]: theme === "dark",
+          })}>
+        <Link to={"/"}>
+          <div>Main Page</div>
+        </Link>
+        {/* <hr/> */}
+        <div>Liked Products</div>
+      </div>
+      <h2
+        className={cn(styles.allProductsTitle, {
+          [styles.dark]: theme === "dark",
+        })}
+      >
+        Liked Products
+      </h2>
+            <div className={cn(styles.emptyLikes, {
+                [styles.dark]: theme === "dark",
+              })}>
+              <h2 >Looks like you haven't chosen anything yet.</h2>
+              <Link to="/"><button>Continue Shopping</button></Link>
+              
+            </div>
+          </>
+        );
+      } else {
 
   return (
     <>
@@ -127,4 +158,5 @@ export const LikedProducts = () => {
       </div>
     </>
   );
+}
 };

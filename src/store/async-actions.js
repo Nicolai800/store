@@ -23,7 +23,7 @@ export const getAllCategories = createAsyncThunk(
     try {
       const rawData = await fetch(`${BASE_URL}/categories/all`);
       const data = await rawData.json();
-      thunkApi.dispatch(setCategory(data));
+      //thunkApi.dispatch(setCategory(data));
       return thunkApi.fulfillWithValue(data);
     } catch (err) {
       return thunkApi.rejectWithValue(err);

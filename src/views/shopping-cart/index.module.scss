@@ -1,77 +1,222 @@
 .shopingCartTitle {
+  width: 1440px;
+  max-width: 100%;
+  background-color: #fffff1;
+  padding: 40px;
+  display: flex;
+
+  h2 {
     font-weight: 700;
     font-size: 64px;
     line-height: 70.4px;
     color: #424436;
-    width: 1440px;
-    max-width: 100%;
-    background-color: #fffff1;
-    padding: 40px;
+    width: 477px;
+    text-wrap: nowrap;
   }
-  
-  .shopingCartTitle.dark {
-    background-color: #424436;
+  //justify-content: space-between;
+}
+
+.shopingCartTitle.dark {
+  background-color: #424436;
+  h2{
+     color: #fff;
+  }
+ 
+}
+
+.shoppingCartWrapper {
+  display: flex;
+  padding: 40px;
+  background-color: #fffff1;
+  width: 100%;
+  max-width: 1440px;
+
+  @media screen and (max-width: 780px) {
+    display: block;
+  }
+}
+
+.shoppingCartWrapper.dark {
+  background-color: #424436;
+  color: #fff;
+}
+
+.orderForm {
+  height: 582px;
+  width: 100%;
+  max-width: 548px;
+  padding: 32px;
+  border-radius: 10px;
+  background-color: #f2f6d3;
+  margin-left: 20px;
+  h3 {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 44px;
+    color: #424436;
+    margin-bottom: 12px;
+  }
+}
+
+.orderForm.dark {
+  background-color: #383a2c;
+  h3 {
     color: #fff;
   }
+}
 
-  .shoppingCartWrapper{
-    display: flex;
-    padding: 40px;
-    background-color: #fffff1;
+.orderPrais {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 52px;
+  color: #8b8b8b;
+
+  span {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 70.4px;
+    color: #424436;
+    //margin-left: 81px;
+  }
+}
+
+.totalSum.dark {
+  color: #fff;
+}
+
+.orderInputs {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  // input {
+  //   border: 1px solid #dddddd;
+  //   border-radius: 6px;
+  //   height: 58px;
+  //   width: 100%;
+ // }
+  button {
     width: 100%;
-    max-width: 1440px;
+    background-color: #92a134;
+    border: none;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    text-align: center;
+    cursor: pointer;
   }
-
-  .orderForm{
-    padding: 20px 32px;
-    border-radius: 10px;
-    background-color:#F2F6D3;
-    margin-left: 20px;
-    h3{
-      font-weight: 700;
-      font-size: 40px;
-      line-height: 44px;
-      color: #424436;
-      margin-bottom: 12px;
-    }
+  button:active {
+    background-color: #424436;
+    color: #ffffff;
+    transform: translateY(4px);
   }
+}
 
-  .orderInputs{
-    display: flex;
-    flex-direction: column;
+.orderInputs.dark {
+  input {
+    border: 1px solid #8b8b8b;
+    background-color: #424436;
   }
+}
 
-  .orderPrais{
+.emptyBasket {
+  background-color: #fffff1;
+  width: 1440px;
+  max-width: 100%;
+  padding: 40px;
+  h2 {
+    color: #282828;
+    font-size: 20px;
     font-weight: 500;
-    font-size: 40px;
-    line-height: 52px;
-    color:#8B8B8B;
-
-    span{
-      font-weight: 700;
-      font-size: 64px;
-      line-height: 70.4px;
-      color: #424436;
-      margin-left: 81px;
-    }
+    line-height: 26px;
+    margin-bottom: 32px;
   }
-
-  .orderInputs{
-    gap: 16px;
-    input{
-      border: 1px solid #DDDDDD;
-      border-radius: 6px;
-      height: 58px;
-    }
-    button{
-      width: 100%;
-      background-color: #92A134;
-      border: none;
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 26px;
-      text-align: center;
-      cursor: pointer;
-    }
+  button {
+    background-color: #92a134;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    text-align: center;
+    color: #ffffff;
+    padding: 16px 56px;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    max-width: 313px;
   }
+  button:active {
+    background-color: #424436;
+    transform: translateY(4px);
+  }
+}
+.emptyBasket.dark {
+  background-color: #424436;
+  h2 {
+    color: #fff;
+  }
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  p {
+    padding-top: 14px;
+  }
+}
+
+.titleLink {
+  width: 170px;
+  color: #8b8b8b;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20.16px;
+  text-align: center;
+  border: 1px solid #dddddd;
+  padding-top: 8px;
+  border-radius: 6px;
+  height: 36px;
+  text-decoration: none;
+  bottom: 0px;
+  right: 0;
+  position: absolute;
+}
+
+.lineWrapper {
+  height: 60px;
+  width: 100%;
+  max-width: 851px;
+  display: flex;
+  position: relative;
+  //justify-content: space-between;
+}
+.line {
+  border-bottom: 1px solid #dddddd;
+  width: 100%;
+  max-width: 681px;
+  height: 40px;
+}
+
+.shoppingCartInputs {
+  max-width: 516pxpx;
+  width: 100%;
+  height: 58pxpx;
+  padding: 16px 32px 16px 32px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  border: 1px solid #DDDDDD;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #FFFFFF;
+  outline: none;
+}
+
+input::placeholder {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 500;
+  color: #8B8B8B;
+}

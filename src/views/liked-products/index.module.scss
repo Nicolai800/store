@@ -120,4 +120,43 @@
     background-color: #424436;
     color: #fff;
   }
-  
+
+  .emptyLikes{
+    background-color: #fffff1;
+    width: 1440px;
+    max-width: 100%;
+    padding: 40px;
+    h2{
+      color:#282828;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 26px;
+      margin-bottom: 32px;
+    }
+    button{
+      background-color: #92A134;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 26px;
+      text-align: center;
+      color:  #FFFFFF;
+      padding: 16px 56px;
+      display: inline-block;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      max-width: 313px;
+    }
+    button:active {
+      background-color: #424436;
+      transform: translateY(4px);
+    }
+
+  }
+  .emptyLikes.dark {
+    background-color: #424436;
+    h2{
+      color: #fff;
+    }
+    
+  }
