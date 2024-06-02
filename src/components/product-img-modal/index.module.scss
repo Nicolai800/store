@@ -1,0 +1,19 @@
+.modalBackground{
+    //z-index: 1;
+    background-color:  #28282866;
+    top: 0px;
+    position: absolute;
+    width: 100%;
+    height: 200%;
+    display: flex;
+}
+
+.modalWrapper{
+    position: relative;
+    margin: 180px auto;
+    height: 160px;
+    img{
+        width: 900px;
+        height: 610px;
+    }
+}

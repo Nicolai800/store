@@ -22,10 +22,10 @@ export const ShoppingItem = ({
   const selectedData = useSelector((state) => state.cart.cardsData);
   const allItems = useSelector((state) => state.shop.item);
   
-  const [counter, setCounter] = useState(1);
-  const inputChange = (event) => {
-    setCounter(event.target.value);
-  };
+  // const [counter, setCounter] = useState(1);
+  // const inputChange = (event) => {
+  //   setCounter(event.target.value);
+  // };
   const addCounter = (item) => {
     dispatch(addToCart(item));
   };

@@ -18,14 +18,20 @@ const cardItems = createSlice({
         ? (state.cardsData[payload] = 1)
         : (state.cardsData[payload] += 1);
     },
-    deleteFromCart: (state, {payload}) => {
-            state.cardsData[payload]--;
-            if (state.cardsData[payload] === 0) return;
-          },
+    deleteFromCart: (state, { payload }) => {
+      state.cardsData[payload]--;
+      if (state.cardsData[payload] === 0) return;
+    },
+    setProductCart: (state, { payload }) => {
+      const { productCounter, id } = payload;
+      //state.goodsData[id] = 0;
+      state.cardsData[id] = productCounter;
+    },
   },
 });
 
-export const { toggleCartItem, deleteCardItem, addToCart, deleteFromCart } = cardItems.actions;
+export const { toggleCartItem, deleteCardItem, addToCart, deleteFromCart, setProductCart } =
+  cardItems.actions;
 
 export default cardItems.reducer;
 

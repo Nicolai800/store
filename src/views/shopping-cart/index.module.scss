@@ -1,6 +1,6 @@
 .shopingCartTitle {
-  width: 1440px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 1440px;
   background-color: #fffff1;
   padding: 40px;
   display: flex;
@@ -10,18 +10,16 @@
     font-size: 64px;
     line-height: 70.4px;
     color: #424436;
-    width: 477px;
+    margin-right: 32px;
     text-wrap: nowrap;
   }
-  //justify-content: space-between;
 }
 
 .shopingCartTitle.dark {
   background-color: #424436;
-  h2{
-     color: #fff;
+  h2 {
+    color: #fff;
   }
- 
 }
 
 .shoppingCartWrapper {
@@ -94,7 +92,7 @@
   //   border-radius: 6px;
   //   height: 58px;
   //   width: 100%;
- // }
+  // }
   button {
     width: 100%;
     background-color: #92a134;
@@ -117,6 +115,7 @@
   input {
     border: 1px solid #8b8b8b;
     background-color: #424436;
+    color: #ffffff;
   }
 }
 
@@ -194,7 +193,7 @@
 .line {
   border-bottom: 1px solid #dddddd;
   width: 100%;
-  max-width: 681px;
+  max-width: 675px;
   height: 40px;
 }
 
@@ -205,12 +204,13 @@
   padding: 16px 32px 16px 32px;
   margin-bottom: 16px;
   border-radius: 6px;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   font-size: 20px;
   line-height: 26px;
   font-weight: 500;
-  color: #ffffff;
-  background-color: #FFFFFF;
+
+  color: #424436;
+  background-color: #ffffff;
   outline: none;
 }
 
@@ -218,5 +218,5 @@ input::placeholder {
   font-size: 20px;
   line-height: 26px;
   font-weight: 500;
-  color: #8B8B8B;
+  color: #8b8b8b;
 }
