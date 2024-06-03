@@ -58,15 +58,16 @@
   font-weight: 500;
   color: #ffffff;
   background: transparent;
-}
+  outline: none;
 
-input::placeholder {
-  font-size: 20px;
-  line-height: 26px;
-  font-weight: 500;
-  color: #ffffff;
+  
 }
-
+.discountFormInputs::placeholder {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 500;
+    color: #FFFFFF;
+  }
 .discountFormButton {
   font-size: 20px;
   font-weight: 600;

@@ -208,7 +208,6 @@
   font-size: 20px;
   line-height: 26px;
   font-weight: 500;
-
   color: #424436;
   background-color: #ffffff;
   outline: none;
@@ -219,4 +218,9 @@ input::placeholder {
   line-height: 26px;
   font-weight: 500;
   color: #8b8b8b;
+}
+
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
 }

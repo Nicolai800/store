@@ -60,7 +60,7 @@ export const AllProducts = () => {
         <Link to={"/"}>
           <div>Main Page</div>
         </Link>
-        {/* <hr/> */}
+         <hr/>
         <div>All product</div>
       </div>
       <h2

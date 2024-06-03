@@ -88,15 +88,19 @@
   background-color: #FFFFF1;
   display: flex;
   padding: 40px 0px 0px 40px;
-  text-align: center; 
-  gap: 16px;
+  align-items: center;
   max-width: 1440px;
   width: 100%;
+  hr{
+    width: 16px; 
+    height: 50%; 
+    border-top: 1px solid #dddddd;
+  } 
   
 div{
   padding: 8px 16px 8px 16px;
   border-radius: 6px;
-  border: 1px solid  #8B8B8B;
+  border: 1px solid  #dddddd;
   font-size: 16px;
   font-weight: 500;
   line-height: 20.16px;

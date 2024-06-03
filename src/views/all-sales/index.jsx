@@ -52,7 +52,7 @@ export const AllSales = () => {
         <Link to={"/"}>
           <div>Main Page</div>
         </Link>
-        {/* <hr/> */}
+        <hr/>
         <div>All sales</div>
       </div>
       <h2

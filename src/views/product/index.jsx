@@ -59,13 +59,15 @@ export const Product = () => {
         <Link to={"/"}>
           <div>Main Page</div>
         </Link>
-        {/* <hr/> */}
+         <hr/>
         <Link to={"/categories"}>
           <div>Categories</div>
         </Link>
+        <hr/>
         <Link to={`/categories/${[discoveredItem.categoryId]}`}>
           <div>{categories[discoveredItem.categoryId - 1].title}</div>
         </Link>
+        <hr/>
         <div>{title}</div>
       </div>
       <div

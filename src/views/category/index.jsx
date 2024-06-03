@@ -27,16 +27,56 @@ export const Category = () => {
       });
   }, []);
 
+  const [isChecked, setIsChecked] = useState(false);
+  const [sortOrder, setSortOrder] = useState("by default");
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(0);
+
+  const minValueChange = (event) => {
+    setMinValue(event.target.value);
+  };
+  const maxValueChange = (event) => {
+    setMaxValue(event.target.value);
+  };
+
+  const sortChange = (event) => {
+    setSortOrder(event.target.value);
+  };
+
+  const sortedItems = [...saleItems].sort((a, b) => {
+    if (sortOrder === "price: high-low") {
+      return b.price - a.price;
+    } else if (sortOrder === "price: low-high") {
+      return a.price - b.price;
+    } else if (sortOrder === "newest") {
+      return new Date(b.updatedAt) - new Date(a.updatedAt);
+    } else {
+      return a.id - b.id;
+    }
+  });
+
+  const checkboxChange = (event) => {
+    setIsChecked(event.target.checked);
+  };
+
+  const filteredAndSortedItems =
+    !minValue && !maxValue
+      ? sortedItems
+      : sortedItems
+          .filter((item) => item.price >= minValue && item.price <= maxValue)
+          .sort((a, b) => a.price - b.price);
+
   return (
     <>
       <div className={styles.breadCrumbs}>
         <Link to={"/"}>
           <div>Main Page</div>
         </Link>
-        {/* <hr/> */}
+        <hr/>
         <Link to={"/categories"}>
           <div>Categories</div>
         </Link>
+        <hr/>
         <div>{categories[categoryId - 1].title}</div>
       </div>
       <h2
@@ -55,13 +95,14 @@ export const Category = () => {
         <input
           type="number"
           placeholder="from"
+          onChange={minValueChange}
           className={styles.priceInputs}
         />{" "}
-        <input type="number" placeholder="to" className={styles.priceInputs} />
+        <input type="number" placeholder="to" onChange={maxValueChange} className={styles.priceInputs} />
         <span className={styles.texts}>Discounted items </span>{" "}
-        <input type="checkbox" className={styles.checkboxDiscounted} />
+        <input type="checkbox" onChange={checkboxChange} className={styles.checkboxDiscounted} />
         <span className={styles.texts}>Sorted</span>
-        <select id={styles.sortedForm}>
+        <select id={styles.sortedForm} onChange={sortChange}>
           <option value="by default">by default</option>
           <option value="newest">newest</option>
           <option value="price: high-low">price: high-low</option>
@@ -74,7 +115,12 @@ export const Category = () => {
           [styles.dark]: theme === "dark",
         })}
       >
-        {saleItems.map(({ price, discont_price, title, image, id }) => (
+        {(isChecked === true
+          ? filteredAndSortedItems.filter(
+              ({ discont_price }) => discont_price !== null
+            )
+          : filteredAndSortedItems
+        ).map(({ price, discont_price, title, image, id }) => (
           <CardItem
             key={id}
             price={price}

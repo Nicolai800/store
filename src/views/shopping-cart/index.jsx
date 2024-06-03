@@ -14,6 +14,7 @@ import cn from "classnames";
 
 export const ShoppingCart = () => {
   const allItems = useSelector((state) => state.shop.items);
+  const dispatch = useDispatch();
   const { theme } = useContext(themeContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const shopingCartItems = useSelector((state) => state.cart.cardsData);
@@ -49,6 +50,22 @@ export const ShoppingCart = () => {
     setInputEmail(e.target.value);
   };
   //console.log(inputName,inputPhone,inputEmail);
+  const orderLog = () => {
+    console.log({
+      name: inputName,
+      phone: inputPhone,
+      email: inputEmail,
+      order: shopingCartItems
+    });
+    
+  };
+  const orderSend = () => {
+    orderLog();
+    onToggleModal();
+    setInputName("");
+    setInputPhone("");
+    setInputEmail("");
+  };
 
   if (cardCounter === 0) {
     return (
@@ -93,16 +110,6 @@ export const ShoppingCart = () => {
               Back to the store
             </Link>
           </div>
-        </div>
-        <div
-          className={cn(styles.emptyBasket, {
-            [styles.dark]: theme === "dark",
-          })}
-        >
-          <h2>Looks like you have no items in your basket currently.</h2>
-          <Link to="/">
-            <button>Continue Shopping</button>
-          </Link>
         </div>
         <div
           className={cn(styles.shoppingCartWrapper, {
@@ -152,7 +159,7 @@ export const ShoppingCart = () => {
                   onChange={inputNameChange}
                 ></input>
                 <input
-                  type="tel"
+                  type="number"
                   pattern="\(\d\d\d\) ?\d\d\d-\d\d-\d\d"
                   placeholder="Phone number"
                   className={styles.shoppingCartInputs}
@@ -164,7 +171,7 @@ export const ShoppingCart = () => {
                   className={styles.shoppingCartInputs}
                   onChange={inputEmailChange}
                 ></input>
-                <button onClick={onToggleModal}>Order</button>
+                <button onClick={orderSend}>Order</button>
               </div>
             </div>
           </div>

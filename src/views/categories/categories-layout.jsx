@@ -42,7 +42,7 @@ export const CategoriesLayout = ({ elementsCount = 5, breadCrumbs = true}) => {
         <Link to={"/"}>
           <div>Main Page</div>
         </Link>
-        {/* <hr/> */}
+         <hr/>
         <div>Categories</div>
       </div>
     <h2 className={cn(styles.categoriesText, {
