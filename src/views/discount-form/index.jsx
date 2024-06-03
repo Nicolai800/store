@@ -4,9 +4,23 @@ import discountFormBackImg from "../../assets/discountFormBackbround.png";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../constants";
+//import { PHONE_REGEX } from "../../constants";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { sendSaleData } from "../../store/async-actions";
+import { getDiscountStatus } from "../../store/selectors";
 
 export const DiscountForm = () => {
+  const dispatch = useDispatch();
   const { theme } = useContext(themeContext);
+
+  const { register, handleSubmit, formState, getValues } = useForm();
+
+  const onFormSubmit = (formData) => {
+    //dispatch(sendSaleData(formData))
+    console.log(formData);
+  };
 
   return (
     <div
@@ -21,29 +35,32 @@ export const DiscountForm = () => {
             className={styles.discountFormBackImg}
             style={{ backgroundImage: `url(${discountFormBackImg})` }}
           ></div>
-          <div className={styles.discountFormInform}>
+          <form
+            onSubmit={handleSubmit(onFormSubmit)}
+            className={styles.discountFormInform}
+          >
             <input
               type="text"
               placeholder="Name"
               className={styles.discountFormInputs}
+              {...register("userName", { required: true })}
             ></input>
             <input
-              type="tel"
-              pattern="\(\d\d\d\) ?\d\d\d-\d\d-\d\d"
+              type="number"
               placeholder="Phone number"
               className={styles.discountFormInputs}
+              {...register("userPhone", { required: true})}
             ></input>
             <input
               type="email"
               placeholder="Email"
               className={styles.discountFormInputs}
+              {...register("userEmail", { required: true })}
             ></input>
-            <Link to={"http://localhost:3000/not-found"}>
-              <button className={styles.discountFormButton}>
-                Get a discount
-              </button>
-            </Link>
-          </div>
+            <button type="submit" className={styles.discountFormButton}>
+              Get a discount
+            </button>
+          </form>
         </div>
       </div>
     </div>

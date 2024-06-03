@@ -7,6 +7,8 @@ export const getError = (state) => state.shop.error;
 
 export const getAllCategories = (state) => state.shop.categories;
 
+export const getDiscountStatus = (state) => state.shop.discountApplied;
+
 // export const getCategoruById = (state, categoryId) =>
 //   state.shop.items.find((category) => String(category.id) === categoryId);
 
