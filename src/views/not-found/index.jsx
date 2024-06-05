@@ -5,6 +5,7 @@ import notFoundImg from "../../assets/notFoundImg.png";
 import { NumberFourIcon } from "../../assets/icons";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
+import { BASE_URL } from "../../constants";
 
 export const NotFound = () => {
   const { theme } = useContext(themeContext);
@@ -27,7 +28,7 @@ export const NotFound = () => {
           We’re sorry, the page you requested could not be found. Please go back
           to the homepage.
         </div>
-        <Link to="http://localhost:3000/"><button className={styles.btn}>Go home!</button></Link>
+        <Link to="/"><button className={styles.btn}>Go home!</button></Link>
       </div>
     </div>
   );

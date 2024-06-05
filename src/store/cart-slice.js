@@ -27,10 +27,13 @@ const cardItems = createSlice({
       //state.goodsData[id] = 0;
       state.cardsData[id] = productCounter;
     },
+    clearProductCart:(state) => {
+      state.cardsData = {}
+    }
   },
 });
 
-export const { toggleCartItem, deleteCardItem, addToCart, deleteFromCart, setProductCart } =
+export const { toggleCartItem, deleteCardItem, addToCart, deleteFromCart, setProductCart, clearProductCart } =
   cardItems.actions;
 
 export default cardItems.reducer;

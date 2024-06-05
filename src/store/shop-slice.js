@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { getAllItems, getAllCategories, sendSaleData } from './async-actions';
+import { fetchAllItems, fetchAllCategories, sendSaleData } from './async-actions';
 
 const initialState = {
     category: null,
@@ -7,7 +7,7 @@ const initialState = {
     isLoading: false,
     likesData: {},
     error: null,
-    categories: null,
+    categories: [],
     discountApplied: false,
 };
 
@@ -19,7 +19,7 @@ const shopSlice = createSlice({
             state.items = payload;
         },
         setCategory: (state, {payload}) => {
-            state.category = payload;
+            state.categories = payload;
         },
         setIsLoading: (state, {payload}) => {
             state.isLoading = payload;
@@ -29,29 +29,29 @@ const shopSlice = createSlice({
           },
     },
     extraReducers: (builder) => {
-        builder.addCase(getAllItems.pending, (state) => {
+        builder.addCase(fetchAllItems.pending, (state) => {
             state.isLoading = true;
         })
-        builder.addCase(getAllItems.fulfilled, (state, {payload}) => {
+        builder.addCase(fetchAllItems.fulfilled, (state, {payload}) => {
             state.isLoading = false;
             state.items = payload;
         })
-        builder.addCase(getAllItems.rejected, (state, action) => {
+        builder.addCase(fetchAllItems.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.error.message;
         })
-        builder.addCase(getAllCategories.pending, (state) => {
+        builder.addCase(fetchAllCategories.pending, (state) => {
             state.isLoading = true;
         })
-        builder.addCase(getAllCategories.fulfilled, (state, {payload}) => {
+        builder.addCase(fetchAllCategories.fulfilled, (state, {payload}) => {
             state.isLoading = false;
             state.categories = payload;
         })
-        builder.addCase(getAllCategories.rejected, (state, action) => {
+        builder.addCase(fetchAllCategories.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.error.message;
         })
-        builder.addCase(sendSaleData.rejected, (state, action) => {
+        builder.addCase(sendSaleData.fulfilled, (state, action) => {
             state.isLoading = false;
             if (action.payload.status === 'OK'){
                 state.discountApplied = true;

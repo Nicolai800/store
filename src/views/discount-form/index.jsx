@@ -5,20 +5,21 @@ import { themeContext } from "../../context/theme";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 import { BASE_URL } from "../../constants";
-//import { PHONE_REGEX } from "../../constants";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sendSaleData } from "../../store/async-actions";
 import { getDiscountStatus } from "../../store/selectors";
 
 export const DiscountForm = () => {
   const dispatch = useDispatch();
   const { theme } = useContext(themeContext);
+  const discountStatus = useSelector(getDiscountStatus);
+  console.log(discountStatus);
 
   const { register, handleSubmit, formState, getValues } = useForm();
 
   const onFormSubmit = (formData) => {
-    //dispatch(sendSaleData(formData))
+    dispatch(sendSaleData(formData));
     console.log(formData);
   };
 
@@ -49,7 +50,7 @@ export const DiscountForm = () => {
               type="number"
               placeholder="Phone number"
               className={styles.discountFormInputs}
-              {...register("userPhone", { required: true})}
+              {...register("userPhone", { required: true })}
             ></input>
             <input
               type="email"
@@ -57,8 +58,14 @@ export const DiscountForm = () => {
               className={styles.discountFormInputs}
               {...register("userEmail", { required: true })}
             ></input>
-            <button type="submit" className={styles.discountFormButton}>
-              Get a discount
+            <button
+              type="submit"
+              disabled={discountStatus}
+              className={cn(styles.discountFormButton, {
+                [styles.submitt]: discountStatus === true,
+              })}
+            >
+              {discountStatus ? "Request Submitted" : "Get a discount"}
             </button>
           </form>
         </div>

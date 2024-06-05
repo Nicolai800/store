@@ -8,7 +8,7 @@ import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllItems, getAllCategories } from "../../store/async-actions";
+import { fetchAllItems, fetchAllCategories } from "../../store/async-actions";
 import {
   getDiscountItems,
   getIsLoading,
@@ -16,17 +16,18 @@ import {
 } from "../../store/selectors";
 
 export const Main = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllItems());
+    dispatch(fetchAllCategories());
+  }, [dispatch]);
+
   const { theme } = useContext(themeContext);
 
-  const dispatch = useDispatch();
   const saleItems = useSelector(getDiscountItems);
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
-
-  useEffect(() => {
-    dispatch(getAllItems());
-    dispatch(getAllCategories());
-  }, [dispatch]);
 
   if (error) {
     return <div>ERROR</div>;

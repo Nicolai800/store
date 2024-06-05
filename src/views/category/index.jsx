@@ -9,13 +9,34 @@ import { themeContext } from "../../context/theme";
 import { useSelector } from "react-redux";
 import { getAllCategories } from "../../store/selectors";
 import { Link } from "react-router-dom";
+import {
+  fetchAllItems,
+  fetchAllCategories,
+  fetchCategory,
+} from "../../store/async-actions";
+import { useDispatch } from "react-redux";
 
 export const Category = () => {
   const { categoryId } = useParams();
+  const dispatch = useDispatch();
+
   // const [params] = useSearchParams();
+  useEffect(() => {
+    dispatch(fetchAllItems());
+    dispatch(fetchAllCategories());
+  }, [dispatch]);
+
   const { theme } = useContext(themeContext);
-  const categories = useSelector((state) => state.shop.categories);
-  const [saleItems, setSaleItems] = useState([]);
+  const categories = useSelector(getAllCategories);
+  const category = categories.find(({ id }) => id === Number(categoryId));
+  
+  //console.log(categories[categoryId - 1].title);
+
+  const [categoryItems, setCategoryItems] = useState([]);
+
+  // useEffect(() => {
+  //   setCategoryItems(fetchCategory(Number(categoryId)));
+  // });
 
   useEffect(() => {
     fetch(`${BASE_URL}/categories/${categoryId}`)
@@ -23,9 +44,12 @@ export const Category = () => {
         return res.json();
       })
       .then(({ data }) => {
-        setSaleItems([...data]);
+        setCategoryItems([...data]);
       });
   }, []);
+
+  // console.log(categoryId);
+  // console.log(category);
 
   const [isChecked, setIsChecked] = useState(false);
   const [sortOrder, setSortOrder] = useState("by default");
@@ -43,7 +67,7 @@ export const Category = () => {
     setSortOrder(event.target.value);
   };
 
-  const sortedItems = [...saleItems].sort((a, b) => {
+  const sortedItems = [...categoryItems].sort((a, b) => {
     if (sortOrder === "price: high-low") {
       return b.price - a.price;
     } else if (sortOrder === "price: low-high") {
@@ -72,11 +96,11 @@ export const Category = () => {
         <Link to={"/"}>
           <div>Main Page</div>
         </Link>
-        <hr/>
+        <hr />
         <Link to={"/categories"}>
           <div>Categories</div>
         </Link>
-        <hr/>
+        <hr />
         <div>{categories[categoryId - 1].title}</div>
       </div>
       <h2
@@ -98,9 +122,18 @@ export const Category = () => {
           onChange={minValueChange}
           className={styles.priceInputs}
         />{" "}
-        <input type="number" placeholder="to" onChange={maxValueChange} className={styles.priceInputs} />
+        <input
+          type="number"
+          placeholder="to"
+          onChange={maxValueChange}
+          className={styles.priceInputs}
+        />
         <span className={styles.texts}>Discounted items </span>{" "}
-        <input type="checkbox" onChange={checkboxChange} className={styles.checkboxDiscounted} />
+        <input
+          type="checkbox"
+          onChange={checkboxChange}
+          className={styles.checkboxDiscounted}
+        />
         <span className={styles.texts}>Sorted</span>
         <select id={styles.sortedForm} onChange={sortChange}>
           <option value="by default">by default</option>

@@ -6,10 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../../constants";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
-import { getCardCount } from "../../store/selectors";
+import { getCardCount, getDiscountStatus } from "../../store/selectors";
 import { ShoppingItem } from "../../components/shopping-item";
 import { OrderModal } from "../../components/order-modal";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { sendOrderData } from "../../store/async-actions";
+import { clearProductCart } from "../../store/cart-slice";
 import cn from "classnames";
 
 export const ShoppingCart = () => {
@@ -19,6 +22,8 @@ export const ShoppingCart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const shopingCartItems = useSelector((state) => state.cart.cardsData);
   const cardCounter = useSelector(getCardCount);
+  const discountStatus = useSelector(getDiscountStatus);
+
   const filteredItems = allItems.filter(
     (item) => shopingCartItems[item.id] > 0
   );
@@ -30,42 +35,53 @@ export const ShoppingCart = () => {
     );
   }, 0);
 
-  //console.log(shopingCartItems);
+  // const clearOrders = () => {
+
+  // };
   const onToggleModal = () => {
     setIsModalOpen((prev) => !prev);
   };
 
-  const [inputName, setInputName] = useState("");
-  const [inputPhone, setInputPhone] = useState("");
-  const [inputEmail, setInputEmail] = useState("");
+  const { register, handleSubmit, formState, getValues } = useForm();
 
-  const inputNameChange = (e) => {
-    setInputName(e.target.value);
+  const onFormSubmit = (formData) => {
+    dispatch(sendOrderData(formData));
+    console.log(formData);
+    dispatch(clearProductCart());
+    onToggleModal();     //??????????????????????
   };
 
-  const inputPhoneChange = (e) => {
-    setInputPhone(e.target.value);
-  };
-  const inputEmailChange = (e) => {
-    setInputEmail(e.target.value);
-  };
-  //console.log(inputName,inputPhone,inputEmail);
-  const orderLog = () => {
-    console.log({
-      name: inputName,
-      phone: inputPhone,
-      email: inputEmail,
-      order: shopingCartItems
-    });
-    
-  };
-  const orderSend = () => {
-    orderLog();
-    onToggleModal();
-    setInputName("");
-    setInputPhone("");
-    setInputEmail("");
-  };
+  // const [inputName, setInputName] = useState("");
+  // const [inputPhone, setInputPhone] = useState("");
+  // const [inputEmail, setInputEmail] = useState("");
+
+  // const inputNameChange = (e) => {
+  //   setInputName(e.target.value);
+  // };
+
+  // const inputPhoneChange = (e) => {
+  //   setInputPhone(e.target.value);
+  // };
+  // const inputEmailChange = (e) => {
+  //   setInputEmail(e.target.value);
+  // };
+  // //console.log(inputName,inputPhone,inputEmail);
+  // const orderLog = () => {
+  //   console.log({
+  //     name: inputName,
+  //     phone: inputPhone,
+  //     email: inputEmail,
+  //     order: shopingCartItems
+  //   });
+
+  // };
+  // const orderSend = () => {
+  //   orderLog();
+  //   onToggleModal();
+  //   setInputName("");
+  //   setInputPhone("");
+  //   setInputEmail("");
+  // };
 
   if (cardCounter === 0) {
     return (
@@ -77,7 +93,7 @@ export const ShoppingCart = () => {
         >
           <h2>Shopping Cart</h2>{" "}
           <div className={styles.lineWrapper}>
-            <div className={styles.line}></div>
+            <hr/>
             <Link to="/" className={styles.titleLink}>
               Back to the store
             </Link>
@@ -105,7 +121,7 @@ export const ShoppingCart = () => {
         >
           <h2>Shopping Cart</h2>{" "}
           <div className={styles.lineWrapper}>
-            <div className={styles.line}></div>
+          <hr/>
             <Link to="/" className={styles.titleLink}>
               Back to the store
             </Link>
@@ -144,10 +160,14 @@ export const ShoppingCart = () => {
                     [styles.dark]: theme === "dark",
                   })}
                 >
-                  {totalSum.toFixed(2)}$
+                  {discountStatus
+                    ? (totalSum - totalSum * 0.05).toFixed(2)
+                    : totalSum.toFixed(2)}
+                  $
                 </span>
               </div>
-              <div
+              <form
+                onSubmit={handleSubmit(onFormSubmit)}
                 className={cn(styles.orderInputs, {
                   [styles.dark]: theme === "dark",
                 })}
@@ -156,23 +176,22 @@ export const ShoppingCart = () => {
                   type="text"
                   placeholder="Name"
                   className={styles.shoppingCartInputs}
-                  onChange={inputNameChange}
+                  {...register("userName", { required: true })}
                 ></input>
                 <input
                   type="number"
-                  pattern="\(\d\d\d\) ?\d\d\d-\d\d-\d\d"
                   placeholder="Phone number"
                   className={styles.shoppingCartInputs}
-                  onChange={inputPhoneChange}
+                  {...register("userPhone", { required: true })}
                 ></input>
                 <input
                   type="email"
                   placeholder="Email"
                   className={styles.shoppingCartInputs}
-                  onChange={inputEmailChange}
+                  {...register("userEmail", { required: true })}
                 ></input>
-                <button onClick={orderSend}>Order</button>
-              </div>
+                <button type="submit">Order</button>
+              </form>
             </div>
           </div>
         </div>
