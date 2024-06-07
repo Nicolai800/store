@@ -6,6 +6,7 @@ import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
 import { Link } from "react-router-dom";
 import cn from "classnames";
+import { getIsLoading, getError } from "../../store/selectors";
 
 export const AllSales = () => {
   const allItems = useSelector((state) => state.shop.items);
@@ -44,7 +45,16 @@ export const AllSales = () => {
     .sort((a, b) => a.price - b.price));
   
 
-  return (
+    const isLoading = useSelector(getIsLoading);
+    const error = useSelector(getError);
+  
+    if (error) {
+      return <div>ERROR</div>;
+    }
+  
+    return isLoading ? (
+      <div className={styles.loading}>Loading... Please wait...</div>
+    ) : (
     <>
     <div className={cn(styles.breadCrumbs, {
             [styles.dark]: theme === "dark",

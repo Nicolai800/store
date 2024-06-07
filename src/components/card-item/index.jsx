@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, memo, useCallback} from "react";
 import {HeartIcon, CartIcon} from "../../assets/icons"
 import styles from "./index.module.scss";
 import { BASE_URL } from "../../constants";
@@ -16,15 +16,15 @@ export const CardItem = ({ price, title, image, discont, discontPercent, id }) =
   const selectedData = useSelector((state)=> state.cart.cardsData);
   const likesData = useSelector((state)=> state.shop.likesData);
   
-  const likeToggle = (articul) => {
+  const likeToggle = useCallback((articul) => {
     dispatch(toggleToLikes(articul))
-  }
+  },[dispatch]);
   // const cartToggle = (articul, select) => {
   //   dispatch(toggleCartItem({articul, select}))
   // }
-  const cartToggle = (articul) => {
+  const cartToggle = useCallback((articul) => {
     dispatch(toggleCartItem(articul))
-  }
+  },[dispatch]);
   return (
     <div className={cn(styles.wrapper, {
       [styles.dark]: theme === "dark"

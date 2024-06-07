@@ -1,74 +1,75 @@
 .backgroundImage {
-  width: 1440px;
-  height: 600px;
-  max-width: 100%;
+  //max-width: 100%;
+  //height: 600px;
+  //max-width: 100%;
+  padding: 80px 40px 210px 40px;
   background-size: cover;
-  // background-repeat: no-repeat;
-  // filter: brightness(60%);
-  // background-position: bottom;
-  // background-position-y: -230px;
-
-  @media screen and (max-width: 1000px) {
-    padding: 60px 20px 40px 20px;
-    height: 476px;
+  background-position: center;
+  //display: flex;
+  //flex-direction: column;
+  // text-align: start;
+  @media screen and (max-width: 1100px) {
+    padding: 60px 20px 120px 20px;
   }
   @media screen and (max-width: 768px) {
-    height: 634px;
+    padding: 60px 20px 326px 20px;
   }
-  @media screen and (max-width: 480px) {
-    height: 600px;
+  @media screen and (max-width: 760px) {
+    padding: 50px 20px 215px 20px;
   }
 }
 
 .headerText {
-  width: 1360px;
-  max-width: 100%;
+  // width: 1360px;
+  // max-width: 100%;
   color: #ffffff;
   font-size: 96px;
   font-weight: 700;
   line-height: 105.6px;
-  position: absolute;
-  top: 0;
-  margin: 80px 40px 40px 40px;
-
-  @media screen and (max-width: 1000px) {
-    line-height: 99px;
-    font-size: 90;
+  //top: 0;
+  //margin: 80px 40px 40px 40px;
+  p {
+    text-wrap: nowrap;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1100px) {
+    line-height: 99px;
+    font-size: 85px;
+  }
+
+  @media screen and (max-width: 950px) {
     line-height: 74.8px;
     font-size: 68px;
   }
 
-  @media screen and (max-width: 768px) {
-    line-height: 60px;
+  @media screen and (max-width: 760px) {
+    line-height: 65px;
     font-size: 66px;
+    p {
+      text-wrap: wrap;
+    }
   }
 
-  @media screen and (max-width: 768px) {
-    line-height: 57.5px;
+  @media screen and (max-width: 380px) {
+    //line-height: 57.5px;
     font-size: 52px;
   }
 }
 
 .buttonHeader {
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 26px;
-  text-align: center;
   background-color: #92a134;
-  width: 218px;
-  height: 58px;
   border-radius: 6px;
   border: none;
-  left: 40px;
   cursor: pointer;
-
-  @media screen and (max-width: 480px) {
-    margin-top: 24px;
-  }
+  white-space: nowrap;
+  margin-top: 40px;
+  font-size: 20px;
+  line-height: 26px;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  max-width: 218px;
+  width: 100%;
 }
 
 .buttonHeader:active {
@@ -78,7 +79,6 @@
 
 .headerWrapper {
   width: 1440px;
-  height: 600px;
+  //height: 600px;
   max-width: 100%;
-  position: relative;
 }

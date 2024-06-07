@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
+import { getError, getIsLoading } from "../../store/selectors";
 
 export const AllProducts = () => {
   const dispatch = useDispatch();
@@ -52,15 +53,26 @@ export const AllProducts = () => {
           .filter((item) => item.price >= minValue && item.price <= maxValue)
           .sort((a, b) => a.price - b.price);
 
-  return (
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
+
+  if (error) {
+    return <div>ERROR</div>;
+  }
+
+  return isLoading ? (
+    <div className={styles.loading}>Loading... Please wait...</div>
+  ) : (
     <>
-      <div className={cn(styles.breadCrumbs, {
-            [styles.dark]: theme === "dark",
-          })}>
+      <div
+        className={cn(styles.breadCrumbs, {
+          [styles.dark]: theme === "dark",
+        })}
+      >
         <Link to={"/"}>
           <div>Main Page</div>
         </Link>
-         <hr/>
+        <hr />
         <div>All product</div>
       </div>
       <h2

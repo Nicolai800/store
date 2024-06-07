@@ -1,5 +1,5 @@
 .wrapper {
-  height: 422px;
+  height: auto;
   max-width: 316px;
   width: 100%;
   gap: 20px;
@@ -15,6 +15,9 @@
 
 .header {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .discount {
@@ -89,7 +92,8 @@
 }
 
 .info {
-  padding: 0px 32px 0px 32px;
+  //padding: 0px 32px 0px 32px;
+  padding: 20px;
   border-top: 1px solid #dddddd;
 }
 
@@ -100,14 +104,14 @@
 
 .description {
   color: #424436;
-  width: 500px;
+  //max-width: 500px;
   font-size: 20px;
   line-height: 26px;
-  max-width: 100%;
+  width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin-top: 20px;
+  //margin-top: 20px;
 }
 
 .description.dark {
@@ -127,7 +131,7 @@
 
 .oldPrice {
   color: #8b8b8b;
-  font-weight: 500px;
+  font-weight: 500;
   font-size: 20px;
   line-height: 26px;
   text-decoration: line-through;

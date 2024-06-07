@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./index.module.scss";
 import headerBackImg from "../../assets/headerBackImgjpg.jpg";
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../../constants";
 
 export const Header = () => {
   return (
@@ -10,11 +9,14 @@ export const Header = () => {
       <div
         className={styles.backgroundImage}
         style={{ backgroundImage: `url(${headerBackImg})` }}
-      ></div>
-      <div className={styles.headerText}>
-        <div>Amazing Discounts</div>
-        <div>on Garden Products!</div>
-        <Link to={`${BASE_URL}/all-sales`}><button className={styles.buttonHeader}>Check out</button> </Link>
+      >
+        <div className={styles.headerText}>
+          <p>Amazing Discounts</p>
+          <p>on Garden Products!</p>
+          <Link to="/all-sales">
+            <button className={styles.buttonHeader}>  Check out  </button>{" "}
+          </Link>
+        </div>
       </div>
     </div>
   );

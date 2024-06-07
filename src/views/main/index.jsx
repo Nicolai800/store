@@ -8,7 +8,7 @@ import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllItems, fetchAllCategories } from "../../store/async-actions";
+import { fetchAllItems, fetchAllCategories } from "../../store/async-actions"; 
 import {
   getDiscountItems,
   getIsLoading,
@@ -34,7 +34,7 @@ export const Main = () => {
   }
 
   return isLoading ? (
-    <div>LOADING...</div>
+    <div className={styles.loading}>Loading... Please wait...</div>
   ) : (
     <>
       <Header />

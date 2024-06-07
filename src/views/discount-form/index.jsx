@@ -20,7 +20,6 @@ export const DiscountForm = () => {
 
   const onFormSubmit = (formData) => {
     dispatch(sendSaleData(formData));
-    console.log(formData);
   };
 
   return (

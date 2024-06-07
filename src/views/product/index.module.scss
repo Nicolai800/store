@@ -101,7 +101,7 @@
     cursor: pointer;
     border-radius: 6px;
   }
-  span{
+  span {
     position: relative;
     max-width: 90px;
     width: 100%;
@@ -118,7 +118,7 @@
   }
 }
 
-.quantity.dark{
+.quantity.dark {
   button {
     background-color: #383a2c;
   }
@@ -234,9 +234,9 @@ button {
   align-items: center;
   max-width: 1440px;
   width: 100%;
-  hr{
-    width: 16px; 
-    height: 50%; 
+  hr {
+    width: 16px;
+    height: 50%;
     border-top: 1px solid #dddddd;
   }
 
@@ -262,4 +262,12 @@ button {
 .breadCrumbs.dark {
   background-color: #424436;
   color: #fff;
+}
+
+.loading {
+  font-size: 30px;
+  font-weight: 500;
+  padding: 20px;
+  color: #424436;
+  background-color: #fffff1;
 }

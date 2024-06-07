@@ -11,6 +11,7 @@ import { themeContext } from "../../context/theme";
 import { toggleToLikes } from "../../store/shop-slice";
 import { setProductCart } from "../../store/cart-slice";
 import { ProductImgModal } from "../../components/product-img-modal";
+import { getError, getIsLoading } from "../../store/selectors";
 
 export const Product = () => {
   const { itemId } = useParams();
@@ -48,8 +49,17 @@ export const Product = () => {
     dispatch(setProductCart({ productCounter: counter, id }));
     setProductCounter(1);
   };
-  console.log(productCounter);
-  return (
+
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
+
+  if (error) {
+    return <div>ERROR</div>;
+  }
+
+  return isLoading ? (
+    <div className={styles.loading}>Loading... Please wait...</div>
+  ) : (
     <>
       <div
         className={cn(styles.breadCrumbs, {
@@ -59,15 +69,15 @@ export const Product = () => {
         <Link to={"/"}>
           <div>Main Page</div>
         </Link>
-         <hr/>
+        <hr />
         <Link to={"/categories"}>
           <div>Categories</div>
         </Link>
-        <hr/>
+        <hr />
         <Link to={`/categories/${[discoveredItem.categoryId]}`}>
           <div>{categories[discoveredItem.categoryId - 1].title}</div>
         </Link>
-        <hr/>
+        <hr />
         <div>{title}</div>
       </div>
       <div
@@ -78,7 +88,11 @@ export const Product = () => {
         <div className={styles.product_card}>
           <div className={styles.left_card}>
             <div className={styles.product_image}>
-              <img src={BASE_URL + image} alt="Secateurs" onClick={()=>onToggleImgModal()}/>
+              <img
+                src={BASE_URL + image}
+                alt="Secateurs"
+                onClick={() => onToggleImgModal()}
+              />
             </div>
           </div>
           <div className={styles.right_card}>
@@ -121,12 +135,14 @@ export const Product = () => {
                 -{discontPercent}%
               </div>
             </div>
-            <div className={cn(styles.quantity, {
-                  [styles.dark]: theme === "dark",
-                })}>
+            <div
+              className={cn(styles.quantity, {
+                [styles.dark]: theme === "dark",
+              })}
+            >
               <button onClick={deleteCounter}>-</button>
               <span>{productCounter}</span>
-              <button onClick={addCounter}>+</button> 
+              <button onClick={addCounter}>+</button>
             </div>
             <button
               onClick={() => addToCard(productCounter, itemId)}
@@ -145,7 +161,9 @@ export const Product = () => {
           </div>
         </div>
       </div>
-      {isImgModalOpen && <ProductImgModal onToggleImgModal={onToggleImgModal} image={image}/>}
+      {isImgModalOpen && (
+        <ProductImgModal onToggleImgModal={onToggleImgModal} image={image} />
+      )}
     </>
   );
 };

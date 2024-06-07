@@ -1,13 +1,30 @@
 .categoriesLayout {
   display: flex;
-  justify-content: space-between;
-  gap: 30px;
+  justify-content: center;
+  gap: 32px;
   flex-wrap: nowrap;
   width: 1440px;
   max-width: 100%;
-  height: 500px;
   background-color: #fffff1;
   padding: 40px;
+  @media screen and (max-width: 1000px) {
+    padding: 20px;
+    gap: 20px;
+  }
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 20px;
+    > * {
+      flex: 1 1 calc(50% - 20px);
+      max-width: calc(50% - 20px);
+    }
+  }
+  @media screen and (max-width: 470px) {
+    > * {
+      flex: none;
+      max-width: 320px;
+    }
+  }
 }
 
 .categoriesLayout.dark {
@@ -20,6 +37,9 @@
   background-color: #fffff1;
   padding: 40px;
   display: flex;
+  @media screen and (max-width: 1000px) {
+    padding: 20px;
+  }
 
   h2 {
     font-weight: 700;
@@ -28,6 +48,20 @@
     color: #424436;
     margin-right: 32px;
     text-wrap: nowrap;
+
+    @media screen and (max-width: 768px) {
+      font-size: 56px;
+      line-height: 61.6px;
+      margin-right: 32px;
+    }
+    @media screen and (max-width: 525px) {
+      font-size: 48px;
+      line-height: 52.8px;
+    }
+    @media screen and (max-width: 360px) {
+      font-size: 40px;
+      line-height: 44px;
+    }
   }
 }
 
@@ -37,7 +71,6 @@
     color: #fff;
   }
 }
-
 
 .breadCrumbs {
   background-color: #fffff1;
@@ -69,7 +102,7 @@
     color: #8b8b8b;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 470px) {
     display: none;
   }
 }
@@ -83,7 +116,6 @@
   display: none;
 }
 
-
 .titleLink {
   color: #8b8b8b;
   font-weight: 500;
@@ -96,6 +128,10 @@
   height: 36px;
   text-decoration: none;
   text-wrap: nowrap;
+  @media screen and (max-width: 540px) {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
 
 .lineWrapper {
@@ -107,7 +143,47 @@
     width: 100%;
     border-top: 1px solid #dddddd;
   }
+
+  @media screen and (max-width: 470px) {
+    display: none;
+  }
 }
-.lineWrapper.none{
+.lineWrapper.none {
   display: none;
+}
+
+.loading {
+  font-size: 30px;
+  font-weight: 500;
+  padding: 20px;
+  color: #424436;
+  background-color: #fffff1;
+}
+
+.titleLinkMobile {
+  display: none;
+  @media screen and (max-width: 470px) {
+    display: inline;
+    color: #8b8b8b;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20.16px;
+    text-align: center;
+    border: 1px solid #dddddd;
+    padding: 8px 16px;
+    border-radius: 6px;
+    height: 36px;
+    text-decoration: none;
+    text-wrap: nowrap;
+  }
+}
+
+.titleLinkMobileWrapper {
+  background-color: #fffff1;
+  text-align: center;
+  padding-top: 24px;
+}
+
+.titleLinkMobileWrapper.dark {
+  background-color: #424436;
 }
