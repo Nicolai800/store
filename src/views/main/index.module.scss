@@ -1,44 +1,43 @@
 .sales {
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-    max-width: 100%;
-    margin: 40px 40px 0px 40px;
-    background-color: #fffff1;
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  max-width: 100%;
+  margin: 40px 40px 0px 40px;
+  background-color: #fffff1;
 }
 
-.sales.dark{
-    background-color: #424436; 
+.sales.dark {
+  background-color: #424436;
 }
-.saleText{
-font-size: 64px;
-font-weight: 700;
-line-height: 70.4px;
-text-align: left;
-padding: 40px;
-
-}
-
-.saleText.dark{
-    background-color: #424436;
-    color: #ffffff;
+.saleText {
+  color: #424436;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 70.4px;
+  text-align: left;
+  padding: 40px;
 }
 
-.saleWrapper{
-    background-color: #fffff1;
-    width: 100%;
-    max-width: 1440px;
-
+.saleText.dark {
+  background-color: #424436;
+  color: #ffffff;
 }
 
-.saleWrapper.dark{
-    background-color: #424436;
+.saleWrapper {
+  background-color: #fffff1;
+  width: 100%;
+  max-width: 1440px;
 }
 
-.loading{
-    font-size: 30px;
-    font-weight: 500;
-    padding: 20px;
-    color: #424436;
-    background-color: #fffff1;
+.saleWrapper.dark {
+  background-color: #424436;
+}
+
+.loading {
+  font-size: 30px;
+  font-weight: 500;
+  padding: 20px;
+  color: #424436;
+  background-color: #fffff1;
 }

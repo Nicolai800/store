@@ -87,33 +87,41 @@ export const AllProducts = () => {
           [styles.dark]: theme === "dark",
         })}
       >
-        <span>Price</span>{" "}
-        <input
-          type="number"
-          placeholder="from"
-          onChange={minValueChange}
-          className={styles.priceInputs}
-        />{" "}
-        <input
-          type="number"
-          placeholder="to"
-          onChange={maxValueChange}
-          className={styles.priceInputs}
-        />
-        <span className={styles.texts}>Discounted items </span>{" "}
-        <input
-          type="checkbox"
-          checked={isChecked}
-          onChange={checkboxChange}
-          className={styles.checkboxDiscounted}
-        />
-        <span className={styles.texts}>Sorted</span>
-        <select id={styles.sortedForm} onChange={sortChange}>
-          <option value="by default">by default</option>
-          <option value="newest">newest</option>
-          <option value="price: high-low">price: high-low</option>
-          <option value="price: low-high">price: low-high</option>
-        </select>
+        {" "}
+        <div>
+          {" "}
+          <span>Price</span>{" "}
+          <input
+            type="number"
+            placeholder="from"
+            onChange={minValueChange}
+            className={styles.priceInputs}
+          />{" "}
+          <input
+            type="number"
+            placeholder="to"
+            onChange={maxValueChange}
+            className={styles.priceInputs}
+          />
+        </div>
+        <div>
+          <span>Discounted items </span>{" "}
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={checkboxChange}
+            className={styles.checkBoxDiscounted}
+          />
+        </div>
+        <div>
+          <span>Sorted</span>
+          <select id={styles.sortedForm} onChange={sortChange}>
+            <option value="by default">by default</option>
+            <option value="newest">newest</option>
+            <option value="price: high-low">price: high-low</option>
+            <option value="price: low-high">price: low-high</option>
+          </select>
+        </div>
       </div>
 
       <div
