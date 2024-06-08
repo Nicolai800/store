@@ -14,8 +14,9 @@ export const AllSales = () => {
   const [sortOrder, setSortOrder] = useState("by default");
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(0);
-  const salesItems = allItems
-  .filter(({ discont_price }) => discont_price !== null);
+  const salesItems = allItems.filter(
+    ({ discont_price }) => discont_price !== null
+  );
 
   const minValueChange = (event) => {
     setMinValue(event.target.value);
@@ -23,7 +24,7 @@ export const AllSales = () => {
   const maxValueChange = (event) => {
     setMaxValue(event.target.value);
   };
-  
+
   const sortChange = (event) => {
     setSortOrder(event.target.value);
   };
@@ -40,29 +41,33 @@ export const AllSales = () => {
     }
   });
 
-  const filteredAndSortedItems = ( !minValue && !maxValue ? sortedItems : sortedItems
-    .filter(item => item.price >= minValue && item.price <= maxValue)
-    .sort((a, b) => a.price - b.price));
-  
+  const filteredAndSortedItems =
+    !minValue && !maxValue
+      ? sortedItems
+      : sortedItems
+          .filter((item) => item.price >= minValue && item.price <= maxValue)
+          .sort((a, b) => a.price - b.price);
 
-    const isLoading = useSelector(getIsLoading);
-    const error = useSelector(getError);
-  
-    if (error) {
-      return <div>ERROR</div>;
-    }
-  
-    return isLoading ? (
-      <div className={styles.loading}>Loading... Please wait...</div>
-    ) : (
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
+
+  if (error) {
+    return <div>ERROR</div>;
+  }
+
+  return isLoading ? (
+    <div className={styles.loading}>Loading... Please wait...</div>
+  ) : (
     <>
-    <div className={cn(styles.breadCrumbs, {
-            [styles.dark]: theme === "dark",
-          })}>
+      <div
+        className={cn(styles.breadCrumbs, {
+          [styles.dark]: theme === "dark",
+        })}
+      >
         <Link to={"/"}>
           <div>Main Page</div>
         </Link>
-        <hr/>
+        <hr />
         <div>All sales</div>
       </div>
       <h2
@@ -77,29 +82,39 @@ export const AllSales = () => {
           [styles.dark]: theme === "dark",
         })}
       >
-        <span>Price</span>{" "}
-        <input
-          type="number"
-          placeholder="from"
-          onChange={minValueChange}
-          className={styles.priceInputs}
-        />{" "}
-        <input type="number" placeholder="to" onChange={maxValueChange} className={styles.priceInputs} />
-        <span className={styles.texts}>Sorted</span>
-        <select id={styles.sortedForm} onChange={sortChange}>
-          <option value="by default">by default</option>
-          <option value="newest">newest</option>
-          <option value="price: high-low">price: high-low</option>
-          <option value="price: low-high">price: low-high</option>
-        </select>
+        <div>
+          <span>Price</span>{" "}
+          <input
+            type="number"
+            placeholder="from"
+            onChange={minValueChange}
+            className={styles.priceInputs}
+          />{" "}
+          <input
+            type="number"
+            placeholder="to"
+            onChange={maxValueChange}
+            className={styles.priceInputs}
+          />
+        </div>
+        <div>
+          {" "}
+          <span className={styles.texts}>Sorted</span>
+          <select id={styles.sortedForm} onChange={sortChange}>
+            <option value="by default">by default</option>
+            <option value="newest">newest</option>
+            <option value="price: high-low">price: high-low</option>
+            <option value="price: low-high">price: low-high</option>
+          </select>
+        </div>
       </div>
       <div
         className={cn(styles.allSalesWrapper, {
           [styles.dark]: theme === "dark",
         })}
       >
-        {filteredAndSortedItems
-          .map(({ price, discont_price, title, image, id }) => (
+        {filteredAndSortedItems.map(
+          ({ price, discont_price, title, image, id }) => (
             <CardItem
               key={id}
               price={price}
@@ -109,7 +124,8 @@ export const AllSales = () => {
               image={image}
               id={id}
             />
-          ))}
+          )
+        )}
       </div>
     </>
   );

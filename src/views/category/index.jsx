@@ -30,7 +30,7 @@ export const Category = () => {
   const categories = useSelector(getAllCategories);
   const category = categories.find(({ id }) => id === Number(categoryId));
   
-  //console.log(categories[categoryId - 1].title);
+  console.log(category);
 
   const [categoryItems, setCategoryItems] = useState([]);
 

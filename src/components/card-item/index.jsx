@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { toggleCartItem } from "../../store/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleToLikes } from "../../store/shop-slice";
+import { getIsLoading, getError } from "../../store/selectors";
 
 export const CardItem = ({ price, title, image, discont, discontPercent, id }) => {
   const { theme } = useContext(themeContext);
@@ -25,7 +26,17 @@ export const CardItem = ({ price, title, image, discont, discontPercent, id }) =
   const cartToggle = useCallback((articul) => {
     dispatch(toggleCartItem(articul))
   },[dispatch]);
-  return (
+  
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
+
+ if (error) {
+    return <div>ERROR</div>;
+  }
+
+  return isLoading ? (
+    <div className={styles.loading}>Loading... Please wait...</div>
+  ) : (
     <div className={cn(styles.wrapper, {
       [styles.dark]: theme === "dark"
     })}>

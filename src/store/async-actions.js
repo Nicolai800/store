@@ -21,7 +21,7 @@ export const fetchCategory = createAsyncThunk(
   "shop/fetchCategory",
   async (categoryId, thunkApi) => {
     try {
-      const rawData = await fetch(`${BASE_URL}//categories/${categoryId}`);
+      const rawData = await fetch(`${BASE_URL}/categories/${categoryId}`);
       const data = await rawData.json();
       return thunkApi.fulfillWithValue(data);
     } catch (err) {
