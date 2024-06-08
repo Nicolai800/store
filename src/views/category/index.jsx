@@ -34,10 +34,6 @@ export const Category = () => {
   const categories = useSelector(getAllCategories);
 
 
-  // useEffect(() => {
-  //   setCategoryItems(fetchCategory(Number(categoryId)));
-  // });
-
   useEffect(() => {
     setIsLoading(true);
     fetchCategoryItems(categoryId).then((data) => {
