@@ -1,12 +1,19 @@
 .wrapper {
   height: auto;
   max-width: 316px;
-  width: 100%;
+  min-width: 215px;
+  flex: 1 1 21%; 
+  //width: 100%;
   gap: 20px;
   border-radius: 10px;
   border: 1px solid #dddddd;
   opacity: 0px;
   background-color: #ffffff;
+  @media screen and (max-width:1000px) {
+    //max-width: 354px;
+    gap: 20px;
+    
+  }
 }
 
 .wrapper.dark {

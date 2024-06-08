@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { CardItem } from "../../components/card-item";
 import styles from "./index.module.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { themeContext } from "../../context/theme";
 import { Link } from "react-router-dom";
 import cn from "classnames";
 import { getIsLoading, getError } from "../../store/selectors";
+import { fetchAllItems } from "../../store/async-actions";
 
 export const AllSales = () => {
   const allItems = useSelector((state) => state.shop.items);
@@ -14,6 +15,12 @@ export const AllSales = () => {
   const [sortOrder, setSortOrder] = useState("by default");
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(0);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if(!allItems.length){
+      dispatch(fetchAllItems());
+    }
+  }, [dispatch]);
   const salesItems = allItems.filter(
     ({ discont_price }) => discont_price !== null
   );

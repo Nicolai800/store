@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect} from "react";
 import { CardItem } from "../../components/card-item";
 import styles from "./index.module.scss";
 import { setItems } from "../../store/shop-slice";
@@ -9,6 +9,7 @@ import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
 import { getError, getIsLoading } from "../../store/selectors";
+import { fetchAllItems, fetchAllCategories } from "../../store/async-actions"; 
 
 export const AllProducts = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,11 @@ export const AllProducts = () => {
   const [sortOrder, setSortOrder] = useState("by default");
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(0);
+  useEffect(() => {
+    if(!allItems.length){
+      dispatch(fetchAllItems());
+    }
+  }, [dispatch]);
 
   const minValueChange = (event) => {
     setMinValue(event.target.value);

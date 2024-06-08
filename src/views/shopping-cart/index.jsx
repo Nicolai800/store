@@ -12,7 +12,6 @@ import { OrderModal } from "../../components/order-modal";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { sendOrderData } from "../../store/async-actions";
-import { clearProductCart } from "../../store/cart-slice";
 import cn from "classnames";
 
 export const ShoppingCart = () => {
@@ -45,9 +44,8 @@ export const ShoppingCart = () => {
   const { register, handleSubmit, formState, getValues } = useForm();
 
   const onFormSubmit = (formData) => {
-    dispatch(sendOrderData(formData));
+    dispatch(sendOrderData({...formData, order: shopingCartItems}));
     console.log(formData);
-    dispatch(clearProductCart());
     onToggleModal();     //??????????????????????
   };
 

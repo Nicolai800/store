@@ -21,7 +21,6 @@ export const Category = () => {
   const dispatch = useDispatch();
   const [categoryItemsObj, setCategoryItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [st, rerender] = useState({}); // TODO delete it
 
   // const [params] = useSearchParams();
   useEffect(() => {
@@ -31,7 +30,7 @@ export const Category = () => {
   }, [dispatch, categoryId]);
 
   const { theme } = useContext(themeContext);
-  const categories = useSelector(getAllCategories);
+  //const categories = useSelector(getAllCategories);
 
 
   useEffect(() => {
@@ -64,8 +63,6 @@ export const Category = () => {
     setIsChecked(event.target.checked);
   };
 
-  console.log(categoryItemsObj);
-
   // TODO вынести в утилитку
   const filteredAndSortedItems =
     !minValue && !maxValue
@@ -88,7 +85,6 @@ export const Category = () => {
         <hr />
         <div>{categoryItemsObj.category?.title}</div>
       </div>
-      <button onClick={() => rerender({})}>rerender</button>
       <h2
         className={cn(styles.categoryTitle, {
           [styles.dark]: theme === "dark",

@@ -5,7 +5,7 @@ import { Footer } from "../footer/footer";
 
 export const Layout = () => {
   return (
-    <main>
+    <main style={{margin:"0 auto", maxWidth: "1440px"}}>
       <Navigation />
       <Outlet/>
       <Footer />

@@ -16,15 +16,17 @@ import { fetchAllItems, fetchAllCategories } from "../../store/async-actions";
 export const CategoriesLayout = ({ elementsCount = 5, breadCrumbs = true }) => {
   const { theme } = useContext(themeContext);
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchAllItems());
-  //   dispatch(fetchAllCategories());
-  // }, [dispatch]);
+  const categoriesItems = useSelector(getAllCategories);
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
+  useEffect(() => {
+    if (!categoriesItems.length) {
+      dispatch(fetchAllCategories());
+    }
+  }, [dispatch]);
 
   //const categoriesItems = useSelector((state) => state.shop.categories);
 
-  const categoriesItems = useSelector(getAllCategories);
   // const [categoriesItems, setCategoriesItems] = useState([]);
 
   //   useEffect(() => {
@@ -44,9 +46,6 @@ export const CategoriesLayout = ({ elementsCount = 5, breadCrumbs = true }) => {
       return false;
     }
   });
-
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
 
   if (error) {
     return <div>ERROR</div>;

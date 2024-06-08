@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, memo } from "react";
 import { HeartIcon, CartIcon } from "../../assets/icons";
 import styles from "./index.module.scss";
 import { BASE_URL } from "../../constants";
@@ -9,7 +9,7 @@ import { toggleCartItem } from "../../store/cart-slice";
 import { deleteCardItem,addToCart, deleteFromCart} from "../../store/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
 
-export const ShoppingItem = ({
+export const ShoppingItem = memo(({
   price,
   title,
   image,
@@ -82,4 +82,4 @@ export const ShoppingItem = ({
       </div>
     </div>
   );
-};
+});

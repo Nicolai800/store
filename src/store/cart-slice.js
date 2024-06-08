@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { sendOrderData } from "./async-actions";
 
 const cardItems = createSlice({
   name: "card",
@@ -27,10 +28,18 @@ const cardItems = createSlice({
       //state.goodsData[id] = 0;
       state.cardsData[id] = productCounter;
     },
-    clearProductCart:(state) => {
-      state.cardsData = {}
-    }
   },
+
+  extraReducers: (builder) => {
+    
+    builder.addCase(sendOrderData.fulfilled, (state, action) => {
+        state.isLoading = false;
+        if (action.payload.status === 'OK'){
+            state.cardsData = {}
+        }
+    })
+   
+}
 });
 
 export const { toggleCartItem, deleteCardItem, addToCart, deleteFromCart, setProductCart, clearProductCart } =
@@ -38,41 +47,3 @@ export const { toggleCartItem, deleteCardItem, addToCart, deleteFromCart, setPro
 
 export default cardItems.reducer;
 
-// const cartSlice = createSlice({
-//   name: "cart",
-//   initialstate: {
-//     goodsData: {},
-//   },
-
-//   reducers: {
-//     addToCart: (state, { payload }) => {
-//       const { articul } = payload;
-//       !state.goodsData[articul]
-//         ? (state.goodsData[articul] = 1)
-//         : (state.goodsData[articul] += 1);
-//     },
-
-//     deleteFromCart: (state, action) => {
-//       const { articul } = action.payload;
-//       state.goodsData[articul]--;
-//       if (state.goodsData[articul] === 0) return;
-//     },
-
-//     deleteAllCart: (state, action) => {
-//       const { articul } = action.payload;
-//       state.goodsData[articul] = 0;
-//     },
-//     setProductCart: (state, { payload }) => {
-//       const { productCounter, id } = payload;
-//       state.goodsData[id] = 0;
-//       state.goodsData[id] + productCounter;
-//     },
-//     toggleCartItem: (state, { payload }) => {
-//       const { articul, select } = payload;
-//       state.goodsData[select] = Number(!state.goodsData[select]);
-//     },
-//   },
-// });
-
-// export const {addToCart,deleteFromCart,setProductCart, toggleCartItem,deleteAllCart,toggleCartItem} = cartSlice.actions;
-// export default cartSlice.reducer;

@@ -16,6 +16,7 @@ import {
 } from "../../store/selectors";
 
 export const Main = () => {
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
