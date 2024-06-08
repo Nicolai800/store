@@ -1,8 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { fetchAllItems, fetchAllCategories, sendSaleData } from './async-actions';
+import { fetchAllItems, fetchAllCategories, sendSaleData, fetchCategory } from './async-actions';
 
 const initialState = {
-    category: null,
+    categoryItems: [],
     items: [],
     isLoading: false,
     likesData: {},
@@ -56,6 +56,9 @@ const shopSlice = createSlice({
             if (action.payload.status === 'OK'){
                 state.discountApplied = true;
             }
+        })
+        builder.addCase(fetchCategory.fulfilled, (state, action) => {
+            state.categoryItems = action.payload;
         })
     }
 });

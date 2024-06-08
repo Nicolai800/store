@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useMemo, useCallback } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import { BASE_URL } from "../../constants";
 import { CardItem } from "../../components/card-item";
 import styles from "./index.module.scss";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
@@ -12,44 +11,40 @@ import { Link } from "react-router-dom";
 import {
   fetchAllItems,
   fetchAllCategories,
-  fetchCategory,
 } from "../../store/async-actions";
 import { useDispatch } from "react-redux";
+import {fetchCategoryItems} from '../../utils/fetchers/fetch-category-items';
+import {sortItems} from '../../utils/sortItems';
 
 export const Category = () => {
   const { categoryId } = useParams();
   const dispatch = useDispatch();
+  const [categoryItemsObj, setCategoryItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [st, rerender] = useState({}); // TODO delete it
 
   // const [params] = useSearchParams();
   useEffect(() => {
     dispatch(fetchAllItems());
     dispatch(fetchAllCategories());
-  }, [dispatch]);
+    // dispatch(fetchCategory(categoryId));
+  }, [dispatch, categoryId]);
 
   const { theme } = useContext(themeContext);
   const categories = useSelector(getAllCategories);
-  const category = categories.find(({ id }) => id === Number(categoryId));
-  
-  console.log(category);
 
-  const [categoryItems, setCategoryItems] = useState([]);
 
   // useEffect(() => {
   //   setCategoryItems(fetchCategory(Number(categoryId)));
   // });
 
   useEffect(() => {
-    fetch(`${BASE_URL}/categories/${categoryId}`)
-      .then((res) => {
-        return res.json();
-      })
-      .then(({ data }) => {
-        setCategoryItems([...data]);
-      });
-  }, []);
-
-  // console.log(categoryId);
-  // console.log(category);
+    setIsLoading(true);
+    fetchCategoryItems(categoryId).then((data) => {
+      setCategoryItems(data);
+      setIsLoading(false);
+    });
+  }, [categoryId]);
 
   const [isChecked, setIsChecked] = useState(false);
   const [sortOrder, setSortOrder] = useState("by default");
@@ -67,22 +62,15 @@ export const Category = () => {
     setSortOrder(event.target.value);
   };
 
-  const sortedItems = [...categoryItems].sort((a, b) => {
-    if (sortOrder === "price: high-low") {
-      return b.price - a.price;
-    } else if (sortOrder === "price: low-high") {
-      return a.price - b.price;
-    } else if (sortOrder === "newest") {
-      return new Date(b.updatedAt) - new Date(a.updatedAt);
-    } else {
-      return a.id - b.id;
-    }
-  });
+  const sortedItems = useMemo(() => sortItems(sortOrder, categoryItemsObj.data), [sortOrder, categoryItemsObj]);
 
   const checkboxChange = (event) => {
     setIsChecked(event.target.checked);
   };
 
+  console.log(categoryItemsObj);
+
+  // TODO вынести в утилитку
   const filteredAndSortedItems =
     !minValue && !maxValue
       ? sortedItems
@@ -91,6 +79,7 @@ export const Category = () => {
           .sort((a, b) => a.price - b.price);
 
   return (
+    isLoading ? <h1>LOADING</h1> : 
     <>
       <div className={styles.breadCrumbs}>
         <Link to={"/"}>
@@ -101,34 +90,35 @@ export const Category = () => {
           <div>Categories</div>
         </Link>
         <hr />
-        <div>{categories[categoryId - 1].title}</div>
+        <div>{categoryItemsObj.category?.title}</div>
       </div>
+      <button onClick={() => rerender({})}>rerender</button>
       <h2
         className={cn(styles.categoryTitle, {
           [styles.dark]: theme === "dark",
         })}
       >
-        {categories[categoryId - 1].title}
+        {categoryItemsObj.category?.title}
       </h2>
       <div
         className={cn(styles.categoryInputsWrapper, {
           [styles.dark]: theme === "dark",
         })}
       >
-        <span>Price</span>{" "}
+        <span>Price</span>
         <input
           type="number"
           placeholder="from"
           onChange={minValueChange}
           className={styles.priceInputs}
-        />{" "}
+        />
         <input
           type="number"
           placeholder="to"
           onChange={maxValueChange}
           className={styles.priceInputs}
         />
-        <span className={styles.texts}>Discounted items </span>{" "}
+        <span className={styles.texts}>Discounted items </span>
         <input
           type="checkbox"
           onChange={checkboxChange}
