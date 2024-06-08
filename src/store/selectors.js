@@ -33,3 +33,5 @@ export const getDiscountItems = (state) => {
     )
     .filter(({ discont_price }, index) => discont_price !== null && index < 4);
 };
+
+export const getCategoryItems = (state) => state.shop.categoryItems;

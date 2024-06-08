@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleToLikes } from "../../store/shop-slice";
 import { getIsLoading, getError } from "../../store/selectors";
 
-export const CardItem = ({ price, title, image, discont, discontPercent, id }) => {
+export const CardItem = memo(({ price, title, image, discont, discontPercent, id }) => {
   const { theme } = useContext(themeContext);
   const dispatch = useDispatch();
   // const selectedData = useSelector((state)=> state.cart.selectedData);
@@ -23,9 +23,10 @@ export const CardItem = ({ price, title, image, discont, discontPercent, id }) =
   // const cartToggle = (articul, select) => {
   //   dispatch(toggleCartItem({articul, select}))
   // }
-  const cartToggle = useCallback((articul) => {
-    dispatch(toggleCartItem(articul))
-  },[dispatch]);
+
+  const cartToggle = (articul) => {
+    dispatch(toggleCartItem(articul));
+  };
   
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
@@ -71,5 +72,5 @@ export const CardItem = ({ price, title, image, discont, discontPercent, id }) =
       </div>
     </div>
   );
-};
+});
 
