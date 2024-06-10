@@ -175,8 +175,9 @@
       display: inline-block;
       cursor: pointer;
       border: none;
-      width: 100%;
+      width: 100%; 
       max-width: 313px;
+      border-radius: 6px;
     }
     button:active {
       background-color: #424436;

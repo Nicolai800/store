@@ -91,6 +91,13 @@ export const Product = () => {
               alt="Product"
               onClick={() => onToggleImgModal()}
             />
+            <div
+                className={cn(styles.discountImg, {
+                  [styles.none]: discontPercent === 0,
+                })}
+              >
+                -{discontPercent}%
+              </div>
           </div>
           <div className={styles.titleWrapper}>
             <div

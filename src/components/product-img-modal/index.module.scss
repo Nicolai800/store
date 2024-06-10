@@ -1,19 +1,31 @@
-.modalBackground{
-    //z-index: 1;
-    background-color:  #28282866;
-    top: 0px;
-    position: absolute;
-    width: 100%;
-    height: 200%;
-    display: flex;
+.modalBackground {
+  //z-index: 1;
+  background-color: #28282866;
+  top: 0px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media screen and (max-width: 715px) {
+    align-items: first baseline;
+    padding-top: 180px;
+  }
+  @media screen and (max-width: 420px) {
+    padding-top: 108px;
+  }
 }
 
-.modalWrapper{
-    position: relative;
-    margin: 180px auto;
-    height: 160px;
-    img{
-        width: 900px;
-        height: 610px;
-    }
+.modalWrapper {
+  position: fixed;
+  margin: 20px;
+  // margin: 180px auto;
+  // height: 160px;
+
+  img {
+    max-width: 900px;
+    width: 100%;
+    aspect-ratio: 900 / 610;
+  }
 }

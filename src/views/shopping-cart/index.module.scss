@@ -4,6 +4,9 @@
   background-color: #fffff1;
   padding: 40px;
   display: flex;
+  @media screen and (max-width: 1000px) {
+    padding: 20px;
+  }
 
   h2 {
     font-weight: 700;
@@ -12,6 +15,20 @@
     color: #424436;
     margin-right: 32px;
     text-wrap: nowrap;
+    @media screen and (max-width: 768px) {
+      font-size: 56px;
+      line-height: 61px;
+      text-wrap: wrap;
+    }
+
+    @media screen and (max-width: 600px) {
+      font-size: 48px;
+      line-height: 52px;
+    }
+    @media screen and (max-width: 400px) {
+      font-size: 40px;
+      line-height: 44px;
+    }
   }
 }
 
@@ -28,6 +45,9 @@
   background-color: #fffff1;
   width: 100%;
   max-width: 1440px;
+  @media screen and (max-width: 1000px) {
+    padding: 20px;
+  }
 
   @media screen and (max-width: 780px) {
     display: block;
@@ -136,6 +156,7 @@
     font-weight: 600;
     font-size: 20px;
     line-height: 26px;
+    text-wrap: nowrap;
     text-align: center;
     color: #ffffff;
     padding: 16px 56px;
@@ -144,10 +165,20 @@
     border: none;
     width: 100%;
     max-width: 313px;
+    border-radius: 6px;
+
+    @media screen and (max-width: 600px) {
+      font-size: 18px;
+      line-height: 23px;
+      padding: 12px 52px;
+    }
   }
   button:active {
     background-color: #424436;
     transform: translateY(4px);
+  }
+  @media screen and (max-width: 1000px) {
+    padding: 20px;
   }
 }
 .emptyBasket.dark {
@@ -188,6 +219,9 @@
     width: 100%;
     border-top: 1px solid #dddddd;
   }
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 // .line {
 //   border-bottom: 1px solid #dddddd;
@@ -223,4 +257,3 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
-
