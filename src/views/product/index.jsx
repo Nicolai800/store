@@ -26,8 +26,7 @@ export const Product = () => {
   const categories = useSelector((state) => state.shop.categories);
   const { title, price, discont_price, image, description } = discoveredItem;
   const discontPercent = getDiscountPercent(price, discont_price);
-  // ### /products/${itemId}     - ссылка на первый продукт
-  // console.log(likesData);
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const likeToggle = (articul) => {
     dispatch(toggleToLikes(articul));
@@ -86,34 +85,31 @@ export const Product = () => {
         })}
       >
         <div className={styles.product_card}>
-          <div className={styles.left_card}>
-            <div className={styles.product_image}>
-              <img
-                src={BASE_URL + image}
-                alt="Secateurs"
-                onClick={() => onToggleImgModal()}
-              />
-            </div>
+          <div className={styles.productImage}>
+            <img
+              src={BASE_URL + image}
+              alt="Product"
+              onClick={() => onToggleImgModal()}
+            />
           </div>
-          <div className={styles.right_card}>
-            <div className={styles.titleWrapper}>
-              <h2
-                className={cn(styles.product_title, {
-                  [styles.dark]: theme === "dark",
-                })}
-              >
-                {title}
-              </h2>
-              <HeartIcon
-                id={itemId}
-                likeToggle={likeToggle}
-                className={cn(styles.heart, {
-                  [styles.dark]: theme === "dark",
-                  [styles.checked]: likesData[itemId],
-                })}
-              />
+          <div className={styles.titleWrapper}>
+            <div
+              className={cn(styles.productTitle, {
+                [styles.dark]: theme === "dark",
+              })}
+            >
+              {title}
             </div>
-
+            <HeartIcon
+              id={itemId}
+              likeToggle={likeToggle}
+              className={cn(styles.heart, {
+                [styles.dark]: theme === "dark",
+                [styles.checked]: likesData[itemId],
+              })}
+            />
+          </div>
+          <div className={styles.praicesWrapper}>
             <div
               className={cn(styles.price, {
                 [styles.dark]: theme === "dark",
@@ -143,21 +139,25 @@ export const Product = () => {
               <button onClick={deleteCounter}>-</button>
               <span>{productCounter}</span>
               <button onClick={addCounter}>+</button>
+              <div className={styles.addButton}>
+                {" "}
+                <button
+                  onClick={() => addToCard(productCounter, itemId)}
+                  className={styles.addToCart}
+                >
+                  Add to cart
+                </button>
+              </div>
             </div>
-            <button
-              onClick={() => addToCard(productCounter, itemId)}
-              className={styles.addToCart}
-            >
-              Add to cart
-            </button>
-            <div
-              className={cn(styles.description, {
-                [styles.dark]: theme === "dark",
-              })}
-            >
-              <p>Description</p>
-              <p>{description}</p>
-            </div>
+          </div>
+
+          <div
+            className={cn(styles.description, {
+              [styles.dark]: theme === "dark",
+            })}
+          >
+            <p>Description</p>
+            <p>{description}</p>
           </div>
         </div>
       </div>
