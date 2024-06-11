@@ -112,7 +112,7 @@ export const ShoppingCart = () => {
           >
             <h3>Order Details</h3>
             <div className={styles.orderPrais}>
-              <div>{cardCounter} items</div>
+              <p>{cardCounter} items</p>
               <div className={styles.total}>
                 <p>Total</p>
                 <span

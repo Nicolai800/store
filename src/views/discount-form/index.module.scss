@@ -119,4 +119,8 @@
   color: #92a134;
   cursor: default;
   transform: none;
+  @media screen and (max-width:390px) {
+    font-size: 15px;
+  }
+  
 }

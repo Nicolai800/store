@@ -74,15 +74,25 @@
     line-height: 44px;
     color: #424436;
     margin-bottom: 12px;
+    @media screen and (max-width: 768px) {
+      font-size: 56px;
+      line-height: 62px;
+    }
+    @media screen and (max-width: 500px) {
+      font-size: 32px;
+      line-height: 35px;
+    }
+    @media screen and (max-width: 500px) {
+      font-size: 28px;
+      line-height: 31px;
+    }
   }
-  @media screen and (max-width:1200px) {
+  @media screen and (max-width: 1200px) {
     padding: 32px 20px;
   }
-  @media screen and (max-width:900px) {
+  @media screen and (max-width: 900px) {
     max-width: none;
     margin-left: 0;
-
-    
   }
 }
 
@@ -104,6 +114,37 @@
     font-size: 64px;
     line-height: 70.4px;
     color: #424436;
+  }
+  @media screen and (max-width: 768px) {
+    p {
+      font-size: 32px;
+      line-height: 41px;
+    }
+
+    span {
+      font-size: 56px;
+      line-height: 62px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    p {
+      font-size: 40px;
+      line-height: 52px;
+      
+    }
+
+    span {
+      font-size: 48px;
+      line-height: 53px;
+      padding-top: 10px;
+    }
+  }
+  @media screen and (max-width: 380px) {
+    span {
+      font-size: 40px;
+      line-height: 44px;
+      padding-top: 18px;
+    }
   }
 }
 
@@ -229,7 +270,6 @@
     display: none;
   }
 }
-
 
 .shoppingCartInputs {
   // max-width: 516px;
