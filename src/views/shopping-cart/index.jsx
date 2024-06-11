@@ -1,9 +1,6 @@
 import React, { useState, useContext } from "react";
-import { CardItem } from "../../components/card-item";
 import styles from "./index.module.scss";
-import { setItems } from "./index.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { BASE_URL } from "../../constants";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
 import { getCardCount, getDiscountStatus } from "../../store/selectors";
@@ -34,9 +31,6 @@ export const ShoppingCart = () => {
     );
   }, 0);
 
-  // const clearOrders = () => {
-
-  // };
   const onToggleModal = () => {
     setIsModalOpen((prev) => !prev);
   };
@@ -48,38 +42,6 @@ export const ShoppingCart = () => {
     console.log(formData);
     onToggleModal();     //??????????????????????
   };
-
-  // const [inputName, setInputName] = useState("");
-  // const [inputPhone, setInputPhone] = useState("");
-  // const [inputEmail, setInputEmail] = useState("");
-
-  // const inputNameChange = (e) => {
-  //   setInputName(e.target.value);
-  // };
-
-  // const inputPhoneChange = (e) => {
-  //   setInputPhone(e.target.value);
-  // };
-  // const inputEmailChange = (e) => {
-  //   setInputEmail(e.target.value);
-  // };
-  // //console.log(inputName,inputPhone,inputEmail);
-  // const orderLog = () => {
-  //   console.log({
-  //     name: inputName,
-  //     phone: inputPhone,
-  //     email: inputEmail,
-  //     order: shopingCartItems
-  //   });
-
-  // };
-  // const orderSend = () => {
-  //   orderLog();
-  //   onToggleModal();
-  //   setInputName("");
-  //   setInputPhone("");
-  //   setInputEmail("");
-  // };
 
   if (cardCounter === 0) {
     return (
@@ -126,7 +88,7 @@ export const ShoppingCart = () => {
           </div>
         </div>
         <div
-          className={cn(styles.shoppingCartWrapper, {
+          className={cn(styles.shoppingCartWrapper, {   
             [styles.dark]: theme === "dark",
           })}
         >

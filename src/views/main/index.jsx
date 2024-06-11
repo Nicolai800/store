@@ -7,6 +7,7 @@ import styles from "./index.module.scss";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllItems, fetchAllCategories } from "../../store/async-actions"; 
 import {
@@ -46,13 +47,21 @@ export const Main = () => {
           [styles.dark]: theme === "dark",
         })}
       >
-        <h2
-          className={cn(styles.saleText, {
-            [styles.dark]: theme === "dark",
-          })}
+       <div
+        className={cn(styles.saleText, {
+          [styles.dark]: theme === "dark",
+        })}
+      >
+        <h2>Sale</h2>{" "}
+        <div
+          className={styles.lineWrapper}
         >
-          Sale
-        </h2>
+          <hr />
+          <Link to="/all-sales" className={styles.titleLink}>
+            All sales
+          </Link>
+        </div>
+      </div>
         <div
           className={cn(styles.sales, {
             [styles.dark]: theme === "dark",

@@ -10,19 +10,6 @@
 .sales.dark {
   background-color: #424436;
 }
-.saleText {
-  color: #424436;
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 70.4px;
-  text-align: left;
-  padding: 40px;
-}
-
-.saleText.dark {
-  background-color: #424436;
-  color: #ffffff;
-}
 
 .saleWrapper {
   background-color: #fffff1;
@@ -40,4 +27,82 @@
   padding: 20px;
   color: #424436;
   background-color: #fffff1;
+}
+
+
+.saleText {
+  width: 100%;
+  max-width: 1440px;
+  background-color: #fffff1;
+  padding: 40px;
+  display: flex;
+  @media screen and (max-width: 1000px) {
+    padding: 20px;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 70.4px;
+    color: #424436;
+    margin-right: 32px;
+    text-wrap: nowrap;
+
+    @media screen and (max-width: 768px) {
+      font-size: 56px;
+      line-height: 61.6px;
+      margin-right: 32px;
+    }
+    @media screen and (max-width: 525px) {
+      font-size: 48px;
+      line-height: 52.8px;
+    }
+    @media screen and (max-width: 360px) {
+      font-size: 40px;
+      line-height: 44px;
+    }
+  }
+}
+
+.saleText.dark {
+  background-color: #424436;
+  h2 {
+    color: #fff;
+  }
+}
+
+.titleLink {
+  color: #8b8b8b;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20.16px;
+  text-align: center;
+  border: 1px solid #dddddd;
+  padding: 8px 16px;
+  border-radius: 6px;
+  height: 36px;
+  text-decoration: none;
+  text-wrap: nowrap;
+  @media screen and (max-width: 540px) {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+.lineWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  hr {
+    width: 100%;
+    border-top: 1px solid #dddddd;
+  }
+
+  @media screen and (max-width: 470px) {
+    display: none;
+  }
+}
+.lineWrapper.none {
+  display: none;
 }

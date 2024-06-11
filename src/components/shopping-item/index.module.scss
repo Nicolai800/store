@@ -1,12 +1,12 @@
 .shopingItemWrapper {
-  // width: 100%;
-  // max-width: 780px;
+  //width: 100%;
+  //max-width: 840px;
+  min-width: 480px;
   border: 1px solid #dddddd;
   background-color: #ffffff;
   border-radius: 10px;
   display: flex;
   margin-bottom: 16px;
-  position: relative;
 }
 
 .quantity {
@@ -60,6 +60,10 @@
   line-height: 26px;
   color: #424436;
   margin-bottom: 32px;
+  display: flex;
+  justify-content:space-between;
+  width: 100%;
+  
 }
 
 .itemTitle.dark {
@@ -74,7 +78,6 @@
   color: #424436;
   font-size: 20px;
   font-weight: 600;
-  position: absolute;
   top: 32px;
   right: 32px;
 }
@@ -82,16 +85,17 @@
 .xButton.dark {
   background-color: #383a2c;
 }
+
 .itemInfo {
   padding: 32px;
+  width: 100%;
 }
 
 .buttonsSpan {
-  //border: 1px solid #DDDDDD;
   display: flex;
-  //position: relative;
   width: 100%;
   max-width: 200px;
+  min-width: 176px;
   margin-right: 32px;
   button {
     color: #8b8b8b;
@@ -103,10 +107,11 @@
     border-radius: 6px;
   }
   span {
-    position: relative;
-    max-width: 90px;
-    width: 100%;
-    height: 58px;
+    // position: relative;
+    // max-width: 90px;
+     width: 100%;
+     max-width: 80px;
+    // height: 58px;
     color: #424436;
     font-weight: 600;
     font-size: 20px;

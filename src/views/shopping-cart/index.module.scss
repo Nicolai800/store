@@ -42,6 +42,7 @@
 .shoppingCartWrapper {
   display: flex;
   padding: 40px;
+  flex-wrap: nowrap;
   background-color: #fffff1;
   width: 100%;
   max-width: 1440px;
@@ -49,8 +50,8 @@
     padding: 20px;
   }
 
-  @media screen and (max-width: 780px) {
-    display: block;
+  @media screen and (max-width: 900px) {
+    flex-wrap: wrap;
   }
 }
 
@@ -60,9 +61,9 @@
 }
 
 .orderForm {
-  height: 582px;
   width: 100%;
   max-width: 548px;
+  max-height: 610px;
   padding: 32px;
   border-radius: 10px;
   background-color: #f2f6d3;
@@ -73,6 +74,15 @@
     line-height: 44px;
     color: #424436;
     margin-bottom: 12px;
+  }
+  @media screen and (max-width:1200px) {
+    padding: 32px 20px;
+  }
+  @media screen and (max-width:900px) {
+    max-width: none;
+    margin-left: 0;
+
+    
   }
 }
 
@@ -94,7 +104,6 @@
     font-size: 64px;
     line-height: 70.4px;
     color: #424436;
-    //margin-left: 81px;
   }
 }
 
@@ -107,16 +116,13 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  // input {
-  //   border: 1px solid #dddddd;
-  //   border-radius: 6px;
-  //   height: 58px;
-  //   width: 100%;
-  // }
+
   button {
     width: 100%;
     background-color: #92a134;
     border: none;
+    border-radius: 6px;
+    padding: 16px 0;
     color: #ffffff;
     font-weight: 600;
     font-size: 20px;
@@ -223,17 +229,12 @@
     display: none;
   }
 }
-// .line {
-//   border-bottom: 1px solid #dddddd;
-//   width: 100%;
-//   max-width: 675px;
-//   height: 40px;
-// }
+
 
 .shoppingCartInputs {
-  max-width: 516pxpx;
-  width: 100%;
-  height: 58pxpx;
+  // max-width: 516px;
+  // width: 100%;
+  //height: 58px;
   padding: 16px 32px 16px 32px;
   margin-bottom: 16px;
   border-radius: 6px;

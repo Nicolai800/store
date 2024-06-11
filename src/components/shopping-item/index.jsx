@@ -46,13 +46,14 @@ export const ShoppingItem = memo(({
     })}>
       <img src={BASE_URL + image} alt="card" className={styles.imgWrapper} />
       <div className={styles.itemInfo}>
-        <button className={cn(styles.xButton, {
-      [styles.dark]: theme === "dark",
-    })} onClick={()=>deleteTotal(id)}>x</button>
+        
         <div className={cn(styles.itemTitle, {
       [styles.dark]: theme === "dark",
     })}>
           <span>{title}</span>
+          <button className={cn(styles.xButton, {
+      [styles.dark]: theme === "dark",
+    })} onClick={()=>deleteTotal(id)}>x</button>
         </div>
         <div className={styles.quantity}>
           <div className={cn(styles.buttonsSpan, {
