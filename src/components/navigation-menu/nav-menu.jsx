@@ -5,11 +5,12 @@ import styles from "./index.module.scss";
 import cn from "classnames";
 import { themeContext } from "../../context/theme";
 
-export const Modal = () => {
+export const NavMenu = () => {
   const { theme } = useContext(themeContext);
   return createPortal(
     <div className={styles.modalBackground}>
       <div
+      
         className={cn(styles.modal, {
           [styles.dark]: theme === "dark",
         })}

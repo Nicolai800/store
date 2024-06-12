@@ -2,7 +2,7 @@
   background-color: #fffff1;
   width: 100%;
   max-width: 1440px;
-  padding-top: 80px;
+  padding: 80px 20px 20px 20px;
 }
 
 .notFoundWrapper.dark {
@@ -13,20 +13,45 @@
   width: 100%;
   max-width: 770px;
   margin: 0 auto;
-  text-align: center
+  text-align: center;
+}
+.imgWrapper {
+  max-width: 690px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  
+  align-items: center;
+  
 }
 
 .notFoundImg {
-  width: 100%;
-  max-width: 300px;
-  height: 270px;
+  background-image: url('../../assets/notFoundImg.png');
+  width: 300px;
+  height: 270px; 
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.number4 {
-  font-weight: 179.4px;
-  font-size: 245.88px;
-  color: #92a134;
-}
+// .number4 {
+//   max-width: 180px;
+//   min-width: 78px;
+//   width: 100%;
+//   @media screen and (max-width:800px) {
+//     font-size: 159px;
+
+//   }
+//   @media screen and (max-width:500px) {
+//     font-size: 108px;
+
+//   }
+//   @media screen and (max-width:400px) {
+//     font-size: 78px;
+
+//   }
+// }
 
 .pageNotFoundText {
   font-weight: 700;
@@ -34,6 +59,24 @@
   line-height: 70.4px;
   text-align: center;
   color: #424436;
+  margin-top: 32px;
+
+  @media screen and (max-width: 800px) {
+    font-size: 56px;
+    line-height: 61.6px;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 48px;
+    line-height: 53px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 40px;
+    line-height: 44px;
+  }
+}
+
+.pageNotFoundText.dark{
+  color: #ffffff;
 }
 
 .notFoundDescription {
@@ -42,6 +85,14 @@
   line-height: 26px;
   text-align: center;
   color: #8b8b8b;
+  margin: 16px 0 32px 0;
+  @media screen and (max-width: 500px) {
+    font-size: 18px;
+    line-height: 23.4px;
+  }
+  @media screen and (max-width: 800px) {
+    margin: 12px 0 24px 0;
+  }
 }
 
 .btn {
@@ -64,4 +115,3 @@
   background-color: #424436;
   transform: translateY(4px);
 }
-

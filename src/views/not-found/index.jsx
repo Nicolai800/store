@@ -14,16 +14,18 @@ export const NotFound = () => {
       [styles.dark]: theme === "dark",
     })}>
       <div className={styles.notFound}>
-        <div>
+        <div className={styles.imgWrapper}>
           <NumberFourIcon />
-          <img
-            src={notFoundImg}
-            className={styles.notFoundImg}
-            alt="notFoundImg"
-          />
-          <NumberFourIcon />
+          <div className={styles.notFoundImg}></div>
+            
+           
+            
+          
+          <NumberFourIcon/>
         </div>
-        <h2 className={styles.pageNotFoundText}>Page Not Found</h2>
+        <h2 className={cn(styles.pageNotFoundText, {
+          [styles.dark]: theme === "dark",
+        })}>Page Not Found</h2>
         <div className={styles.notFoundDescription}>
           We’re sorry, the page you requested could not be found. Please go back
           to the homepage.

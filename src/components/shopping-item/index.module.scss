@@ -29,8 +29,9 @@
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   border-right: 1px solid #dddddd;
+  object-fit: contain;
   @media screen and (max-width: 470px) {
-    max-width: 116px;
+    max-width: 108px;
   }
 }
 

@@ -70,7 +70,7 @@ export const CardItem = memo(({ price, title, image, discont, discontPercent, id
       })}>{"$"+price}</span>
         </div>
       </div>
-    </div>
+    </div> 
   );
 });
 

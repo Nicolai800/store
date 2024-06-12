@@ -11,13 +11,13 @@ import { useSelector } from "react-redux";
 import { getLikedCount } from "../../store/selectors";
 import { getCardCount } from "../../store/selectors";
 import { ShoppingCart } from "../shopping-cart";
-import { Modal } from "../../components/modal/modal";
+import { NavMenu } from "../../components/navigation-menu/nav-menu";
 
 export const Navigation = () => {
   const [isToggleOn, setIsToggleOn] = useState(false);
   const { theme, switchTheme } = useContext(themeContext);
   const [isHamburgerActive, setIsHamburgerActive] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   // const cardCounter = useSelector((state) => state.cart.counter);
   const likesCounter = useSelector(getLikedCount);
   const cardsCounter = useSelector(getCardCount);
@@ -29,8 +29,8 @@ export const Navigation = () => {
   const onToggleHamburgersClass = () => {
     setIsHamburgerActive((prev) => !prev);
   };
-  const onToggleModal = () => {
-    setIsModalOpen((prev) => !prev);
+  const onToggleNavMenu = () => {
+    setIsNavMenuOpen((prev) => !prev);
   };
 
   const getClassName = ({ isActive }) => (isActive ? styles.active : "");
@@ -83,9 +83,9 @@ export const Navigation = () => {
           isHamburgerActive={isHamburgerActive}
           theme={theme}
           onToggleHamburgersClass={onToggleHamburgersClass}
-          onToggleModal = {onToggleModal}
+          onToggleNavMenu = {onToggleNavMenu}
         />
-        {isModalOpen && <Modal onClose={onToggleModal} />}
+        {isNavMenuOpen && <NavMenu/>}
       </div>
     </div>
   );
