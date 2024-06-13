@@ -8,7 +8,6 @@ const cardItems = createSlice({
   },
   reducers: {
     toggleCartItem: (state, { payload }) => {
-      //state.cardsData[payload] = !state.cardsData[payload];
       state.cardsData[payload] = Number(!state.cardsData[payload]);
     },
     deleteCardItem: (state, { payload }) => {
@@ -25,24 +24,26 @@ const cardItems = createSlice({
     },
     setProductCart: (state, { payload }) => {
       const { productCounter, id } = payload;
-      //state.goodsData[id] = 0;
       state.cardsData[id] = productCounter;
     },
+    clearCardsData: (state) => {
+      state.cardsData = {}
+    }
   },
 
-  extraReducers: (builder) => {
+//   extraReducers: (builder) => {
     
-    builder.addCase(sendOrderData.fulfilled, (state, action) => {
-        state.isLoading = false;
-        if (action.payload.status === 'OK'){
-            state.cardsData = {}
-        }
-    })
+//     builder.addCase(sendOrderData.fulfilled, (state, action) => {
+//         state.isLoading = false;
+//         if (action.payload.status === 'OK'){
+//             state.cardsData = {}
+//         }
+//     })
    
-}
+// }
 });
 
-export const { toggleCartItem, deleteCardItem, addToCart, deleteFromCart, setProductCart, clearProductCart } =
+export const { toggleCartItem, deleteCardItem, addToCart, deleteFromCart, setProductCart, clearCardsData } =
   cardItems.actions;
 
 export default cardItems.reducer;

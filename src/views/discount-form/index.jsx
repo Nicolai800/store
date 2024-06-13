@@ -3,8 +3,6 @@ import styles from "./index.module.scss";
 import discountFormBackImg from "../../assets/discountFormBackbround.png";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
-import { Link } from "react-router-dom";
-import { BASE_URL } from "../../constants";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { sendSaleData } from "../../store/async-actions";
@@ -14,7 +12,6 @@ export const DiscountForm = () => {
   const dispatch = useDispatch();
   const { theme } = useContext(themeContext);
   const discountStatus = useSelector(getDiscountStatus);
-  console.log(discountStatus);
 
   const { register, handleSubmit, formState, getValues } = useForm();
 

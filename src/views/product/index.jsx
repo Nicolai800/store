@@ -20,7 +20,6 @@ export const Product = () => {
   const likesData = useSelector((state) => state.shop.likesData);
   const data = useSelector((state) => state.shop.items);
   let discoveredItem = data.find(({ id }) => +id === +itemId);
-  //console.log(discoveredItem.categoryId, "discovered");
   const [isImgModalOpen, setIsImgModalOpen] = useState(false);
 
   const categories = useSelector((state) => state.shop.categories);
@@ -31,6 +30,7 @@ export const Product = () => {
   const likeToggle = (articul) => {
     dispatch(toggleToLikes(articul));
   };
+  
   const onToggleImgModal = () => {
     setIsImgModalOpen((prev) => !prev);
   };

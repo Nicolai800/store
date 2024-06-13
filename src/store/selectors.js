@@ -9,6 +9,10 @@ export const getAllCategories = (state) => state.shop.categories;
 
 export const getDiscountStatus = (state) => state.shop.discountApplied;
 
+export const getOrderStatus = (state) => state.shop.orderIsSend;
+
+export const getCardsData = (state) => state.cart.cardsData;
+
 
 export const getLikedCount = (state) => {
   return Object.values(state.shop.likesData).filter((val)=>val).length;

@@ -1,8 +1,19 @@
 import { createPortal } from "react-dom";
 import React from "react";
 import styles from "./index.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { getCardsData } from "../../store/selectors";
+import { clearCardsData } from "../../store/cart-slice";
 
 export const OrderModal = ({onToggleModal} ) => {
+  const orderData = useSelector(getCardsData)
+  const dispatch = useDispatch();
+
+  const closeModalAndCleraCardsData = () =>{
+    dispatch(clearCardsData());
+    onToggleModal();
+  }
+
   return createPortal(
     <div className={styles.modalBackground}>
       <div className={styles.modalWrapper}>
@@ -11,7 +22,7 @@ export const OrderModal = ({onToggleModal} ) => {
           <p>Your order has been successfully placed on the website.</p>{" "}
           <p>A manager will contact you shortly to confirm your order.</p>
         </div>
-        <span onClick= {onToggleModal}>X</span>
+        <span onClick= {closeModalAndCleraCardsData}>X</span>
       </div>
     </div>,
     document.body

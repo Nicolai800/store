@@ -38,7 +38,6 @@ export const ShoppingItem = memo(({
     dispatch(deleteCardItem(item))
   }
 
-  //console.log(selectedData);
 
   return (
     <div className={cn(styles.shopingItemWrapper, {

@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { fetchAllItems, fetchAllCategories, sendSaleData, fetchCategory } from './async-actions';
+import { fetchAllItems, fetchAllCategories, sendSaleData, fetchCategory, sendOrderData } from './async-actions';
 
 const initialState = {
     categoryItems: [],
@@ -9,6 +9,7 @@ const initialState = {
     error: null,
     categories: [],
     discountApplied: false,
+    orderIsSend: false,
 };
 
 const shopSlice = createSlice({
@@ -55,6 +56,12 @@ const shopSlice = createSlice({
             state.isLoading = false;
             if (action.payload.status === 'OK'){
                 state.discountApplied = true;
+            }
+        })
+        builder.addCase(sendOrderData.fulfilled, (state, action) => {
+            state.isLoading = false;
+            if (action.payload.status === 'OK'){
+                state.orderIsSend = true;
             }
         })
         builder.addCase(fetchCategory.fulfilled, (state, action) => {

@@ -21,7 +21,6 @@
   justify-content: center;
   width: 100%;
   margin: 0 auto;
-  
   align-items: center;
   
 }
@@ -33,25 +32,8 @@
   background-size:contain;
   background-repeat: no-repeat;
   background-position: center;
+  border: 1px solid red;
 }
-
-// .number4 {
-//   max-width: 180px;
-//   min-width: 78px;
-//   width: 100%;
-//   @media screen and (max-width:800px) {
-//     font-size: 159px;
-
-//   }
-//   @media screen and (max-width:500px) {
-//     font-size: 108px;
-
-//   }
-//   @media screen and (max-width:400px) {
-//     font-size: 78px;
-
-//   }
-// }
 
 .pageNotFoundText {
   font-weight: 700;

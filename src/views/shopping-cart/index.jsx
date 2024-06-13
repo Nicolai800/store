@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
-import { getCardCount, getDiscountStatus } from "../../store/selectors";
+import { getCardCount, getDiscountStatus, getOrderStatus, getCardsData } from "../../store/selectors";
 import { ShoppingItem } from "../../components/shopping-item";
 import { OrderModal } from "../../components/order-modal";
 import { Link } from "react-router-dom";
@@ -13,12 +13,17 @@ import cn from "classnames";
 
 export const ShoppingCart = () => {
   const allItems = useSelector((state) => state.shop.items);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
   const { theme } = useContext(themeContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const shopingCartItems = useSelector((state) => state.cart.cardsData);
+  const  shopingCartItems = useSelector(getCardsData);
   const cardCounter = useSelector(getCardCount);
   const discountStatus = useSelector(getDiscountStatus);
+  const orderStatus = useSelector(getOrderStatus);
+
+  console.log(shopingCartItems);
+
+  
 
   const filteredItems = allItems.filter(
     (item) => shopingCartItems[item.id] > 0
@@ -39,8 +44,10 @@ export const ShoppingCart = () => {
 
   const onFormSubmit = (formData) => {
     dispatch(sendOrderData({...formData, order: shopingCartItems}));
-    console.log(formData);
-    onToggleModal();     //??????????????????????
+    if(orderStatus){
+    onToggleModal(); 
+    }
+        //??????????????????????
   };
 
   if (cardCounter === 0) {
