@@ -64,9 +64,17 @@ const shopSlice = createSlice({
                 state.orderIsSend = true;
             }
         })
+        builder.addCase(sendOrderData.pending, (state) => {
+            state.isLoading = true;
+        })
+        builder.addCase(sendOrderData.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.error.message;
+        })
         builder.addCase(fetchCategory.fulfilled, (state, action) => {
             state.categoryItems = action.payload;
         })
+        
     }
 });
 

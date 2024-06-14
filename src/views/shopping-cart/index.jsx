@@ -3,7 +3,14 @@ import styles from "./index.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
-import { getCardCount, getDiscountStatus, getOrderStatus, getCardsData } from "../../store/selectors";
+import {
+  getCardCount,
+  getDiscountStatus,
+  getOrderStatus,
+  getCardsData,
+  getIsLoading,
+  getError,
+} from "../../store/selectors";
 import { ShoppingItem } from "../../components/shopping-item";
 import { OrderModal } from "../../components/order-modal";
 import { Link } from "react-router-dom";
@@ -13,25 +20,30 @@ import cn from "classnames";
 
 export const ShoppingCart = () => {
   const allItems = useSelector((state) => state.shop.items);
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   const { theme } = useContext(themeContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const  shopingCartItems = useSelector(getCardsData);
+  const shoppingCartItems = useSelector(getCardsData);
   const cardCounter = useSelector(getCardCount);
   const discountStatus = useSelector(getDiscountStatus);
   const orderStatus = useSelector(getOrderStatus);
+  const orderIsLoading = useSelector(getIsLoading);
+  const orderError = useSelector(getError);
 
-  console.log(shopingCartItems);
 
-  
+  const filteredProducts = allItems
+  .filter(product => shoppingCartItems.hasOwnProperty(product.id))
+  .map(product => ({ ...product, quantity: shoppingCartItems[product.id] }));
+
+  console.log(filteredProducts);
 
   const filteredItems = allItems.filter(
-    (item) => shopingCartItems[item.id] > 0
+    (item) => shoppingCartItems[item.id] > 0
   );
   const totalSum = filteredItems.reduce((sum, item) => {
     return (
       sum +
-      shopingCartItems[item.id] *
+      shoppingCartItems[item.id] *
         (item.discont_price === null ? item.price : item.discont_price)
     );
   }, 0);
@@ -43,11 +55,9 @@ export const ShoppingCart = () => {
   const { register, handleSubmit, formState, getValues } = useForm();
 
   const onFormSubmit = (formData) => {
-    dispatch(sendOrderData({...formData, order: shopingCartItems}));
-    if(orderStatus){
-    onToggleModal(); 
-    }
-        //??????????????????????
+    dispatch(sendOrderData({ ...formData, order: shoppingCartItems }));
+
+    onToggleModal();
   };
 
   if (cardCounter === 0) {
@@ -60,7 +70,7 @@ export const ShoppingCart = () => {
         >
           <h2>Shopping Cart</h2>{" "}
           <div className={styles.lineWrapper}>
-            <hr/>
+            <hr />
             <Link to="/" className={styles.titleLink}>
               Back to the store
             </Link>
@@ -88,14 +98,14 @@ export const ShoppingCart = () => {
         >
           <h2>Shopping Cart</h2>{" "}
           <div className={styles.lineWrapper}>
-          <hr/>
+            <hr />
             <Link to="/" className={styles.titleLink}>
               Back to the store
             </Link>
           </div>
         </div>
         <div
-          className={cn(styles.shoppingCartWrapper, {   
+          className={cn(styles.shoppingCartWrapper, {
             [styles.dark]: theme === "dark",
           })}
         >
@@ -157,12 +167,20 @@ export const ShoppingCart = () => {
                   className={styles.shoppingCartInputs}
                   {...register("userEmail", { required: true })}
                 ></input>
-                <button type="submit">Order</button>
+                <button type="submit" disabled={orderIsLoading}>
+                  {orderIsLoading
+                    ? "Loading..."
+                    : orderError
+                    ? "ERROR"
+                    : "Order"}
+                </button>
               </form>
             </div>
           </div>
         </div>
-        {isModalOpen && <OrderModal onToggleModal={onToggleModal} />}
+        {orderStatus && isModalOpen && (
+          <OrderModal onToggleModal={onToggleModal} />
+        )}
       </>
     );
   }

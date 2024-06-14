@@ -57,9 +57,8 @@ export const DiscountForm = () => {
             <button
               type="submit"
               disabled={discountStatus}
-              className={cn(styles.discountFormButton, {
-                [styles.submitt]: discountStatus === true,
-              })}
+              className={styles.discountFormButton}
+                
             >
               {discountStatus ? "Request Submitted" : "Get a discount"}
             </button>

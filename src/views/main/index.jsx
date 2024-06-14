@@ -36,7 +36,9 @@ export const Main = () => {
   }
 
   return isLoading ? (
-    <div className={styles.loading}>Loading... Please wait...</div>
+    <div className={cn(styles.loading, {
+      [styles.dark]: theme === "dark",
+    })}>Loading... Please wait...</div>
   ) : (
     <>
       <Header />

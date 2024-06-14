@@ -15,7 +15,7 @@
   //height: 486px;
   width: 100%;
   border-radius: 10px;
-  background: linear-gradient(80.46deg, #87933d -0.68%, #55610b 66.66%);
+  background: linear-gradient(80.46deg, #87933d -0.68%, #55610b 66.66%);  
 }
 
 .discountFormText {
@@ -116,6 +116,7 @@
 }
 
 .discountFormButton:disabled {
+  background-color: #F2F6D3;
   color: #92a134;
   cursor: default;
   transform: none;
