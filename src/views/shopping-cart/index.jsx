@@ -30,12 +30,11 @@ export const ShoppingCart = () => {
   const orderIsLoading = useSelector(getIsLoading);
   const orderError = useSelector(getError);
 
-
-  const filteredProducts = allItems
-  .filter(product => shoppingCartItems.hasOwnProperty(product.id))
-  .map(product => ({ ...product, quantity: shoppingCartItems[product.id] }));
-
-  console.log(filteredProducts);
+// array of objects with the number of ordered goods 
+  // const filteredProducts = allItems
+  // .filter(product => shoppingCartItems.hasOwnProperty(product.id))
+  // .map(product => ({ ...product, quantity: shoppingCartItems[product.id] }))
+  // .filter(product => product.quantity > 0);  
 
   const filteredItems = allItems.filter(
     (item) => shoppingCartItems[item.id] > 0
