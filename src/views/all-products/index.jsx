@@ -1,15 +1,15 @@
-import React, { useState, useContext, useEffect} from "react";
+import React, { useState, useContext, useEffect, useMemo } from "react";
 import { CardItem } from "../../components/card-item";
 import styles from "./index.module.scss";
-import { setItems } from "../../store/shop-slice";
 import { useDispatch, useSelector } from "react-redux";
-import { BASE_URL } from "../../constants";
 import { Link } from "react-router-dom";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
 import { getError, getIsLoading } from "../../store/selectors";
-import { fetchAllItems, fetchAllCategories } from "../../store/async-actions"; 
+import { fetchAllItems } from "../../store/async-actions";
+import { sortItems } from "../../utils/sortItems";
+import { filterItems } from "../../utils/filterItems";
 
 export const AllProducts = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export const AllProducts = () => {
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(0);
   useEffect(() => {
-    if(!allItems.length){
+    if (!allItems.length) {
       dispatch(fetchAllItems());
     }
   }, [dispatch]);
@@ -35,29 +35,19 @@ export const AllProducts = () => {
   const sortChange = (event) => {
     setSortOrder(event.target.value);
   };
+  const sortedItems = useMemo(
+    () => sortItems(sortOrder, allItems),
+    [sortOrder, allItems]
+  );
 
-  const sortedItems = [...allItems].sort((a, b) => {
-    if (sortOrder === "price: high-low") {
-      return b.price - a.price;
-    } else if (sortOrder === "price: low-high") {
-      return a.price - b.price;
-    } else if (sortOrder === "newest") {
-      return new Date(b.updatedAt) - new Date(a.updatedAt);
-    } else {
-      return a.id - b.id;
-    }
-  });
+  const filteredAndSortedItems = useMemo(
+    () => filterItems(minValue, maxValue, sortedItems),
+    [minValue, maxValue, sortedItems]
+  );
 
   const checkboxChange = (event) => {
     setIsChecked(event.target.checked);
   };
-
-  const filteredAndSortedItems =
-    !minValue && !maxValue
-      ? sortedItems
-      : sortedItems
-          .filter((item) => item.price >= minValue && item.price <= maxValue)
-          .sort((a, b) => a.price - b.price);
 
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
@@ -67,7 +57,9 @@ export const AllProducts = () => {
   }
 
   return isLoading ? (
-    <div className={styles.loading}>Loading... Please wait...</div>
+    <div className={cn(styles.loading, {
+      [styles.dark]: theme === "dark",
+    })}>Loading... Please wait...</div>
   ) : (
     <>
       <div
@@ -79,7 +71,7 @@ export const AllProducts = () => {
           <div>Main Page</div>
         </Link>
         <hr />
-        <div>All product</div>
+        <div>All products</div>
       </div>
       <h2
         className={cn(styles.allProductsTitle, {

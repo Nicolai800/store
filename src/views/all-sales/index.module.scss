@@ -61,8 +61,6 @@
   gap: 40px;
 
   @media screen and (max-width: 672px) {
-    //flex-direction: column;
-    //align-items: start;
     padding: 20px;
   }
 
@@ -162,4 +160,8 @@ div{
   padding: 20px;
   color: #424436;
   background-color: #fffff1;
+}
+
+.loading.dark{
+  background-color: #424436;
 }

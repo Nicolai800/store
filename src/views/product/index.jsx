@@ -25,7 +25,6 @@ export const Product = () => {
   const categories = useSelector((state) => state.shop.categories);
   const { title, price, discont_price, image, description } = discoveredItem;
   const discontPercent = getDiscountPercent(price, discont_price);
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const likeToggle = (articul) => {
     dispatch(toggleToLikes(articul));

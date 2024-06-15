@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useMemo } from "react";
 import { CardItem } from "../../components/card-item";
 import styles from "./index.module.scss";
 import { useSelector } from "react-redux";
@@ -7,6 +7,8 @@ import { themeContext } from "../../context/theme";
 import { Link } from "react-router-dom";
 import { getLikedCount } from "../../store/selectors";
 import cn from "classnames";
+import {sortItems} from '../../utils/sortItems';
+import { filterItems } from "../../utils/filterItems";
 
 export const LikedProducts = () => {
   const allItems = useSelector((state) => state.shop.items);
@@ -30,43 +32,32 @@ export const LikedProducts = () => {
     setSortOrder(event.target.value);
   };
 
-  const sortedItems = [...filteredLikesArr].sort((a, b) => {
-    if (sortOrder === "price: high-low") {
-      return b.price - a.price;
-    } else if (sortOrder === "price: low-high") {
-      return a.price - b.price;
-    } else if (sortOrder === "newest") {
-      return new Date(b.updatedAt) - new Date(a.updatedAt);
-    } else {
-      return a.id - b.id;
-    }
-  });
+  const sortedItems = useMemo(() => sortItems(sortOrder, filteredLikesArr), [sortOrder, filteredLikesArr]);
 
   const checkboxChange = (event) => {
     setIsChecked(event.target.checked);
   };
 
-  const filteredAndSortedItems =
-    !minValue && !maxValue
-      ? sortedItems
-      : sortedItems
-          .filter((item) => item.price >= minValue && item.price <= maxValue)
-          .sort((a, b) => a.price - b.price);
+  const filteredAndSortedItems = useMemo(
+    () => filterItems(minValue, maxValue, sortedItems),
+    [minValue, maxValue, sortedItems]
+  );
+
 
   if (likedCounter === 0) {
     return (
       <>
         <div
-          className={cn(styles.breadCrumbs, {
-            [styles.dark]: theme === "dark",
-          })}
-        >
-          <Link to={"/"}>
-            <div>Main Page</div>
-          </Link>
-          {/* <hr/> */}
-          <div>Liked Products</div>
-        </div>
+        className={cn(styles.breadCrumbs, {
+          [styles.dark]: theme === "dark",
+        })}
+      >
+        <Link to={"/"}>
+          <div>Main Page</div>
+        </Link>
+        <hr />
+        <div>Liked products</div>
+      </div>
         <h2
           className={cn(styles.allProductsTitle, {
             [styles.dark]: theme === "dark",

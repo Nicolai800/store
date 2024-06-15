@@ -13,16 +13,12 @@ import { getIsLoading, getError } from "../../store/selectors";
 export const CardItem = memo(({ price, title, image, discont, discontPercent, id }) => {
   const { theme } = useContext(themeContext);
   const dispatch = useDispatch();
-  // const selectedData = useSelector((state)=> state.cart.selectedData);
   const selectedData = useSelector((state)=> state.cart.cardsData);
   const likesData = useSelector((state)=> state.shop.likesData);
   
   const likeToggle = useCallback((articul) => {
     dispatch(toggleToLikes(articul))
   },[dispatch]);
-  // const cartToggle = (articul, select) => {
-  //   dispatch(toggleCartItem({articul, select}))
-  // }
 
   const cartToggle = (articul) => {
     dispatch(toggleCartItem(articul));

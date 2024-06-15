@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useContext, useMemo, useCallback } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import React, { useEffect, useState, useContext, useMemo } from "react";
+import { useParams } from "react-router-dom";
 import { CardItem } from "../../components/card-item";
 import styles from "./index.module.scss";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import cn from "classnames";
 import { themeContext } from "../../context/theme";
-import { useSelector } from "react-redux";
-import { getAllCategories } from "../../store/selectors";
 import { Link } from "react-router-dom";
 import {
   fetchAllItems,
@@ -15,22 +13,19 @@ import {
 import { useDispatch } from "react-redux";
 import {fetchCategoryItems} from '../../utils/fetchers/fetch-category-items';
 import {sortItems} from '../../utils/sortItems';
+import { filterItems } from "../../utils/filterItems";
 
 export const Category = () => {
   const { categoryId } = useParams();
   const dispatch = useDispatch();
   const [categoryItemsObj, setCategoryItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
-  // const [params] = useSearchParams();
   useEffect(() => {
     dispatch(fetchAllItems());
     dispatch(fetchAllCategories());
-    // dispatch(fetchCategory(categoryId));
   }, [dispatch, categoryId]);
 
   const { theme } = useContext(themeContext);
-  //const categories = useSelector(getAllCategories);
 
 
   useEffect(() => {
@@ -62,14 +57,10 @@ export const Category = () => {
   const checkboxChange = (event) => {
     setIsChecked(event.target.checked);
   };
-
-  // TODO вынести в утилитку
-  const filteredAndSortedItems =
-    !minValue && !maxValue
-      ? sortedItems
-      : sortedItems
-          .filter((item) => item.price >= minValue && item.price <= maxValue)
-          .sort((a, b) => a.price - b.price);
+  const filteredAndSortedItems = useMemo(
+    () => filterItems(minValue, maxValue, sortedItems),
+    [minValue, maxValue, sortedItems]
+  );
 
   return (
     isLoading ? <h1>LOADING</h1> : 

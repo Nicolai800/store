@@ -272,9 +272,6 @@
 }
 
 .shoppingCartInputs {
-  // max-width: 516px;
-  // width: 100%;
-  //height: 58px;
   padding: 16px 32px 16px 32px;
   margin-bottom: 16px;
   border-radius: 6px;
@@ -297,4 +294,8 @@ input::placeholder {
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
+}
+
+.shoppingCartInputs:focus{
+  border: 1px solid #92a134;
 }

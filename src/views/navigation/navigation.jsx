@@ -18,7 +18,6 @@ export const Navigation = () => {
   const { theme, switchTheme } = useContext(themeContext);
   const [isHamburgerActive, setIsHamburgerActive] = useState(false);
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
-  // const cardCounter = useSelector((state) => state.cart.counter);
   const likesCounter = useSelector(getLikedCount);
   const cardsCounter = useSelector(getCardCount);
 

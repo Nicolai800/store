@@ -1,11 +1,8 @@
 import React, { useContext, memo } from "react";
-import { HeartIcon, CartIcon } from "../../assets/icons";
 import styles from "./index.module.scss";
 import { BASE_URL } from "../../constants";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
-import { Link } from "react-router-dom";
-import { toggleCartItem } from "../../store/cart-slice";
 import { deleteCardItem,addToCart, deleteFromCart} from "../../store/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -20,12 +17,7 @@ export const ShoppingItem = memo(({
   const { theme } = useContext(themeContext);
   const dispatch = useDispatch();
   const selectedData = useSelector((state) => state.cart.cardsData);
-  const allItems = useSelector((state) => state.shop.item);
   
-  // const [counter, setCounter] = useState(1);
-  // const inputChange = (event) => {
-  //   setCounter(event.target.value);
-  // };
   const addCounter = (item) => {
     dispatch(addToCart(item));
   };

@@ -1,8 +1,6 @@
 .allProductsWrapper {
   display: flex;
   flex-wrap: wrap;
-  //width: 1440px;
-  //max-width: 1440px;
   background-color: #fffff1;
   gap: 32px;
   padding: 0px 40px;
@@ -154,6 +152,10 @@
   padding: 20px;
   color: #424436;
   background-color: #fffff1;
+}
+
+.loading.dark{
+  background-color: #424436;
 }
 
 .checkBoxDiscounted {

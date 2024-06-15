@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import { BASE_URL } from "../../constants";
+import React, { useEffect, useContext } from "react";
 import { CategoriesItem } from "../../components/categories-item";
 import styles from "./index.module.scss";
 import cn from "classnames";
@@ -11,7 +10,7 @@ import {
   getIsLoading,
   getError,
 } from "../../store/selectors";
-import { fetchAllItems, fetchAllCategories } from "../../store/async-actions";
+import { fetchAllCategories } from "../../store/async-actions";
 
 export const CategoriesLayout = ({ elementsCount = 5, breadCrumbs = true }) => {
   const { theme } = useContext(themeContext);
@@ -24,20 +23,6 @@ export const CategoriesLayout = ({ elementsCount = 5, breadCrumbs = true }) => {
       dispatch(fetchAllCategories());
     }
   }, [dispatch]);
-
-  //const categoriesItems = useSelector((state) => state.shop.categories);
-
-  // const [categoriesItems, setCategoriesItems] = useState([]);
-
-  //   useEffect(() => {
-  //     fetch(`${BASE_URL}/categories/all`)
-  //       .then((res) => {
-  //         return res.json();
-  //       })
-  //       .then((data) => {
-  //         setCategoriesItems(data);
-  //       });
-  //   }, []);
 
   const filterItem = categoriesItems.filter((item, index) => {
     if (index < elementsCount) {
@@ -52,7 +37,9 @@ export const CategoriesLayout = ({ elementsCount = 5, breadCrumbs = true }) => {
   }
 
   return isLoading ? (
-    <div className={styles.loading}>Loading... Please wait...</div>
+    <div className={cn(styles.loading, {
+      [styles.dark]: theme === "dark",
+    })}>Loading... Please wait...</div>
   ) : (
     <>
       <div

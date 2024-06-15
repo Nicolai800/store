@@ -11,7 +11,6 @@ export const ThemeContext = ({ children }) => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
-  // useMemo, useCallback  ????????????
 
   const value = { theme, switchTheme };
   

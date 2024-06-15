@@ -31,16 +31,7 @@ const cardItems = createSlice({
     }
   },
 
-//   extraReducers: (builder) => {
-    
-//     builder.addCase(sendOrderData.fulfilled, (state, action) => {
-//         state.isLoading = false;
-//         if (action.payload.status === 'OK'){
-//             state.cardsData = {}
-//         }
-//     })
-   
-// }
+
 });
 
 export const { toggleCartItem, deleteCardItem, addToCart, deleteFromCart, setProductCart, clearCardsData } =

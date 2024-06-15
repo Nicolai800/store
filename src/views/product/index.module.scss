@@ -48,17 +48,6 @@
   cursor: pointer;
   position: relative;
 
-  // max-width: 780px;
-  //width: 100%;
-  // min-width: 470px;
-
-  //object-fit: contain;
-  // @media screen and (max-width: 1000px) {
-  //   max-width: 354px;
-  //   width: 100%;
-  //   aspect-ratio: 354 / 286;
-  // }
-
   div {
     display: none;
 
@@ -82,7 +71,6 @@
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  //object-fit: contain;
 }
 
 .productTitle.dark {
@@ -223,8 +211,6 @@
 }
 .addToCart {
   width: 100%;
-  // max-width: 316px;
-  //height: 58px;
   text-wrap: nowrap;
   background-color: #92a134;
   color: #ffffff;
@@ -248,13 +234,7 @@
 .description.dark {
   color: #dddddd;
 }
-// .description a {
-//   color: #4caf50;
-//   text-decoration: none;
-// }
-// .description a:hover {
-//   text-decoration: underline;
-// }
+
 
 .titleWrapper {
   grid-area: title;

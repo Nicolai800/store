@@ -2,15 +2,13 @@
   height: auto;
   max-width: 316px;
   min-width: 215px;
-  flex: 1 1 21%; 
+  flex: 1 1 21%;
   gap: 20px;
   border-radius: 10px;
   border: 1px solid #dddddd;
   background-color: #ffffff;
-  @media screen and (max-width:1000px) {
-    //max-width: 354px;
+  @media screen and (max-width: 1000px) {
     gap: 20px;
-    
   }
 }
 
@@ -65,27 +63,27 @@
 .heart {
   @extend %icon;
   top: 16px;
-  &.checked{
-    fill:  #92A134;
-    
+  &.checked {
+    fill: #92a134;
+
     path {
-     stroke:none;
-     fill: #92A134;
+      stroke: none;
+      fill: #92a134;
     }
-}
+  }
 }
 
 .cart {
   @extend %icon;
   top: 74px;
-  &.liked{
-    fill:  #92A134;
-    
+  &.liked {
+    fill: #92a134;
+
     path {
-     stroke:none;
-     fill: #92A134;
+      stroke: none;
+      fill: #92a134;
     }
-}
+  }
 }
 
 .cardImage {
@@ -96,7 +94,6 @@
 }
 
 .info {
-  //padding: 0px 32px 0px 32px;
   padding: 20px;
   border-top: 1px solid #dddddd;
 }
@@ -108,14 +105,12 @@
 
 .description {
   color: #424436;
-  //max-width: 500px;
   font-size: 20px;
   line-height: 26px;
   width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  //margin-top: 20px;
 }
 
 .description.dark {
@@ -150,11 +145,11 @@
   margin-top: 16px;
 }
 
-.link{
+.link {
   text-decoration: none;
   color: #424436;
 }
 
-.link.dark{
+.link.dark {
   color: #fff;
 }
