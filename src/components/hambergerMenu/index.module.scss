@@ -3,8 +3,8 @@
         position: relative;
         right: 0;
         z-index: 2;
-        width: 44px;
-        height: 44px;
+        width: 50px;
+        height: 50px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -64,6 +64,9 @@
       }
       .hamburger.active {
         overflow-x: hidden;
+        position: fixed;
+        right: 20px;
+        top: 40px;
       }
       .hamburger.active .strike_1 {
         -webkit-transform: translateY(0px) rotate(45deg);
