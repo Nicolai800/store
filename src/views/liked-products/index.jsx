@@ -1,4 +1,4 @@
-import React, { useContext, useState,useMemo } from "react";
+import React, { useContext, useState, useMemo } from "react";
 import { CardItem } from "../../components/card-item";
 import styles from "./index.module.scss";
 import { useSelector } from "react-redux";
@@ -7,7 +7,7 @@ import { themeContext } from "../../context/theme";
 import { Link } from "react-router-dom";
 import { getLikedCount } from "../../store/selectors";
 import cn from "classnames";
-import {sortItems} from '../../utils/sortItems';
+import { sortItems } from "../../utils/sortItems";
 import { filterItems } from "../../utils/filterItems";
 
 export const LikedProducts = () => {
@@ -32,7 +32,10 @@ export const LikedProducts = () => {
     setSortOrder(event.target.value);
   };
 
-  const sortedItems = useMemo(() => sortItems(sortOrder, filteredLikesArr), [sortOrder, filteredLikesArr]);
+  const sortedItems = useMemo(
+    () => sortItems(sortOrder, filteredLikesArr),
+    [sortOrder, filteredLikesArr]
+  );
 
   const checkboxChange = (event) => {
     setIsChecked(event.target.checked);
@@ -43,21 +46,20 @@ export const LikedProducts = () => {
     [minValue, maxValue, sortedItems]
   );
 
-
   if (likedCounter === 0) {
     return (
       <>
         <div
-        className={cn(styles.breadCrumbs, {
-          [styles.dark]: theme === "dark",
-        })}
-      >
-        <Link to={"/"}>
-          <div>Main Page</div>
-        </Link>
-        <hr />
-        <div>Liked products</div>
-      </div>
+          className={cn(styles.breadCrumbs, {
+            [styles.dark]: theme === "dark",
+          })}
+        >
+          <Link to={"/"}>
+            <div>Main Page</div>
+          </Link>
+          <hr />
+          <div>Liked products</div>
+        </div>
         <h2
           className={cn(styles.allProductsTitle, {
             [styles.dark]: theme === "dark",
@@ -151,7 +153,7 @@ export const LikedProducts = () => {
                 ({ discont_price }) => discont_price !== null
               )
             : filteredAndSortedItems
-          ).map(({ price, discont_price, title, image, id }) => (
+          ).map(({ price, discont_price, title, image, id, categoryId }) => (
             <CardItem
               key={id}
               price={price}
@@ -160,6 +162,7 @@ export const LikedProducts = () => {
               title={title}
               image={image}
               id={id}
+              categoryId={categoryId}
             />
           ))}
         </div>

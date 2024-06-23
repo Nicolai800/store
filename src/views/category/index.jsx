@@ -6,13 +6,10 @@ import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import cn from "classnames";
 import { themeContext } from "../../context/theme";
 import { Link } from "react-router-dom";
-import {
-  fetchAllItems,
-  fetchAllCategories,
-} from "../../store/async-actions";
+import { fetchAllItems, fetchAllCategories } from "../../store/async-actions";
 import { useDispatch } from "react-redux";
-import {fetchCategoryItems} from '../../utils/fetchers/fetch-category-items';
-import {sortItems} from '../../utils/sortItems';
+import { fetchCategoryItems } from "../../utils/fetchers/fetch-category-items";
+import { sortItems } from "../../utils/sortItems";
 import { filterItems } from "../../utils/filterItems";
 
 export const Category = () => {
@@ -26,7 +23,6 @@ export const Category = () => {
   }, [dispatch, categoryId]);
 
   const { theme } = useContext(themeContext);
-
 
   useEffect(() => {
     setIsLoading(true);
@@ -52,7 +48,10 @@ export const Category = () => {
     setSortOrder(event.target.value);
   };
 
-  const sortedItems = useMemo(() => sortItems(sortOrder, categoryItemsObj.data), [sortOrder, categoryItemsObj]);
+  const sortedItems = useMemo(
+    () => sortItems(sortOrder, categoryItemsObj.data),
+    [sortOrder, categoryItemsObj]
+  );
 
   const checkboxChange = (event) => {
     setIsChecked(event.target.checked);
@@ -62,12 +61,15 @@ export const Category = () => {
     [minValue, maxValue, sortedItems]
   );
 
-  return (
-    isLoading ? <h1>LOADING</h1> : 
+  return isLoading ? (
+    <h1>LOADING</h1>
+  ) : (
     <>
-      <div className={cn(styles.breadCrumbs, {
-            [styles.dark]: theme === "dark",
-          })}>
+      <div
+        className={cn(styles.breadCrumbs, {
+          [styles.dark]: theme === "dark",
+        })}
+      >
         <Link to={"/"}>
           <div>Main Page</div>
         </Link>
@@ -137,7 +139,7 @@ export const Category = () => {
               ({ discont_price }) => discont_price !== null
             )
           : filteredAndSortedItems
-        ).map(({ price, discont_price, title, image, id }) => (
+        ).map(({ price, discont_price, title, image, id, categoryId }) => (
           <CardItem
             key={id}
             price={price}
@@ -146,6 +148,7 @@ export const Category = () => {
             title={title}
             image={image}
             id={id}
+            categoryId={categoryId}
           />
         ))}
       </div>

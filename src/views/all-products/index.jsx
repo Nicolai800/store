@@ -132,7 +132,7 @@ export const AllProducts = () => {
               ({ discont_price }) => discont_price !== null
             )
           : filteredAndSortedItems
-        ).map(({ price, discont_price, title, image, id }) => (
+        ).map(({ price, discont_price, title, image, id, categoryId }) => (
           <CardItem
             key={id}
             price={price}
@@ -141,6 +141,7 @@ export const AllProducts = () => {
             title={title}
             image={image}
             id={id}
+            categoryId={categoryId}
           />
         ))}
       </div>

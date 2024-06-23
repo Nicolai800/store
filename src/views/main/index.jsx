@@ -69,7 +69,7 @@ export const Main = () => {
             [styles.dark]: theme === "dark",
           })}
         >
-          {saleItems.map(({ price, discont_price, title, image, id }) => (
+          {saleItems.map(({ price, discont_price, title, image, id, categoryId }) => (
             <CardItem
               key={id}
               price={price}
@@ -78,6 +78,7 @@ export const Main = () => {
               title={title}
               image={image}
               id={id}
+              categoryId={categoryId}
             />
           ))}
         </div>

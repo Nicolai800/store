@@ -12,6 +12,7 @@ import { toggleToLikes } from "../../store/shop-slice";
 import { setProductCart } from "../../store/cart-slice";
 import { ProductImgModal } from "../../components/product-img-modal";
 import { getError, getIsLoading } from "../../store/selectors";
+import { BreadCrumbs } from "../../components/bread-сrumbs";
 
 export const Product = () => {
   const { itemId } = useParams();
@@ -29,7 +30,7 @@ export const Product = () => {
   const likeToggle = (articul) => {
     dispatch(toggleToLikes(articul));
   };
-  
+
   const onToggleImgModal = () => {
     setIsImgModalOpen((prev) => !prev);
   };
@@ -59,7 +60,8 @@ export const Product = () => {
     <div className={styles.loading}>Loading... Please wait...</div>
   ) : (
     <>
-      <div
+    <BreadCrumbs/>
+      {/* <div
         className={cn(styles.breadCrumbs, {
           [styles.dark]: theme === "dark",
         })}
@@ -77,7 +79,7 @@ export const Product = () => {
         </Link>
         <hr />
         <div>{title}</div>
-      </div>
+      </div> */}
       <div
         className={cn(styles.productWrapper, {
           [styles.dark]: theme === "dark",
@@ -91,12 +93,12 @@ export const Product = () => {
               onClick={() => onToggleImgModal()}
             />
             <div
-                className={cn(styles.discountImg, {
-                  [styles.none]: discontPercent === 0,
-                })}
-              >
-                -{discontPercent}%
-              </div>
+              className={cn(styles.discountImg, {
+                [styles.none]: discontPercent === 0,
+              })}
+            >
+              -{discontPercent}%
+            </div>
           </div>
           <div className={styles.titleWrapper}>
             <div

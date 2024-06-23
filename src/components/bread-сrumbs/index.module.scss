@@ -1,0 +1,42 @@
+.breadCrumbs {
+    background-color: #fffff1;
+    display: flex;
+    padding: 40px 0px 0px 40px;
+    align-items: center;
+    max-width: 1440px;
+    width: 100%;
+    hr {
+      width: 16px;
+      height: 50%;
+      border-top: 1px solid #dddddd;
+    }
+  
+    div {
+      padding: 8px 16px 8px 16px;
+      border-radius: 6px;
+      border: 1px solid #dddddd;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 20.16px;
+      text-align: center;
+    }
+    :not(:last-child) {
+      text-decoration: none;
+      color: #8b8b8b;
+    }
+    :last-child {
+      max-width: 255px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  
+    @media screen and (max-width: 710px) {
+      display: none;
+    }
+  }
+  
+  .breadCrumbs.dark {
+    background-color: #424436;
+    color: #fff;
+  }

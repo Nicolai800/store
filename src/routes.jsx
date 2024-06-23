@@ -6,7 +6,6 @@ import { Main } from "./views/main";
 import { Layout } from "./views/layout";
 import { NotFound } from "./views/not-found";
 import { AllProducts } from "./views/all-products";
-import { Product } from "./views/product";
 import { ShoppingCart } from "./views/shopping-cart";
 import { LikedProducts } from "./views/liked-products";
 
@@ -16,9 +15,8 @@ export const RootRoutes = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<Main />} />
         <Route path="categories/*" element={<Categories elementsCount={5} breadCrumbs = {true}/>} />
-        <Route path="all-products" element={<AllProducts />} />
+        <Route path="all-products/*" element={<AllProducts />} />
         <Route path="all-sales" element={<AllSales />} />
-        <Route path='products/:itemId' element={<Product/>} />
         <Route path="*" element={<NotFound />} />
         <Route path="shopping-cart" element={<ShoppingCart />} />
         <Route path="liked-products" element={<LikedProducts />} />

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import cn from "classnames";
 import { getIsLoading, getError } from "../../store/selectors";
 import { fetchAllItems } from "../../store/async-actions";
-import {sortItems} from '../../utils/sortItems';
+import { sortItems } from "../../utils/sortItems";
 import { filterItems } from "../../utils/filterItems";
 
 export const AllSales = () => {
@@ -18,9 +18,9 @@ export const AllSales = () => {
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(0);
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
-    if(!allItems.length){
+    if (!allItems.length) {
       dispatch(fetchAllItems());
     }
   }, [dispatch]);
@@ -39,13 +39,15 @@ export const AllSales = () => {
     setSortOrder(event.target.value);
   };
 
-  const sortedItems = useMemo(() => sortItems(sortOrder, salesItems), [sortOrder, salesItems]);
+  const sortedItems = useMemo(
+    () => sortItems(sortOrder, salesItems),
+    [sortOrder, salesItems]
+  );
 
   const filteredAndSortedItems = useMemo(
     () => filterItems(minValue, maxValue, sortedItems),
     [minValue, maxValue, sortedItems]
   );
-
 
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
@@ -55,9 +57,13 @@ export const AllSales = () => {
   }
 
   return isLoading ? (
-    <div className={cn(styles.loading, {
-      [styles.dark]: theme === "dark",
-    })}>Loading... Please wait...</div>
+    <div
+      className={cn(styles.loading, {
+        [styles.dark]: theme === "dark",
+      })}
+    >
+      Loading... Please wait...
+    </div>
   ) : (
     <>
       <div
@@ -115,7 +121,7 @@ export const AllSales = () => {
         })}
       >
         {filteredAndSortedItems.map(
-          ({ price, discont_price, title, image, id }) => (
+          ({ price, discont_price, title, image, id, categoryId }) => (
             <CardItem
               key={id}
               price={price}
@@ -124,6 +130,7 @@ export const AllSales = () => {
               title={title}
               image={image}
               id={id}
+              categoryId={categoryId}
             />
           )
         )}
