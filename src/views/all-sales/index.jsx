@@ -10,6 +10,7 @@ import { getIsLoading, getError } from "../../store/selectors";
 import { fetchAllItems } from "../../store/async-actions";
 import { sortItems } from "../../utils/sortItems";
 import { filterItems } from "../../utils/filterItems";
+import { BreadCrumbs } from "../../components/bread-сrumbs";
 
 export const AllSales = () => {
   const allItems = useSelector((state) => state.shop.items);
@@ -66,17 +67,7 @@ export const AllSales = () => {
     </div>
   ) : (
     <>
-      <div
-        className={cn(styles.breadCrumbs, {
-          [styles.dark]: theme === "dark",
-        })}
-      >
-        <Link to={"/"}>
-          <div>Main Page</div>
-        </Link>
-        <hr />
-        <div>All sales</div>
-      </div>
+      <BreadCrumbs/>
       <h2
         className={cn(styles.allSalesTitle, {
           [styles.dark]: theme === "dark",

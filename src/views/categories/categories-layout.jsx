@@ -11,8 +11,9 @@ import {
   getError,
 } from "../../store/selectors";
 import { fetchAllCategories } from "../../store/async-actions";
+import { BreadCrumbs } from "../../components/bread-сrumbs";
 
-export const CategoriesLayout = ({ elementsCount = 5, breadCrumbs = true }) => {
+export const CategoriesLayout = ({ elementsCount = 5, crumbs = true }) => {
   const { theme } = useContext(themeContext);
   const dispatch = useDispatch();
   const categoriesItems = useSelector(getAllCategories);
@@ -32,6 +33,7 @@ export const CategoriesLayout = ({ elementsCount = 5, breadCrumbs = true }) => {
     }
   });
 
+
   if (error) {
     return <div>ERROR</div>;
   }
@@ -42,18 +44,7 @@ export const CategoriesLayout = ({ elementsCount = 5, breadCrumbs = true }) => {
     })}>Loading... Please wait...</div>
   ) : (
     <>
-      <div
-        className={cn(styles.breadCrumbs, {
-          [styles.dark]: theme === "dark",
-          [styles.none]: breadCrumbs === false,
-        })}
-      >
-        <Link to={"/"}>
-          <div>Main Page</div>
-        </Link>
-        <hr />
-        <div>Categories</div>
-      </div>
+      <BreadCrumbs crumbs = {crumbs}/>
       <div
         className={cn(styles.categoriesText, {
           [styles.dark]: theme === "dark",
@@ -62,7 +53,7 @@ export const CategoriesLayout = ({ elementsCount = 5, breadCrumbs = true }) => {
         <h2>Categories</h2>{" "}
         <div
           className={cn(styles.lineWrapper, {
-            [styles.none]: breadCrumbs === true,
+            [styles.none]: crumbs === true,
           })}
         >
           <hr />
@@ -83,7 +74,7 @@ export const CategoriesLayout = ({ elementsCount = 5, breadCrumbs = true }) => {
       <div
         className={cn(styles.titleLinkMobileWrapper, {
           [styles.dark]: theme === "dark",
-          [styles.none]: breadCrumbs === true,
+          [styles.none]: crumbs === !false,
         })}
       >
         <Link to="/categories" className={styles.titleLinkMobile}>

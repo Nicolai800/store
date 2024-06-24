@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { fetchCategoryItems } from "../../utils/fetchers/fetch-category-items";
 import { sortItems } from "../../utils/sortItems";
 import { filterItems } from "../../utils/filterItems";
+import { BreadCrumbs } from "../../components/bread-сrumbs";
 
 export const Category = () => {
   const { categoryId } = useParams();
@@ -65,21 +66,7 @@ export const Category = () => {
     <h1>LOADING</h1>
   ) : (
     <>
-      <div
-        className={cn(styles.breadCrumbs, {
-          [styles.dark]: theme === "dark",
-        })}
-      >
-        <Link to={"/"}>
-          <div>Main Page</div>
-        </Link>
-        <hr />
-        <Link to={"/categories"}>
-          <div>Categories</div>
-        </Link>
-        <hr />
-        <div>{categoryItemsObj.category?.title}</div>
-      </div>
+      <BreadCrumbs/>
       <h2
         className={cn(styles.categoryTitle, {
           [styles.dark]: theme === "dark",

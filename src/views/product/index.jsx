@@ -6,7 +6,6 @@ import styles from "./index.module.scss";
 import cn from "classnames";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { HeartIcon } from "../../assets/icons";
-import { Link } from "react-router-dom";
 import { themeContext } from "../../context/theme";
 import { toggleToLikes } from "../../store/shop-slice";
 import { setProductCart } from "../../store/cart-slice";
@@ -61,25 +60,6 @@ export const Product = () => {
   ) : (
     <>
     <BreadCrumbs/>
-      {/* <div
-        className={cn(styles.breadCrumbs, {
-          [styles.dark]: theme === "dark",
-        })}
-      >
-        <Link to={"/"}>
-          <div>Main Page</div>
-        </Link>
-        <hr />
-        <Link to={"/categories"}>
-          <div>Categories</div>
-        </Link>
-        <hr />
-        <Link to={`/categories/${[discoveredItem.categoryId]}`}>
-          <div>{categories[discoveredItem.categoryId - 1].title}</div>
-        </Link>
-        <hr />
-        <div>{title}</div>
-      </div> */}
       <div
         className={cn(styles.productWrapper, {
           [styles.dark]: theme === "dark",

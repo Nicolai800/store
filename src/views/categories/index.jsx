@@ -4,7 +4,7 @@ import { CategoriesLayout } from "./categories-layout";
 import { Category } from "../category";
 import { Product } from "../product";
 
-export const Categories = ({ elementsCount, breadCrumbs }) => {
+export const Categories = ({ elementsCount, crumbs }) => {
   return (
     <Routes>
       <Route
@@ -12,7 +12,7 @@ export const Categories = ({ elementsCount, breadCrumbs }) => {
         element={
           <CategoriesLayout
             elementsCount={elementsCount}
-            breadCrumbs={breadCrumbs}
+            crumbs={crumbs}
           />
         }
       />

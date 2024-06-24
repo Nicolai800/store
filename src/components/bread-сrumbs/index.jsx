@@ -7,14 +7,45 @@ import { useSelector } from "react-redux";
 import styles from "./index.module.scss";
 import { getAllItems, getAllCategories } from "../../store/selectors";
 
-export const BreadCrumbs = () => {
+export const BreadCrumbs = ({ crumbs = true }) => {
   const location = useLocation();
   const { theme } = useContext(themeContext);
   const arrayPathname = location.pathname.split("/");
   const allItems = useSelector(getAllItems);
   const allCategories = useSelector(getAllCategories);
-  console.log(arrayPathname);
-  console.log(allCategories);
+
+  const getArrayPathnameInObjects = (
+    arrayPathname,
+    allItems,
+    allCategories
+  ) => {
+    const result = [];
+    if (arrayPathname[1]) {
+      result.push({
+        title:
+          arrayPathname[1].charAt(0).toUpperCase() + arrayPathname[1].slice(1),
+        currentLink: `/${arrayPathname[1]}`,
+      });
+    }
+    if (arrayPathname[2]) {
+      result.push({
+        title: allCategories[arrayPathname[2] - 1].title,
+        currentLink: `/${arrayPathname[1]}/${arrayPathname[2]}`,
+      });
+    }
+    if (arrayPathname[4]) {
+      result.push({
+        title: allItems[arrayPathname[4] - 1].title,
+        currentLink: `/${arrayPathname[1]}/${arrayPathname[2]}/products/${arrayPathname[4]}`,
+      });
+    }
+    return result;
+  };
+  const crumb = getArrayPathnameInObjects(
+    arrayPathname,
+    allItems,
+    allCategories
+  );
 
   return (
     <>
@@ -22,25 +53,21 @@ export const BreadCrumbs = () => {
       <div
         className={cn(styles.breadCrumbs, {
           [styles.dark]: theme === "dark",
+          [styles.none]: crumbs === false,
         })}
       >
         <Link to={"/"}>
           <div>Main Page</div>
         </Link>
-         <hr />
-        <Link to={"/categories"}>
-          <div>{arrayPathname[1]}</div>
-        </Link>
-        <hr />
-        <Link to={`/categories/${arrayPathname[2]}`}>
-          <div>{allCategories[arrayPathname[2]-1].title}</div>
-        </Link>
-        <hr />
-        <div>{allItems[arrayPathname[4]].title}</div>
+        {crumb.map((crumb) => (
+          <>
+            <hr />
+            <Link to={crumb.currentLink}>
+              <div key={crumb}>{crumb.title} </div>
+            </Link>
+          </>
+        ))}
       </div>
     </>
   );
 };
-
-//http://localhost:3000/categories/4/products/25
-// нужны все категории и все товары

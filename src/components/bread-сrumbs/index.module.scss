@@ -22,13 +22,18 @@
     }
     :not(:last-child) {
       text-decoration: none;
-      color: #8b8b8b;
+      div{
+        color: #8b8b8b;
+      }
+      
     }
     :last-child {
       max-width: 255px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      text-decoration: none;
+      color: #424436;
     }
   
     @media screen and (max-width: 710px) {
@@ -38,5 +43,14 @@
   
   .breadCrumbs.dark {
     background-color: #424436;
-    color: #fff;
+    :last-child {
+      div{
+        color: #fff;
+      }
+      
+    }
+  }
+
+  .breadCrumbs.none {
+    display: none;
   }

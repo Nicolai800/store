@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect, useMemo } from "react";
 import { CardItem } from "../../components/card-item";
 import styles from "./index.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getDiscountPercent } from "../../utils/getDiscountPercent";
 import { themeContext } from "../../context/theme";
 import cn from "classnames";
@@ -10,6 +9,7 @@ import { getError, getIsLoading } from "../../store/selectors";
 import { fetchAllItems } from "../../store/async-actions";
 import { sortItems } from "../../utils/sortItems";
 import { filterItems } from "../../utils/filterItems";
+import { BreadCrumbs } from "../../components/bread-сrumbs";
 
 export const AllProducts = () => {
   const dispatch = useDispatch();
@@ -62,17 +62,7 @@ export const AllProducts = () => {
     })}>Loading... Please wait...</div>
   ) : (
     <>
-      <div
-        className={cn(styles.breadCrumbs, {
-          [styles.dark]: theme === "dark",
-        })}
-      >
-        <Link to={"/"}>
-          <div>Main Page</div>
-        </Link>
-        <hr />
-        <div>All products</div>
-      </div>
+      <BreadCrumbs/>
       <h2
         className={cn(styles.allProductsTitle, {
           [styles.dark]: theme === "dark",

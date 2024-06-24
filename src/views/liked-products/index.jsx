@@ -9,6 +9,7 @@ import { getLikedCount } from "../../store/selectors";
 import cn from "classnames";
 import { sortItems } from "../../utils/sortItems";
 import { filterItems } from "../../utils/filterItems";
+import { BreadCrumbs } from "../../components/bread-сrumbs";
 
 export const LikedProducts = () => {
   const allItems = useSelector((state) => state.shop.items);
@@ -49,17 +50,7 @@ export const LikedProducts = () => {
   if (likedCounter === 0) {
     return (
       <>
-        <div
-          className={cn(styles.breadCrumbs, {
-            [styles.dark]: theme === "dark",
-          })}
-        >
-          <Link to={"/"}>
-            <div>Main Page</div>
-          </Link>
-          <hr />
-          <div>Liked products</div>
-        </div>
+        <BreadCrumbs/>
         <h2
           className={cn(styles.allProductsTitle, {
             [styles.dark]: theme === "dark",
@@ -82,17 +73,7 @@ export const LikedProducts = () => {
   } else {
     return (
       <>
-        <div
-          className={cn(styles.breadCrumbs, {
-            [styles.dark]: theme === "dark",
-          })}
-        >
-          <Link to={"/"}>
-            <div>Main Page</div>
-          </Link>
-          {/* <hr/> */}
-          <div>Liked Products</div>
-        </div>
+        <BreadCrumbs/>
         <h2
           className={cn(styles.allProductsTitle, {
             [styles.dark]: theme === "dark",
