@@ -10,14 +10,11 @@ export const Categories = ({ elementsCount, crumbs }) => {
       <Route
         path="/"
         element={
-          <CategoriesLayout
-            elementsCount={elementsCount}
-            crumbs={crumbs}
-          />
+          <CategoriesLayout elementsCount={elementsCount} crumbs={crumbs} />
         }
       />
-      <Route path="/:categoryId/*" element={<Category />} />
-      <Route path='/:categoryId/products/:itemId' element={<Product/>} />
+      <Route path="/:categoryId" element={<Category />} />
+      <Route path="/:categoryId/products/:itemId" element={<Product />} />
     </Routes>
   );
 };

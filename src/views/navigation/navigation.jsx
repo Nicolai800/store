@@ -10,7 +10,6 @@ import cn from "classnames";
 import { useSelector } from "react-redux";
 import { getLikedCount } from "../../store/selectors";
 import { getCardCount } from "../../store/selectors";
-import { ShoppingCart } from "../shopping-cart";
 import { NavMenu } from "../../components/navigation-menu/nav-menu";
 
 export const Navigation = () => {
@@ -41,7 +40,10 @@ export const Navigation = () => {
       })}
     >
       <div className={styles.iconWrapper}>
-        <LogoIcon className={styles.logo} />
+        <Link to="/">
+          <LogoIcon className={styles.logo} />
+        </Link>
+
         <IconToggle checked={isToggleOn} onToggle={onSwitchToggle} />
       </div>
 
@@ -61,12 +63,13 @@ export const Navigation = () => {
       </nav>
       <div className={styles.heartCartWrapper}>
         <IconCounter count={likesCounter}>
-          <Link to ="liked-products"><NavHeartIcon
-            className={cn(styles.heartIcon, {
-              [styles.dark]: theme === "dark",
-            })}
-          /></Link>
-          
+          <Link to="liked-products">
+            <NavHeartIcon
+              className={cn(styles.heartIcon, {
+                [styles.dark]: theme === "dark",
+              })}
+            />
+          </Link>
         </IconCounter>
         <IconCounter count={cardsCounter}>
           <Link to="shopping-cart">
@@ -82,9 +85,9 @@ export const Navigation = () => {
           isHamburgerActive={isHamburgerActive}
           theme={theme}
           onToggleHamburgersClass={onToggleHamburgersClass}
-          onToggleNavMenu = {onToggleNavMenu}
+          onToggleNavMenu={onToggleNavMenu}
         />
-        {isNavMenuOpen && <NavMenu/>}
+        {isNavMenuOpen && <NavMenu />}
       </div>
     </div>
   );
