@@ -59,6 +59,8 @@ export const ShoppingCart = () => {
     onToggleModal();
   };
 
+  console.log(orderStatus);
+
   if (cardCounter === 0) {
     return (
       <>
@@ -177,7 +179,7 @@ export const ShoppingCart = () => {
             </div>
           </div>
         </div>
-        {orderStatus && isModalOpen && (
+        {orderStatus && isModalOpen && !orderError &&(
           <OrderModal onToggleModal={onToggleModal} />
         )}
       </>

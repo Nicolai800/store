@@ -63,7 +63,7 @@ export const BreadCrumbs = ({ crumbs = true }) => {
           <>
             <hr />
             <Link to={crumb.currentLink}>
-              <div key={crumb}>{crumb.title} </div>
+              <div key={crumb.length}>{crumb.title} </div>
             </Link>
           </>
         ))}
